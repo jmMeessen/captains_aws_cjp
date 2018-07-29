@@ -1,3 +1,5 @@
+# Get the reference of the latest Ubuntu AMI for this particular region
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
