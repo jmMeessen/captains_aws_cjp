@@ -1,0 +1,4 @@
+- hosts: jmm_test-eip
+  tasks:
+    - apt: name=cowsay
+    - command: cowsay hello, world!
