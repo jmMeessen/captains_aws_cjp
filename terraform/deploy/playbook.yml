@@ -1,4 +1,23 @@
 - hosts: jmm_test-eip
+
+  # this is required as only python3 is installed on Ubuntu AMI
+  gather_facts: False
+
   tasks:
-    - apt: name=cowsay
-    - command: cowsay hello, world!
+
+    - name: ensure python 2.7 is installed
+      raw: sudo apt-get install -y python2.7 python-simplejson
+   
+    # try pinging now
+    - ping:
+
+
+    - name: Update and upgrade apt packages
+      become: true
+      apt: 
+        update_cache=yes
+        name=cowsay
+    - name: let the cow say hello
+      command: cowsay hello, world!
+      register: cowsay_out
+    - debug: var=cowsay_out.stdout_lines

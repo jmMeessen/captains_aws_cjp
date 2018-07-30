@@ -21,8 +21,6 @@
 ## experiment with Ansible
 - install inventory system `brew install terraform-inventory` (see https://github.com/adammck/terraform-inventory)
 
-- `ansible-playbook --inventory-file=/usr/local/bin/terraform-inventory -e 'host_key_checking=False' --key-file "~/.ssh/captains_aws_cjp" deploy/playbook.yml`
+- Run the ansible script with `ansible-playbook --inventory-file=/usr/local/bin/terraform-inventory -e 'host_key_checking=False' --key-file "~/.ssh/captains_aws_cjp" deploy/playbook.yml`
 
-ansible-playbook --inventory-file=/usr/local/bin/terraform-inventory -e 'host_key_checking=False' -u ubuntu --key-file "~/.ssh/captains_aws_cjp" deploy/playbook.yml
-
-problem with running apt-get on Ubuntu with ansible
+Important note: the AWS Ubuntu Xenial images have only Python3 installed. It is important to disable inventory first and then install Python2 for the scripts to work.
