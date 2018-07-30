@@ -10,4 +10,5 @@ This is a list of the references I used while experimenting and learning.
 - Jenkins [configuration-as-code](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/README.md)
 - (private) repository with some same sample [CJP related Ansible scripts](https://github.com/cloudbees/ansible-cjp)
 - A [terraform module for Jenkins](https://github.com/IGNW/terraform-aws-jenkins)
+- Another [discussion about Terraform and Ansible](https://nicholasbering.ca/tools/2018/01/08/introducing-terraform-provider-ansible/)
 
