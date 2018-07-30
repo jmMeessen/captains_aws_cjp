@@ -17,5 +17,6 @@ resource "aws_instance" "jmm_test" {
 
   tags {
     Name = "Jmm_test"
+    Role = "test"
   }
 }
