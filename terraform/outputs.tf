@@ -1,3 +1,7 @@
-output "server-ip" {
-  value = "${aws_eip.jmm_cjoc-eip.public_ip}"
+output "Server-ip" {
+  value = "${aws_instance.jmm_cjoc.public_ip}"
+}
+
+output "Server-dns" {
+  value = "${aws_instance.jmm_cjoc.public_dns}"
 }

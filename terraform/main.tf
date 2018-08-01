@@ -14,7 +14,7 @@ resource "aws_instance" "jmm_cjoc" {
   ]
 
   tags {
-    Name = "Jmm_cjoc"
+    Name = "jmm_cjoc"
     Role = "test"
   }
 }

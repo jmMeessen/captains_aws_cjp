@@ -1,4 +1,4 @@
-- hosts: jmm_cjoc-eip
+- hosts: jmm_cjoc
 
   # this is required as only python3 is installed on Ubuntu AMI
   gather_facts: False
