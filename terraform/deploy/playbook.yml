@@ -1,4 +1,4 @@
-- hosts: jmm_test-eip
+- hosts: jmm_cjoc-eip
 
   # this is required as only python3 is installed on Ubuntu AMI
   gather_facts: False
@@ -21,3 +21,7 @@
       command: cowsay hello, world!
       register: cowsay_out
     - debug: var=cowsay_out.stdout_lines
+
+    # add the key of the CloudBees repository
+    # install java
+    # install CJOC

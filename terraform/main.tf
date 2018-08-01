@@ -3,7 +3,7 @@ provider "aws" {
   alias = "default"
 }
 
-resource "aws_instance" "jmm_test" {
+resource "aws_instance" "jmm_cjoc" {
   ami                         = "${data.aws_ami.ubuntu.id}"
   instance_type               = "t2.micro"
   key_name                    = "${aws_key_pair.my-aws-key.key_name}"
@@ -13,10 +13,8 @@ resource "aws_instance" "jmm_test" {
     "${aws_security_group.jmm_sg.name}",
   ]
 
-  #  "${aws_security_group.allow_outbound.name}",
-
   tags {
-    Name = "Jmm_test"
+    Name = "Jmm_cjoc"
     Role = "test"
   }
 }
