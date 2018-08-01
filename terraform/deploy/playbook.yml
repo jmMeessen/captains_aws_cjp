@@ -12,7 +12,7 @@
     - ping:
 
 
-    - name: Update and upgrade apt packages
+    - name: Install COWSAY
       become: true
       apt: 
         update_cache=yes
@@ -22,6 +22,12 @@
       register: cowsay_out
     - debug: var=cowsay_out.stdout_lines
 
+    - name: Install OpenJdk 8 (JRE)
+      become: true
+      apt:
+        update_cache=yes
+        name=openjdk-8-jre
+
     # add the key of the CloudBees repository
-    # install java
+  
     # install CJOC
