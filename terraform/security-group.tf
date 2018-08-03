@@ -1,7 +1,6 @@
-resource "aws_security_group" "jmm_sg" {
-  name = "JMM_sg"
+resource "aws_security_group" "jmm_general_sg" {
+  name = "JMM_general_sg"
 
-  ## Allow Internet Access for everyone
   egress {
     from_port   = 80
     to_port     = 80
@@ -22,10 +21,25 @@ resource "aws_security_group" "jmm_sg" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+}
+
+resource "aws_security_group" "jmm_cjoc_sg" {
+  name = "JMM_cjoc_sg"
 
   ingress {
     from_port   = 8888
     to_port     = 8888
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_security_group" "jmm_master_sg" {
+  name = "JMM_master_sg"
+
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
