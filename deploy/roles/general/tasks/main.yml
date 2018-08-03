@@ -21,15 +21,3 @@
   apt:
     update_cache: yes
     name: openjdk-8-jre
-
-- name: Add the CloudBees APT Key
-  become: true
-  apt_key:
-    url: https://downloads.cloudbees.com/cloudbees-core/traditional/operations-center/rolling/debian/cloudbees.com.key
-    state: present
-
-- name: Add the ClouBees package repository
-  become: true
-  apt_repository:
-    repo: deb https://downloads.cloudbees.com/cloudbees-core/traditional/operations-center/rolling/debian binary/
-    state: present

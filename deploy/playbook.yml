@@ -5,13 +5,8 @@
 
   roles:
     - general
+    - cjoc
 
-  tasks:
-    - name: Install CloudBees Core Operation Center
-      become: true
-      apt:
-        update_cache: yes
-        name: cloudbees-core-oc
 
 - hosts: jmm_client_master
 
@@ -20,3 +15,4 @@
 
   roles:
     - general
+    - client_master
