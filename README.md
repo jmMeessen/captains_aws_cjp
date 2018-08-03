@@ -4,9 +4,10 @@ My experiments with configuring a CJP on AWS
 ## TODO
 My current plan is 
 
-- [x] with Terraform, spin a machine on AWS
+- [x] with Terraform, spin two machines (CJOC and Client Master) on AWS
 - [ ] with Ansible, harden the machine
-- [ ] with Ansible, install CJOC
+- [x] with Ansible, install CJOC
+- [ ] with Ansible, install CLient Master
 - [ ] with Ansible, try out the Jenkins configuration as code. 
 
 ## references
