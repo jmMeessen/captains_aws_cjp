@@ -6,15 +6,16 @@
 # try pinging the system now
 - ping:
 
-- name: Install COWSAY
-  become: true
-  apt: 
-    update_cache: yes
-    name: cowsay
-- name: let the cow say hello
-  command: cowsay hello, world!
-  register: cowsay_out
-- debug: var=cowsay_out.stdout_lines
+## Used to validate that it is possible to install a package and that everything is working fine
+# - name: Install COWSAY
+#   become: true
+#   apt: 
+#     update_cache: yes
+#     name: cowsay
+# - name: let the cow say hello
+#   command: cowsay hello, world!
+#   register: cowsay_out
+# - debug: var=cowsay_out.stdout_lines
 
 - name: Install OpenJdk 8 (JRE)
   become: true
