@@ -7,10 +7,10 @@ My current plan is
 - [x] with Terraform, spin two machines (CJOC and Client Master) on AWS
 - [ ] with Ansible, harden the machine
 - [x] with Ansible, install CJOC
-- [ ] with Ansible, install CLient Master
+- [x] with Ansible, install CLient Master
 - [ ] with Ansible, try out the Jenkins configuration as code. 
 
 ## references
 
-- [notes](notes.md)
+- [How to use this environment](notes.md)
 - [bibliography](bibliography.md)
