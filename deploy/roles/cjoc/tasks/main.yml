@@ -18,4 +18,17 @@
     update_cache: yes
     name: cloudbees-core-oc
 
+- name: redirect the traffic from 80 to 8888 with IPtables
+  become: yes
+  iptables:
+    table: nat
+    chain: PREROUTING
+    in_interface: eth0
+    protocol: tcp
+    match: tcp
+    destination_port: 80
+    jump: REDIRECT
+    to_ports: 8888
+    comment: Redirect web traffic to port 8888
+
 

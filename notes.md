@@ -4,6 +4,7 @@
 - Ansible is installed (use Brew)
 - Terraform is installed (use Brew also)
 - Install the Terraform inventory tool for Ansible with `brew install terraform-inventory` (see https://github.com/adammck/terraform-inventory)
+- The IPtable maninpulation Ansible role is needed to do the port forwarding. Install it with `ansible-galaxy install geerlingguy.firewall`
 
 ## Pre-flight
 - to configure the CB AWS environment with OPSCORE: `opscore iam refresh --account cloudbees-support --role infra-admin`
@@ -26,9 +27,7 @@
 - Deploy the application: `./run_ansible.sh`. 
 
 ## Setting up the environment
-- use the IP (or DNS name) in the browser
-  - use port `8888` to connect to CJOC
-  - use port `8080` to connect to Client Master
+- use the IP (or DNS name) in the browser. Note that both CJOC and CM are "listening" on the default HTTP port (via an IPtable redirection).
 - retrieve the administrator key with `./cjoc_dispay_admin_token.sh` and use it to unlock the CJOC.
 - for the license, just request a trial one.
 - to connect via SSH
