@@ -14,7 +14,7 @@
   - switch to `infa-admin @ cloudbees-support`
 
 ## Initialize SSH (for Ansible and SSH direct connection)
-- generate an SSH key with `ssh-keygen -t rsa -b 2048 -v` in the `~/.ssh` directory.
+- generate an SSH key with `ssh-keygen -t rsa -b 2048 -v -f ~/.ssh/captains_aws_cjp`.
 - copy the public key in the terraform directory so that it can be found in the scripts
 
 ## Create environment

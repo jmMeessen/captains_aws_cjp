@@ -3,5 +3,8 @@
 *.tfstate.backup
 *.retry
 
+#Public keys
+terraform/*.pub
+
 # Module directory
 terraform/.terraform/
