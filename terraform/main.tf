@@ -1,9 +1,6 @@
 provider "aws" {
-  region = "us-east-1"
-
-  #alias  = "default"
-
-  profile = "cloudbees-support"
+  region  = "${var.aws_region}"
+  profile = "${var.aws_profile}"
 }
 
 resource "aws_instance" "jmm_cjoc" {
