@@ -4,7 +4,8 @@
   raw: sudo apt-get install -y python2.7 python-simplejson
    
 # try pinging the system now
-- ping:
+- name: Trying if the Ansible communication works now (using a Ping)
+  ping:
 
 - name: Gathering facts
   setup:

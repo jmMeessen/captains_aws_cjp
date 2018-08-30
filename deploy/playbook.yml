@@ -6,6 +6,7 @@
   roles:
     - general
     - cjoc
+    - JenkinsConfigAsCode
 
 
 - hosts: jmm_client_master

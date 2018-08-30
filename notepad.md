@@ -7,3 +7,6 @@
 ## Configuration as code.
 
 https://updates.jenkins.io/latest/configuration-as-code.hpi
+
+/var/lib/cloudbees-core-oc/plugins 
+https://stackoverflow.com/questions/10625259/how-to-set-environment-variables-in-jenkins
