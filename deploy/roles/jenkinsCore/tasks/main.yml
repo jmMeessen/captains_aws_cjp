@@ -1,0 +1,38 @@
+---
+
+# check the type of nodes and load the
+- name: "Include the '{{ jenkins_node_type }}' installation specific variables" 
+  include_vars: "{{ jenkins_node_type }}.yml"
+
+- name: Add the {{ option_friendly_name }} APT Key
+  become: true
+  apt_key:
+    url: "{{ key_url }}"
+    state: present
+
+- name: Add the {{ option_friendly_name }} package repository
+  become: true
+  apt_repository:
+    repo: "{{ repo_url }}"
+    state: present
+
+- name: Install {{ option_friendly_name }}
+  become: true
+  apt:
+    update_cache: yes
+    name: "{{ package_name }}"
+
+- name: redirect the traffic from 80 to {{ used_port }} with IPtables
+  become: yes
+  iptables:
+    table: nat
+    chain: PREROUTING
+    in_interface: eth0
+    protocol: tcp
+    match: tcp
+    destination_port: 80
+    jump: REDIRECT
+    to_ports: "{{ used_port }}"
+    comment: "Redirect web traffic to port {{ used_port }}"
+
+

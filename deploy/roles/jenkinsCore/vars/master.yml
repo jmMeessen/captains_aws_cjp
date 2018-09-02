@@ -1,0 +1,5 @@
+option_friendly_name: "Cloudbees Core Client Master"
+key_url: "https://downloads.cloudbees.com/cloudbees-core/traditional/client-master/rolling/debian/cloudbees.com.key"
+repo_url: "deb https://downloads.cloudbees.com/cloudbees-core/traditional/client-master/rolling/debian binary/"
+package_name: "cloudbees-core-cm"
+used_port: "8080"

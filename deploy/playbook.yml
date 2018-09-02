@@ -3,9 +3,12 @@
   # this is required as only python3 is installed on Ubuntu AMI (Ansible fails otherwise)
   gather_facts: False
 
+  vars:
+    jenkins_node_type: "cjoc"
+
   roles:
     - general
-    - cjoc
+    - jenkinsCore
     - JenkinsConfigAsCode
 
 
@@ -14,6 +17,10 @@
   # this is required as only python3 is installed on Ubuntu AMI (Ansible fails otherwise)
   gather_facts: False
 
+  vars:
+    jenkins_node_type: "master"
+
   roles:
     - general
-    - client_master
+    - jenkinsCore    
+    #- client_master
