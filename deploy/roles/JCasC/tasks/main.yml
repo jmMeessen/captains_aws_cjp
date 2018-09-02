@@ -1,18 +1,21 @@
 ---
 
+- name: "Include the '{{ jenkins_node_type }}' installation specific variables" 
+  include_vars: "{{ jenkins_node_type }}.yml"
+  
 - name: Download latest JenkinsConfigAsCode plugin
   become: true
   get_url:
     url: https://updates.jenkins.io/latest/configuration-as-code.hpi
-    dest: /var/lib/cloudbees-core-oc/plugins/configuration-as-code.hpi
+    dest: "/var/lib/{{ jenkins_user }}/plugins/configuration-as-code.hpi"
     mode: u=rw,g=r,o=r
-    group: cloudbees-core-oc
-    owner: cloudbees-core-oc
+    group: "{{ jenkins_user }}"
+    owner: "{{ jenkins_user }}"
 
 - name: Add the path to the configuration file
   become: true
   lineinfile:
-    path: /etc/default/cloudbees-core-oc
+    path: "/etc/default/{{ jenkins_user }}"
     regexp: '^CASC_JENKINS_CONFIG='
     insertafter: '^HTTP_PORT'
     line: 'CASC_JENKINS_CONFIG=/var/lib/cloudbees-core-oc/cfgAsCode/configuration.yaml'
@@ -20,19 +23,19 @@
 - name: create directory for confifuration
   become: true
   file:
-    path: /var/lib/cloudbees-core-oc/cfgAsCode
+    path: "/var/lib/{{ jenkins_user }}/cfgAsCode"
     state: directory
-    owner: cloudbees-core-oc
-    group: cloudbees-core-oc
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
     mode: u=rwx,g=rx,o=rx
     
 
 - name: copy the configuration file
   become: true
   copy:
-    src: oc-configuration.yaml
-    dest: /var/lib/cloudbees-core-oc/cfgAsCode/configuration.yaml
+    src: "oc-configuration.yaml"
+    dest: "/var/lib/{{ jenkins_user }}/cfgAsCode/configuration.yaml"
     force: yes
-    owner: cloudbees-core-oc
-    group: cloudbees-core-oc
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
     mode: u=rw,g=r,o=r

@@ -1,6 +1,5 @@
 ---
 
-# check the type of nodes and load the
 - name: "Include the '{{ jenkins_node_type }}' installation specific variables" 
   include_vars: "{{ jenkins_node_type }}.yml"
 
