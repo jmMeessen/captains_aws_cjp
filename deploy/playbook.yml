@@ -8,8 +8,8 @@
 
   roles:
     - general
-    - jenkinsCore
-    - JenkinsConfigAsCode
+    - jenkins
+    - JCasC
 
 
 - hosts: jmm_client_master
@@ -22,5 +22,4 @@
 
   roles:
     - general
-    - jenkinsCore    
-    #- client_master
+    - jenkins    
