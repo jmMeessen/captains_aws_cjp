@@ -1,0 +1,16 @@
+jenkins:
+  systemMessage: "\"If you can't explain it simply, you don't understand it well enough.\" \n-Albert Einstein"
+  numExecutors: 1
+
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - basicSSHUserPrivateKey:
+              scope: SYSTEM
+              id: jenkins-ssh-user
+              username: jenkins
+              description: "jenkins user for connection to ssh-agent"
+              privateKeySource:
+                directEntry:
+                  privateKey: ${JENKINS_SLAVE_SSH_PRIKEY}
