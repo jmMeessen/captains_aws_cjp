@@ -12,13 +12,17 @@
     group: "{{ jenkins_user }}"
     owner: "{{ jenkins_user }}"
 
-- name: Add the path to the configuration file
+- name: Add the path to the configuration file (.profile)
   become: true
   lineinfile:
-    path: "/etc/default/{{ jenkins_user }}"
-    regexp: '^CASC_JENKINS_CONFIG='
-    insertafter: '^HTTP_PORT'
-    line: 'CASC_JENKINS_CONFIG=/var/lib/cloudbees-core-oc/cfgAsCode/configuration.yaml'
+    path: "/var/lib/{{ jenkins_user }}/.profile"
+    create: yes
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
+    mode: u=rw,g=r,o=r
+    regexp: '^export CASC_JENKINS_CONFIG='
+    insertafter: EOF
+    line: 'export CASC_JENKINS_CONFIG=/var/lib/{{ jenkins_user }}/cfgAsCode/configuration.yaml'
 
 - name: create directory for confifuration
   become: true
@@ -39,3 +43,9 @@
     owner: "{{ jenkins_user }}"
     group: "{{ jenkins_user }}"
     mode: u=rw,g=r,o=r
+
+- name: restart the Jenkins service
+  become: true
+  service:
+    name: "{{ jenkins_user }}"
+    state: restarted
