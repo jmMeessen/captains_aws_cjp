@@ -24,7 +24,7 @@
     insertafter: EOF
     line: 'export CASC_JENKINS_CONFIG=/var/lib/{{ jenkins_user }}/cfgAsCode/configuration.yaml'
 
-- name: create directory for confifuration
+- name: create directory to store the confifuration
   become: true
   file:
     path: "/var/lib/{{ jenkins_user }}/cfgAsCode"
@@ -37,7 +37,7 @@
 - name: copy the configuration file
   become: true
   copy:
-    src: "oc-configuration.yaml"
+    src: "{{ config_file }}"
     dest: "/var/lib/{{ jenkins_user }}/cfgAsCode/configuration.yaml"
     force: yes
     owner: "{{ jenkins_user }}"

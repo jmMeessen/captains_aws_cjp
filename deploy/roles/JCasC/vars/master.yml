@@ -1,0 +1,2 @@
+jenkins_user: "cloudbees-core-cm"
+config_file: "master-cfg.yaml"

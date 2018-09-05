@@ -1,0 +1,7 @@
+# plugins:
+#   required:
+#     github-oauth: http://updates.jenkins-ci.org/download/plugins/github-oauth/0.29/github-oauth.hpi
+
+jenkins:
+  systemMessage: "This is a system message"
+  numExecutors: 2

@@ -1,2 +1,2 @@
 jenkins_user: "cloudbees-core-oc"
-config_file: "oc-configuration.yaml"
+config_file: "oc-cfg.yaml"

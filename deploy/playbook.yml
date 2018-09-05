@@ -22,4 +22,5 @@
 
   roles:
     - general
-    - jenkins    
+    - jenkins  
+    - JCasC  
