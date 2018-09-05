@@ -1,3 +1,13 @@
+# plugins:
+#   required:
+#     github-oauth: http://updates.jenkins-ci.org/download/plugins/github-oauth/0.29/github-oauth.hpi
+
 jenkins:
-  systemMessage: "\"If you can't explain it simply, you don't understand it well enough.\" \n-Albert Einstein"
+  systemMessage: "This is a system message"
   numExecutors: 1
+  agentProtocols:
+    - "Diagnostic-Ping"
+    - "JNLP4-connect"
+    - "MultiMaster"
+    - "OperationsCenter2"
+    - "Ping"
