@@ -1,6 +1,15 @@
-# plugins:
-#   required:
-#     github-oauth: http://updates.jenkins-ci.org/download/plugins/github-oauth/0.29/github-oauth.hpi
+plugins:
+  sites:
+  - id: "cjoc-offline"
+    url: "file:/var/cache/cloudbees-core-oc/war/WEB-INF/plugins/update-center.json"
+  - id: "cap-cjoc"
+    url: "https://jenkins-updates.cloudbees.com/update-center/envelope-cjoc/update-center.json"
+  - id: "default"
+    url: "http://updates.jenkins-ci.org/update-center.json"  
+  required:
+    github-branch-source: http://updates.jenkins-ci.org/download/plugins/github-branch-source/2.3.6/github-branch-source.hpi
+    github: http://updates.jenkins-ci.org/download/plugins/github/1.29.2/github.hpi
+    github-oauth: http://updates.jenkins-ci.org/download/plugins/github-oauth/0.29/github-oauth.hpi
 
 jenkins:
   systemMessage: "This is a system message"
