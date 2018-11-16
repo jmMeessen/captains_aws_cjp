@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-opscore iam refresh --account cloudbees-support --role infra-admin
+opscore iam refresh --account cloudbees-ps --role infra-admin
