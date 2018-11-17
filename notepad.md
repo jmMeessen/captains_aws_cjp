@@ -14,3 +14,5 @@ https://stackoverflow.com/questions/10625259/how-to-set-environment-variables-in
 * enable github authentication
 * connect master programatically
 * automate via CLI
+
+https://stackoverflow.com/questions/17716242/creating-user-in-jenkins-via-api
