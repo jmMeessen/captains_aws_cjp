@@ -8,3 +8,6 @@ terraform/*.pub
 
 # Module directory
 terraform/.terraform/
+
+# downloaded on the fly
+jenkins-cli.jar

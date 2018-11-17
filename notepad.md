@@ -16,3 +16,7 @@ https://stackoverflow.com/questions/10625259/how-to-set-environment-variables-in
 * automate via CLI
 
 https://stackoverflow.com/questions/17716242/creating-user-in-jenkins-via-api
+
+Ansible delegation and run once : https://docs.ansible.com/ansible/2.6/user_guide/playbooks_delegation.html
+
+https://stackoverflow.com/questions/44004727/how-to-run-local-command-via-ansible-playbook
