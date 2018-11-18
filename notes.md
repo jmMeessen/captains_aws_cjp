@@ -17,25 +17,26 @@
 - generate an SSH key with `ssh-keygen -t rsa -b 2048 -v -f ~/.ssh/captains_aws_cjp`.
 - copy the public key in the terraform directory so that it can be found in the scripts
 
-## Create environment
-(all work is done from the Terraform sub directory)
-- initialise Terraform working directory (if used the first time): `terraform init`
+**Note** : Automation tools mentioned hereafter are located in the `toolbox` directory
+
+## Create environment (first time)
+- initialise Terraform working directory (if used the first time): `terraform init` while in the terraform directory
 - Sanity check: verify with `terraform plan`
-- Start the environment: `terraform apply`
+- Start the environment: `terraform apply` or with `toolbox\start_infra.sh`
   - the final step shows the IP and DNS names the machines that were created.
   - To show these values (or to load them in environment variables), use `terraform output`
-- Deploy the application: `./run_ansible.sh`. 
+- Deploy the application: `toolbox/run_ansible.sh`. 
 
 ## Setting up the environment
-- use the IP (or DNS name) in the browser. Note that both CJOC and CM are "listening" on the default HTTP port (via an IPtable redirection).
-- retrieve the administrator key with `./cjoc_dispay_admin_token.sh` and use it to unlock the CJOC.
+- use the IP (or DNS name) in the browser. Note that both CJOC and CM are "listening" on the default HTTP port (via an IPtable redirection). You can also use `toolbox\cjoc_http.sh` or `toolbox\cm_http.sh`.
+- retrieve the administrator key with `toolbox/cjoc_dispay_admin_token.sh` and use it to unlock the CJOC.
 - for the license, just request a trial one.
 - to connect via SSH
   - use `ssh <ip-address> -l ubuntu -i ~/.ssh/captains_aws_cjp`
-  - to retrieve automatically the IPs, use either `./cjoc_ssh.sh` or `cm_ssh.sh`
+  - to retrieve automatically the IPs, use either `toolbox/cjoc_ssh.sh` or `toolbox/cm_ssh.sh`
 
 ## Destroying the environment
-- Pull the environement down: `terraform destroy` or, without the prompt, `terraform destroy -auto-approve`
+- Pull the environement down: `toolbox/stop_infra.sh` that will perform a `terraform destroy` or, without the validation prompt, `terraform destroy -auto-approve`
 - TODO: a command to supend the environment
 
 ## Customizing these scripts
