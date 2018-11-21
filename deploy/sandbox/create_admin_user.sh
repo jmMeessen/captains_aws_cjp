@@ -9,7 +9,10 @@ echo $cjoc_dns
 token=$(ssh ${cjoc_ip} -l ubuntu -i ~/.ssh/captains_aws_cjp "sudo cat /var/lib/cloudbees-core-oc/secrets/initialAdminPassword")
 echo $token
 
+#todo download only if not present
 curl -O http://${cjoc_dns}/jnlpJars/jenkins-cli.jar
 
 
-java -jar jenkins-cli.jar -s http://${cjoc_dns} -auth admin:${token} help
+CLI_command="java -jar jenkins-cli.jar -s http://${cjoc_dns} -auth admin:${token}"
+
+${CLI_command} -http groovy user-creation.groovy jmeessen testPassword testEmail@testEmail.com
