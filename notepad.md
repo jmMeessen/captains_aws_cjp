@@ -17,6 +17,7 @@ https://stackoverflow.com/questions/10625259/how-to-set-environment-variables-in
 
 https://stackoverflow.com/questions/17716242/creating-user-in-jenkins-via-api
 https://wiki.jenkins.io/display/JENKINS/Groovy+Hook+Script
+* Create init.groovy.d directory and put scripts there
 
 Ansible delegation and run once : https://docs.ansible.com/ansible/2.6/user_guide/playbooks_delegation.html
 
