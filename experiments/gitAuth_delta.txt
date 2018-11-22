@@ -1,0 +1,16 @@
+  GitHub API Plugin (github-api): 1.92 since 2018/09/21 14:15:14
+  Pipeline: SCM Step (workflow-scm-step): 2.6 since 2018/09/21 14:15:14
+  JSch dependency plugin (jsch): 0.1.54.2 since 2018/09/21 14:15:14
+  Git client plugin (git-client): 2.7.3 since 2018/09/21 14:15:15
+  Git plugin (git): 3.9.1 since 2018/09/21 14:15:15
+  GitHub plugin (github): 1.29.2 since 2018/09/21 14:15:16
+  GitHub Branch Source Plugin (github-branch-source): 2.3.6 since 2018/09/21 14:15:16
+  JavaScript GUI Lib: ACE Editor bundle plugin (ace-editor): 1.1 since 2018/09/21 14:15:17
+  JavaScript GUI Lib: jQuery bundles (jQuery and jQuery UI) plugin (jquery-detached): 1.2.1 since 2018/09/21 14:15:17
+  Pipeline: Supporting APIs (workflow-support): 2.20 since 2018/09/21 14:15:17
+  Pipeline: Groovy (workflow-cps): 2.54 since 2018/09/21 14:15:18
+  Branch API Plugin (branch-api): 2.0.20 since 2018/09/21 14:15:18
+  Pipeline: Job (workflow-job): 2.25 since 2018/09/21 14:15:18
+  Pipeline: Multibranch (workflow-multibranch): 2.20 since 2018/09/21 14:15:19
+  GitHub Authentication plugin (github-oauth): 0.29 since 2018/09/21 14:15:19
+  

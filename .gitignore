@@ -11,6 +11,3 @@ terraform/.terraform/
 
 # downloaded on the fly
 jenkins-cli.jar
-
-# neutralize the experimentation directory
-experiments/

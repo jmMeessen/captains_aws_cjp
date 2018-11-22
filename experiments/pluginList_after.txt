@@ -1,0 +1,73 @@
+Running Jenkins 2.138.1.2
+Plugins for this version
+
+  CloudBees Jenkins Enterprise License Entitlement Check (nectar-license): 8.11 since 2018/09/21 13:34:09
+  Pipeline: API (workflow-api): 2.28 since 2018/09/21 13:34:09
+  Jackson 2 API Plugin (jackson2-api): 2.8.11.2 since 2018/09/21 13:34:09
+  Support Core Plugin (support-core): 2.49 since 2018/09/21 13:34:10
+  CloudBees License Manager (cloudbees-license): 9.27 since 2018/09/21 13:34:09
+  Async Http Client (async-http-client): 1.7.24.1 since 2018/09/21 13:34:09
+  MapDB API Plugin (mapdb-api): 1.0.9.0 since 2018/09/21 13:34:09
+  Display URL API (display-url-api): 2.2.0 since 2018/09/21 13:34:10
+  Structs Plugin (structs): 1.14 since 2018/09/21 13:34:09
+  Operations Center Server License Entitlement Check (operations-center-license): 2.121.0.2 since 2018/09/21 13:34:11
+  CloudBees Support Plugin (cloudbees-support): 3.18 since 2018/09/21 13:34:09
+  JDK Tool Plugin (jdk-tool): 1.1 since 2018/09/21 13:34:10
+  bouncycastle API Plugin (bouncycastle-api): 2.17 since 2018/09/21 13:34:10
+  Operations Center Context (operations-center-context): 2.121.0.6 since 2018/09/21 13:34:09
+  Mailer Plugin (mailer): 1.21 since 2018/09/21 13:34:10
+  CloudBees Update Center Data API (cloudbees-uc-data-api): 4.42 since 2018/09/21 13:34:11
+  Node Iterator API Plugin (node-iterator-api): 1.5.0 since 2018/09/21 13:34:10
+  Credentials Plugin (credentials): 2.1.18 since 2018/09/21 13:34:10
+  Command Agent Launcher Plugin (command-launcher): 1.2 since 2018/09/21 13:34:10
+  Folders Plugin (cloudbees-folder): 6.4 since 2018/09/21 13:34:09
+  Beekeeper Upgrade Assistant Plugin (cloudbees-assurance): 2.121.0.3 since 2018/09/21 13:34:10
+  JUnit Plugin (junit): 1.24 since 2018/09/21 13:34:10
+  CloudBees Monitoring Plugin (cloudbees-monitoring): 2.7 since 2018/09/21 13:34:10
+  Pipeline: Step API (workflow-step-api): 2.16 since 2018/09/21 13:34:10
+  SCM API Plugin (scm-api): 2.2.7 since 2018/09/21 13:34:10
+  CloudBees High Availability Management plugin (cloudbees-ha): 4.16 since 2018/09/21 13:34:10
+  Token Macro Plugin (token-macro): 2.4 since 2018/09/21 13:34:09
+  Metrics Plugin (metrics): 3.1.2.11 since 2018/09/21 13:34:09
+  CloudBees Folders Plus Plugin (cloudbees-folders-plus): 3.5 since 2018/09/21 13:34:09
+  Script Security Plugin (script-security): 1.44 since 2018/09/21 13:34:10
+  Operations Center Server Plugin (operations-center-server): 2.121.0.3 since 2018/09/21 13:34:10
+  Variant Plugin (variant): 1.1 since 2018/09/21 13:34:09
+  Operations Center Agent (operations-center-agent): 2.121.0.3 since 2018/09/21 13:34:09
+  configuration-as-code-support (configuration-as-code-support): 1.0 since 1970/01/01 00:00:00
+  Configuration as Code Plugin (configuration-as-code): 1.0 since 1970/01/01 00:00:00
+  SSH Credentials Plugin (ssh-credentials): 1.14 since 2018/09/21 14:07:58
+  CloudBees SSH Build Agents Plugin (cloudbees-ssh-slaves): 2.1 since 2018/09/21 14:07:58
+  Operations Center JNLP Agent Controller Plugin (operations-center-jnlp-controller): 2.121.0.2 since 2018/09/21 14:07:59
+  Apache HttpComponents Client 4.x API Plugin (apache-httpcomponents-client-4-api): 4.5.5-3.0 since 2018/09/21 14:07:59
+  Plain Credentials Plugin (plain-credentials): 1.4 since 2018/09/21 14:08:00
+  Credentials Binding Plugin (credentials-binding): 1.15 since 2018/09/21 14:08:00
+  Amazon Web Services SDK (aws-java-sdk): 1.11.341 since 2018/09/21 14:08:02
+  CloudBees Amazon Web Services Credentials Plugin (aws-credentials): 1.23 since 2018/09/21 14:08:03
+  CloudBees Back-up Plugin (infradna-backup): 3.38.3 since 2018/09/21 14:08:03
+  CloudBees Role-Based Access Control Plugin (nectar-rbac): 5.21 since 2018/09/21 14:08:04
+  CloudBees Update Center Plugin (cloudbees-update-center-plugin): 4.43 since 2018/09/21 14:08:04
+  Operations Center Update Center Plugin (operations-center-updatecenter): 2.121.0.2 since 2018/09/21 14:08:04
+  Operations Center Server Cluster Operations (operations-center-clusterops): 2.121.0.2 since 2018/09/21 14:08:05
+  Operations Center Monitoring Plugin (operations-center-monitoring): 2.121.0.2 since 2018/09/21 14:08:05
+  Operations Center Server Role Based Access Control (operations-center-rbac): 2.121.0.2 since 2018/09/21 14:08:05
+  Operations Center Single Sign-On Plugin (operations-center-sso): 2.121.0.2 since 2018/09/21 14:08:06
+  OWASP Markup Formatter Plugin (antisamy-markup-formatter): 1.5 since 2018/09/21 14:08:06
+  Matrix Project Plugin (matrix-project): 1.12 since 2018/09/21 14:08:06
+  Stack Trace Suppression Plugin (suppress-stack-trace): 1.5 since 2018/09/21 14:08:06
+  LDAP Plugin (ldap): 1.20 since 2018/09/21 14:08:07
+  GitHub API Plugin (github-api): 1.92 since 2018/09/21 14:15:14
+  Pipeline: SCM Step (workflow-scm-step): 2.6 since 2018/09/21 14:15:14
+  JSch dependency plugin (jsch): 0.1.54.2 since 2018/09/21 14:15:14
+  Git client plugin (git-client): 2.7.3 since 2018/09/21 14:15:15
+  Git plugin (git): 3.9.1 since 2018/09/21 14:15:15
+  GitHub plugin (github): 1.29.2 since 2018/09/21 14:15:16
+  GitHub Branch Source Plugin (github-branch-source): 2.3.6 since 2018/09/21 14:15:16
+  JavaScript GUI Lib: ACE Editor bundle plugin (ace-editor): 1.1 since 2018/09/21 14:15:17
+  JavaScript GUI Lib: jQuery bundles (jQuery and jQuery UI) plugin (jquery-detached): 1.2.1 since 2018/09/21 14:15:17
+  Pipeline: Supporting APIs (workflow-support): 2.20 since 2018/09/21 14:15:17
+  Pipeline: Groovy (workflow-cps): 2.54 since 2018/09/21 14:15:18
+  Branch API Plugin (branch-api): 2.0.20 since 2018/09/21 14:15:18
+  Pipeline: Job (workflow-job): 2.25 since 2018/09/21 14:15:18
+  Pipeline: Multibranch (workflow-multibranch): 2.20 since 2018/09/21 14:15:19
+  GitHub Authentication plugin (github-oauth): 0.29 since 2018/09/21 14:15:19
