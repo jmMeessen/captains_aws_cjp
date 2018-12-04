@@ -27,83 +27,6 @@
     update_cache: yes
     name: openjdk-8-jre
 
-## Setup the IP tables
-
-- name: Install the `iptables` package
-  become: yes
-  package:
-    name: iptables
-    state: latest
-
-- name: Flush existing firewall rules
-  become: yes
-  iptables:
-    flush: true
-
-- name: Firewall rule - allow all loopback traffic
-  become: yes
-  iptables:
-    action: append
-    chain: INPUT
-    in_interface: lo
-    jump: ACCEPT
-
-- name: Firewall rule - allow port ping traffic
-  become: yes
-  iptables:
-    chain: INPUT
-    jump: ACCEPT
-    protocol: icmp
-
-- name: Firewall rule - allow port 22/SSH traffic
-  become: yes
-  iptables:
-    chain: INPUT
-    destination_port: 22
-    jump: ACCEPT
-    protocol: tcp
-
-- name: Firewall rule - allow port 80/HTTP traffic
-  become: yes
-  iptables:
-    chain: INPUT
-    destination_port: 80
-    jump: ACCEPT
-    protocol: tcp
-
-- name: Firewall rule - allow port 443/HTTPS traffic
-  become: yes
-  iptables:
-    chain: INPUT
-    destination_port: 443
-    jump: ACCEPT
-    protocol: tcp
-
-
-- name: Firewall rule - allow port 50000 traffic
-  become: yes
-  iptables:
-    chain: INPUT
-    destination_port: 50000
-    jump: ACCEPT
-    protocol: tcp
-
-# - name: Firewall rule - drop any traffic without rule
-#   become: yes
-#   iptables:
-#     chain: INPUT
-#     jump: DROP
-
-- name: Install `netfilter-persistent` && `iptables-persistent` packages
-  package:
-      name: "{{item}}"
-      state: present
-  with_items:
-      - iptables-persistent
-      - netfilter-persistent
-  when: ansible_os_family == "Debian"
-  become: yes
-
 - name: set VIMs background to dark by default
   lineinfile:
     path: "/home/ubuntu/.vimrc"
@@ -113,3 +36,6 @@
     mode: u=rw,g=r,o=r
     insertafter: EOF
     line: ':set background=dark'
+
+- name: Start setting up the IP Tables
+  include_tasks: iptables-task.yml
