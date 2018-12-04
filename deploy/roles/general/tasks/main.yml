@@ -103,3 +103,13 @@
       - netfilter-persistent
   when: ansible_os_family == "Debian"
   become: yes
+
+- name: set VIMs background to dark by default
+  lineinfile:
+    path: "/home/ubuntu/.vimrc"
+    create: yes
+    owner: "ubuntu"
+    group: "ubuntu"
+    mode: u=rw,g=r,o=r
+    insertafter: EOF
+    line: ':set background=dark'
