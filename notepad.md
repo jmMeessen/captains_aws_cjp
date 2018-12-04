@@ -29,3 +29,6 @@ https://stackoverflow.com/questions/44004727/how-to-run-local-command-via-ansibl
 * `sudo apt-get update`
 * `sudo apt-cache policy cloudbees-core-oc`
 * install specific version `sudo apt-get install cloudbees-core-oc=2.138.2.2`
+
+## enabling SSH
+* ssh -l jmm -i ~/.ssh/id_rsa -p 10200 ec2-54-164-201-94.compute-1.amazonaws.com help
