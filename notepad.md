@@ -28,3 +28,4 @@ https://stackoverflow.com/questions/44004727/how-to-run-local-command-via-ansibl
 
 * `sudo apt-get update`
 * `sudo apt-cache policy cloudbees-core-oc`
+* install specific version `sudo apt-get install cloudbees-core-oc=2.138.2.2`

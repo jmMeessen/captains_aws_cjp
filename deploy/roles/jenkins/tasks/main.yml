@@ -19,7 +19,7 @@
   become: true
   apt:
     update_cache: yes
-    name: "{{ package_name }}"
+    name: "{{ package_name }}=2.138.2.2"
 
 - name: redirect the traffic from 80 to {{ used_port }} with IPtables
   become: yes
