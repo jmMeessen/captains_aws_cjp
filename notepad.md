@@ -22,3 +22,9 @@ https://wiki.jenkins.io/display/JENKINS/Groovy+Hook+Script
 Ansible delegation and run once : https://docs.ansible.com/ansible/2.6/user_guide/playbooks_delegation.html
 
 https://stackoverflow.com/questions/44004727/how-to-run-local-command-via-ansible-playbook
+
+
+## listing versions avilable in the Debian repository
+
+* `sudo apt-get update`
+* `sudo apt-cache policy cloudbees-core-oc`
