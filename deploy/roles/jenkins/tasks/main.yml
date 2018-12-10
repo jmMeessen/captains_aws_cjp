@@ -23,6 +23,13 @@
 
     #   name: "{{ package_name }}=2.138.2.2"
 
+- name: Add the auto incremental update flag to startup
+  become: true
+  lineinfile:
+    path: "/etc/default/{{ package_name }}"
+    regexp: '^JAVA_ARGS="-Djava.awt.headless=true"'
+    line: 'JAVA_ARGS="-Djava.awt.headless=true -Dcb.BeekeeperProp.autoInstallIncremental=true"'
+
 - name: redirect the traffic from 80 to {{ used_port }} with IPtables
   become: yes
   iptables:
