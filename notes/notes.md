@@ -29,11 +29,29 @@
 
 ## Setting up the environment
 - use the IP (or DNS name) in the browser. Note that both CJOC and CM are "listening" on the default HTTP port (via an IPtable redirection). You can also use `toolbox\cjoc_http.sh` or `toolbox\cm_http.sh`.
-- retrieve the administrator key with `toolbox/cjoc_dispay_admin_token.sh` and use it to unlock the CJOC.
+- retrieve the administrator key with `toolbox/cjoc_dispay_admin_token.sh` and copy it.
+- start a browser session the CJOC with `toolbox/cjoc_http.sh`.
+- use the admin key just copied to unlock the CJOC.
 - for the license, just request a trial one.
-- to connect via SSH
+- install the default plugins
+- don't create a special user, just choose `Continue as Admin`. The Admin password is the adminitstrator key used to unlock the system.
+- accept the default jenkins URL
+- **NOTE:** to connect via SSH
   - use `ssh <ip-address> -l ubuntu -i ~/.ssh/captains_aws_cjp`
   - to retrieve automatically the IPs, use either `toolbox/cjoc_ssh.sh` or `toolbox/cm_ssh.sh`
+
+## Setting up the Client Master
+- retrieve the Client Master's admin key with `toolbox/cm_dispay_admin_token.sh`  and copy it.
+- start a browser session the CJOC with `toolbox/cm_http.sh`.
+- use the admin key just copied to unlock the CM.
+- when prompted for the license, choose `join a [CJOC] master` to get the license from the CJOC. It will display a dialogue to enter the connection informations.
+- switch to the CJOC browser window, choose `new item`, give a name to the new Client Master (ex "test_master"), select `Client Master` and click on `OK`.
+- accept the default settings and create the master.
+- to connect the master,
+  - paste the CM's URL in the `push configuration field`. The browser switches to the CM where you confirm that you want to register the master with the CJOC. Et voilà!
+  - alternatively, copy the `connection information` and switch to the initial client master window and paste the information there.
+- install the suggested plugins.
+- don't create a special user, just choose `Continue as Admin`. The Admin password is the adminitstrator key used to unlock the system.
 
 ## Destroying the environment
 - Pull the environement down: `toolbox/stop_infra.sh` that will perform a `terraform destroy` or, without the validation prompt, `terraform destroy -auto-approve`
