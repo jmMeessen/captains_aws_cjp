@@ -12,5 +12,5 @@ My current plan is
 
 ## references
 
-- [How to use this environment](notes.md)
-- [bibliography](bibliography.md)
+- [How to use this environment](notes/notes.md)
+- [bibliography](notes/bibliography.md)
