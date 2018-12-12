@@ -21,6 +21,13 @@
 #   register: cowsay_out
 # - debug: var=cowsay_out.stdout_lines
 
+# Difference between upgrade types: https://askubuntu.com/questions/194651/why-use-apt-get-upgrade-instead-of-apt-get-dist-upgrade
+- name: Update the system
+  become: true
+  apt:
+    update-cache: yes
+    upgrade: yes
+
 - name: Install OpenJdk 8 (JRE)
   become: true
   apt:
