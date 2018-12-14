@@ -1,0 +1,43 @@
+---
+
+- name: "initialize the instance ID with a known value"
+  become: true
+  copy:
+    src: "secret.key"
+    dest: "/var/lib/{{ jenkins_user }}/secret.key"
+    force: yes
+    backup: yes
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
+    mode: u=rw,g=r,o=r
+
+# - name: "copy the license file"
+#   become: true
+#   copy:
+#     src: "license.xml"
+#     dest: "/var/lib/{{ the_jenkins_user }}/license.xml"
+#     force: yes
+#     backup: yes
+#     owner: "{{ the_jenkins_user }}"
+#     group: "{{ the_jenkins_user }}"
+#     mode: u=rw,g=r,o=r   
+
+
+- name: "copy the license load scrip"
+  become: true
+  copy:
+    src: "license.groovy"
+    dest: "/var/lib/{{ jenkins_user }}/init.groovy.d/000-license.groovy"
+    force: yes
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
+    mode: u=rw,g=r,o=r   
+
+# - name: disable the setupwizard
+#   become: true
+#   copy: 
+#     src: "/var/lib/{{ the_jenkins_user }}/jenkins.install.UpgradeWizard.state"
+#     dest: "/var/lib/{{ the_jenkins_user }}/jenkins.install.InstallUtil.lastExecVersion"
+#     owner: "{{ the_jenkins_user }}"
+#     group: "{{ the_jenkins_user }}"
+#     remote_src: True

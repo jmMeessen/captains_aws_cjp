@@ -3,3 +3,4 @@ key_url: "https://downloads.cloudbees.com/cloudbees-core/traditional/operations-
 repo_url: "deb https://downloads.cloudbees.com/cloudbees-core/traditional/operations-center/rolling/debian binary/"
 package_name: "cloudbees-core-oc"
 used_port: "8888"
+jenkins_user: "{{ package_name }}"
