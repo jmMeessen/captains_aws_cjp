@@ -9,7 +9,7 @@
   roles:
     - general
     - jenkins
-    - JCasC
+    #- JCasC
 
 
 - hosts: jmm_client_master
@@ -23,4 +23,4 @@
   roles:
     - general
     - jenkins  
-    - JCasC  
+    #- JCasC  
