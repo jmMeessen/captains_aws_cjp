@@ -13,4 +13,5 @@ These are notes taken during experimentation about the Ansible Jenkins CLI tooli
   - in the left menu bar, choose `create user` and fill in the details. It is a good idea to make the password very complicated as it will be used with the SSH key.
   - once done, edit the user (cog symbol ) and add the public key (ex `~/.ssh/id_rsa.pub`). Avoid using the same as the key used to control the EC2 instances.
 - use `ssh -l jmm -i ~/.ssh/id_rsa -p 10200 [machine_name] help`
+- the list of available commands can be seen in the `SSH_CLI_commands.md` document.
 
