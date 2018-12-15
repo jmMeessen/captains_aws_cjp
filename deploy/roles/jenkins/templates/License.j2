@@ -1,0 +1,16 @@
+import hudson.license.LicenseManager
+import java.util.logging.Logger
+
+Logger logger = Logger.getLogger("000-license.groovy")
+
+logger.info("-----> LICENSE <-----")
+
+LicenseManager lm = LicenseManager.getInstance()
+
+String key = """{{ cjoc_license_key }}
+"""
+
+String certificate = """{{ cjoc_license_certificate }}
+"""
+
+lm.setLicense(key, certificate)
