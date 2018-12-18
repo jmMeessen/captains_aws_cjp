@@ -23,14 +23,6 @@
     update_cache: yes
     name: "{{ package_name }}"
 
-#TODO: fix the comment or split this step
-- name: Add the auto incremental update flag to startup
-  become: true
-  lineinfile:
-    path: "/etc/default/{{ package_name }}"
-    regexp: '^JAVA_ARGS="-Djava.awt.headless=true"'
-    line: 'JAVA_ARGS="-Djava.awt.headless=true -Dcb.BeekeeperProp.autoInstallIncremental=true -Djenkins.install.runSetupWizard=false"'
-
 - name: create init.groovy.d directory
   become: true
   file:

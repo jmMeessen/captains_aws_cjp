@@ -12,15 +12,15 @@
     #- JCasC
 
 
-- hosts: jmm_client_master
+# - hosts: jmm_client_master
 
-  # this is required as only python3 is installed on Ubuntu AMI (Ansible fails otherwise)
-  gather_facts: False
+#   # this is required as only python3 is installed on Ubuntu AMI (Ansible fails otherwise)
+#   gather_facts: False
 
-  vars:
-    jenkins_node_type: "master"
+#   vars:
+#     jenkins_node_type: "master"
 
-  roles:
-    - general
-    - jenkins  
-    #- JCasC  
+#   roles:
+#     - general
+#     - jenkins  
+#     #- JCasC  

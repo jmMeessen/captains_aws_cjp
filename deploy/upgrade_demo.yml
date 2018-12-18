@@ -1,0 +1,17 @@
+- hosts: jmm_cjoc
+
+  # this is required as only python3 is installed on Ubuntu AMI (Ansible fails otherwise)
+  gather_facts: False
+
+  vars:
+    jenkins_node_type: "cjoc"
+
+  tasks:
+    - name: Add the auto incremental update flag to startup
+      become: true
+      lineinfile:
+        path: "/etc/default/cloudbees-core-oc"
+        regexp: '^JAVA_ARGS="-Djava.awt.headless=true"'
+        line: 'JAVA_ARGS="-Djava.awt.headless=true -Dcb.BeekeeperProp.autoInstallIncremental=true"'
+
+
