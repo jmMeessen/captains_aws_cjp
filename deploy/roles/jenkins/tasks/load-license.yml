@@ -14,6 +14,7 @@
 - name: Load encrypted license key and certificate from disk
   include_vars: "cjoc_license.yml"
 
+#this assumes that the `init.groovy.d` directory has been previously created
 - name: Update the licence loading groovy and copy it to the target directory
   become: true
   template: 
@@ -24,12 +25,3 @@
     group: "{{ jenkins_user }}"
     mode: u=rw,g=r,o=r   
 
-# - name: "copy the license load scrip"
-#   become: true
-#   copy:
-#     src: "license.groovy"
-#     dest: "/var/lib/{{ jenkins_user }}/init.groovy.d/000-license.groovy"
-#     force: yes
-#     owner: "{{ jenkins_user }}"
-#     group: "{{ jenkins_user }}"
-#     mode: u=rw,g=r,o=r   
