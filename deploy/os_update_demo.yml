@@ -1,0 +1,18 @@
+- hosts: jmm_cjoc
+
+  # this is required as only python3 is installed on Ubuntu AMI (Ansible fails otherwise)
+  gather_facts: False
+
+  vars:
+    jenkins_node_type: "cjoc"
+
+  tasks:
+    # Difference between upgrade types: https://askubuntu.com/questions/194651/why-use-apt-get-upgrade-instead-of-apt-get-dist-upgrade
+    - name: Update the system
+      become: true
+      apt:
+        update-cache: yes
+        upgrade: yes
+      register: update_out
+    - debug: var=update_out.stdout_lines
+
