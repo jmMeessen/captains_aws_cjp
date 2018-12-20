@@ -15,3 +15,5 @@ These are notes taken during experimentation about the Ansible Jenkins CLI tooli
 - use `ssh -l jmm -i ~/.ssh/id_rsa -p 10200 [machine_name] help`
 - the list of available commands can be seen in the `SSH_CLI_commands.md` document.
 
+## Random notes:
+- how to get a local variable (ex the access token)

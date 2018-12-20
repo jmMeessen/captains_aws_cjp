@@ -1,0 +1,29 @@
+- hosts: jmm_cjoc
+
+
+  vars:
+    jenkins_node_type: "cjoc"
+
+  tasks:
+    #- debug: var=ansible_default_ipv4.address
+
+    # use the jenkins module
+    - name: Obtaining a list of plugins
+      jenkins_script:
+        url: "http://{{ inventory_hostname }}:80"
+        script: 'println(Jenkins.instance.pluginManager.plugins)'
+        user: jmm
+        password: 111d17011d9ce07b649e8548e5b5c61e75
+  
+    # use the local command
+    - name: execute ssh CLI command
+      command: "ssh -l jmm -i ~/.ssh/id_rsa -p 10200 {{ inventory_hostname }} help"
+      delegate_to: localhost
+      register: cli_result
+
+    - name: Show results
+      debug:
+        var: cli_result.stdout
+      delegate_to: localhost
+
+
