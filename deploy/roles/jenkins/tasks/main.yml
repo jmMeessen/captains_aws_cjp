@@ -29,7 +29,7 @@
   lineinfile:
     path: "/etc/default/{{ package_name }}"
     regexp: '^JAVA_ARGS="-Djava.awt.headless=true"'
-    line: 'JAVA_ARGS="-Djava.awt.headless=true -Dcb.BeekeeperProp.autoInstallIncremental=true -Djenkins.install.runSetupWizard=false"'
+    line: 'JAVA_ARGS="-Djava.awt.headless=true -Djenkins.install.runSetupWizard=false"'
 
 - name: create init.groovy.d directory
   become: true
@@ -40,12 +40,22 @@
     group: "{{ jenkins_user }}"
     mode: u=rwx,g=rx,o=rx
 
+
+# This will load the properties and execute the initscripts 
+- name: restart the {{ package_name }} service 
+  become: true
+  service:
+    name: "{{ package_name }}"
+    state: restarted    
+
 - name: load license on CJOC
   include_tasks: load-license.yml the_jenkins_user=cloudbees-core-oc
   when: jenkins_node_type is search("cjoc")
 
-# restart the service so that an available incremental update is picked up (especially when reapplying 
-#   the script to a running system)
+- name: Load initial user creation and install wizard disabling
+  include_tasks: disableWizard.yml
+
+# This will load the properties and execute the initscripts 
 - name: restart the {{ package_name }} service 
   become: true
   service:

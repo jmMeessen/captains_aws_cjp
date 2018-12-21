@@ -19,7 +19,7 @@
   become: true
   template: 
     src: "license.j2"
-    dest: "/var/lib/{{ jenkins_user }}/init.groovy.d/000-license.groovy"
+    dest: "/var/lib/{{ jenkins_user }}/init.groovy.d/001-license.groovy"
     force: yes
     owner: "{{ jenkins_user }}"
     group: "{{ jenkins_user }}"
