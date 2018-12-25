@@ -11,3 +11,5 @@ terraform/.terraform/
 
 # downloaded on the fly
 jenkins-cli.jar
+
+default_admin_password.clearTxt
