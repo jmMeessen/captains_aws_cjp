@@ -4,6 +4,19 @@
 - name: "Include the '{{ jenkins_node_type }}' installation specific variables" 
   include_vars: "{{ jenkins_node_type }}.yml"
 
+
+- name: Copy the initial configuration before first startup
+  #Proceeding this way is important so that the noWizard parameter works properly
+  become: true
+  copy:
+    src: "{{ package_name }}"
+    dest: "/etc/default/{{ package_name }}"
+    force: no
+    backup: yes
+    owner: "root"
+    group: "root"
+    mode: u=rw,g=r,o=r
+
 - name: Add the {{ option_friendly_name }} APT Key
   become: true
   apt_key:
@@ -23,15 +36,7 @@
     update_cache: yes
     name: "{{ package_name }}"
 
-#TODO: fix the comment or split this step
-- name: Add the auto incremental update flag to startup
-  become: true
-  lineinfile:
-    path: "/etc/default/{{ package_name }}"
-    regexp: '^JAVA_ARGS="-Djava.awt.headless=true"'
-    line: 'JAVA_ARGS="-Djava.awt.headless=true -Djenkins.install.runSetupWizard=false"'
-
-- name: create init.groovy.d directory
+- name: create the init.groovy.d directory
   become: true
   file:
     path: "/var/lib/{{ jenkins_user }}/init.groovy.d"
@@ -40,20 +45,12 @@
     group: "{{ jenkins_user }}"
     mode: u=rwx,g=rx,o=rx
 
-
-# This will load the properties and execute the initscripts 
-- name: restart the {{ package_name }} service 
-  become: true
-  service:
-    name: "{{ package_name }}"
-    state: restarted    
-
-- name: load license on CJOC
+- name: Prepare everything to load the license on CJOC
   include_tasks: load-license.yml the_jenkins_user=cloudbees-core-oc
   when: jenkins_node_type is search("cjoc")
 
-- name: Load initial user creation and install wizard disabling
-  include_tasks: disableWizard.yml
+- name: Load initial user creation and security settings
+  include_tasks: initial_jenkins_config.yml
 
 # This will load the properties and execute the initscripts 
 - name: restart the {{ package_name }} service 
