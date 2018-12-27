@@ -38,3 +38,4 @@ https://stackoverflow.com/questions/44004727/how-to-run-local-command-via-ansibl
 
 instance ID: 47c95c6b933f2b3e9f9cfaf56d3c9e0c
 
+

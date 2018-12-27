@@ -13,3 +13,18 @@
     owner: "{{ jenkins_user }}"
     group: "{{ jenkins_user }}"
     mode: u=rw,g=r,o=r   
+
+- name: "get DNS name for {{ terraform_dns_reference }} "
+  command: "terraform output -state=../terraform/terraform.tfstate {{ terraform_dns_reference }}"
+  delegate_to: localhost
+  register: full_dns_name
+
+- name: "Update the set URL groovy ({{ full_dns_name.stdout }}) and copy it to the target directory"
+  become: true
+  template: 
+    src: "set_url.j2"
+    dest: "/var/lib/{{ jenkins_user }}/init.groovy.d/002-set_url.groovy"
+    force: yes
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
+    mode: u=rw,g=r,o=r   

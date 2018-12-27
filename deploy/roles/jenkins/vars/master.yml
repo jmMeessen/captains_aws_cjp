@@ -4,3 +4,4 @@ repo_url: "deb https://downloads.cloudbees.com/cloudbees-core/traditional/client
 package_name: "cloudbees-core-cm"
 used_port: "8080"
 jenkins_user: "{{ package_name }}"
+terraform_dns_reference: "Jmm_master_dns"
