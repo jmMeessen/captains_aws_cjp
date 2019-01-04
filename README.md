@@ -7,7 +7,7 @@ My current plan is
 - [x] (Terraform) spin two machines (CJOC and Client Master) on AWS
 - [ ] (Ansible) harden the machine
 - [x] (Ansible) install CJOC
-- [ ] (Ansible) configure it without the Installation Wizard (license load, initial user, basic security settings, etc)
+- [x] (Ansible) configure it without the Installation Wizard (license load, initial user, basic security settings, etc)
 - [ ] (Ansible) install the minimal set of plugins 
 - [x] (Ansible) install CLient Master
 - [ ] (Ansible) connect the Client Master to the CJOC
