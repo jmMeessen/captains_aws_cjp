@@ -12,3 +12,5 @@ This doesn't work
 https://cloudbees.zendesk.com/agent/tickets/60220
 
 https://github.com/geerlingguy/ansible-role-jenkins/blob/master/templates/basic-security.groovy.j2
+
+https://github.com/kypseli/cb-core-mm (customising a master with Groovy Scripts)

@@ -8,7 +8,7 @@
   become: true
   template: 
     src: "initial_security.j2"
-    dest: "/var/lib/{{ jenkins_user }}/init.groovy.d/000-initial_security.groovy"
+    dest: "{{ jenkins_home_dir }}/init.groovy.d/000-initial_security.groovy"
     force: yes
     owner: "{{ jenkins_user }}"
     group: "{{ jenkins_user }}"
@@ -23,7 +23,7 @@
   become: true
   template: 
     src: "set_url.j2"
-    dest: "/var/lib/{{ jenkins_user }}/init.groovy.d/002-set_url.groovy"
+    dest: "{{ jenkins_home_dir }}/init.groovy.d/002-set_url.groovy"
     force: yes
     owner: "{{ jenkins_user }}"
     group: "{{ jenkins_user }}"
@@ -33,7 +33,7 @@
   become: true
   copy: 
     src: "set-JNLP-port.groovy"
-    dest: "/var/lib/{{ jenkins_user }}/init.groovy.d/003-set-JNLP-port.groovy"
+    dest: "{{ jenkins_home_dir }}/init.groovy.d/003-set-JNLP-port.groovy"
     force: yes
     owner: "{{ jenkins_user }}"
     group: "{{ jenkins_user }}"
