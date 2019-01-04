@@ -38,4 +38,6 @@ https://stackoverflow.com/questions/44004727/how-to-run-local-command-via-ansibl
 
 instance ID: 47c95c6b933f2b3e9f9cfaf56d3c9e0c
 
+Jenkins root URL is empty but is required for the proper operation of many Jenkins features like email notifications, PR status update, and environment variables such as BUILD_URL.
+
 

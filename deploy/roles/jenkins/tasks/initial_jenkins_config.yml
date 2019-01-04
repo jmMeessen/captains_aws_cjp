@@ -28,3 +28,13 @@
     owner: "{{ jenkins_user }}"
     group: "{{ jenkins_user }}"
     mode: u=rw,g=r,o=r   
+
+- name: "Copy the JNLP port setting init groovy script"
+  become: true
+  copy: 
+    src: "set-JNLP-port.groovy"
+    dest: "/var/lib/{{ jenkins_user }}/init.groovy.d/003-set-JNLP-port.groovy"
+    force: yes
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
+    mode: u=rw,g=r,o=r   
