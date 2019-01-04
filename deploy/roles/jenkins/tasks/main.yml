@@ -17,31 +17,6 @@
     group: "root"
     mode: u=rw,g=r,o=r
 
-- name: create the Jenkins_home directory
-  become: true
-  file:
-    path: "{{ jenkins_home_dir }}"
-    state: directory
-    owner: "{{ jenkins_user }}"
-    group: "{{ jenkins_user }}"
-    mode: u=rwx,g=rx,o=rx    
-
-- name: create the init.groovy.d directory
-  become: true
-  file:
-    path: "{{ jenkins_home_dir }}/init.groovy.d"
-    state: directory
-    owner: "{{ jenkins_user }}"
-    group: "{{ jenkins_user }}"
-    mode: u=rwx,g=rx,o=rx
-
-- name: Prepare everything to load the license on CJOC
-  include_tasks: load-license.yml the_jenkins_user=cloudbees-core-oc
-  when: jenkins_node_type is search("cjoc")
-
-- name: Load initial user creation and security settings
-  include_tasks: initial_jenkins_config.yml
-
 
 - name: Add the {{ option_friendly_name }} APT Key
   become: true
@@ -62,21 +37,21 @@
     update_cache: yes
     name: "{{ package_name }}"
 
-# - name: create the init.groovy.d directory
-#   become: true
-#   file:
-#     path: "/var/lib/{{ jenkins_user }}/init.groovy.d"
-#     state: directory
-#     owner: "{{ jenkins_user }}"
-#     group: "{{ jenkins_user }}"
-#     mode: u=rwx,g=rx,o=rx
+- name: create the init.groovy.d directory
+  become: true
+  file:
+    path: "/var/lib/{{ jenkins_user }}/init.groovy.d"
+    state: directory
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
+    mode: u=rwx,g=rx,o=rx
 
-# - name: Prepare everything to load the license on CJOC
-#   include_tasks: load-license.yml the_jenkins_user=cloudbees-core-oc
-#   when: jenkins_node_type is search("cjoc")
+- name: Prepare everything to load the license on CJOC
+  include_tasks: load-license.yml the_jenkins_user=cloudbees-core-oc
+  when: jenkins_node_type is search("cjoc")
 
-# - name: Load initial user creation and security settings
-#   include_tasks: initial_jenkins_config.yml
+- name: Load initial user creation and security settings
+  include_tasks: initial_jenkins_config.yml
 
 # This will load the properties and execute the initscripts 
 - name: restart the {{ package_name }} service 
