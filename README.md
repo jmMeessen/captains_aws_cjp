@@ -4,10 +4,16 @@ My experiments with configuring a CJP on AWS
 ## TODO
 My current plan is 
 
-- [x] with Terraform, spin two machines (CJOC and Client Master) on AWS
-- [ ] with Ansible, harden the machine
-- [x] with Ansible, install CJOC
-- [x] with Ansible, install CLient Master
+- [x] (Terraform) spin two machines (CJOC and Client Master) on AWS
+- [ ] (Ansible) harden the machine
+- [x] (Ansible) install CJOC
+- [ ] (Ansible) configure it without the Installation Wizard (license load, initial user, basic security settings, etc)
+- [ ] (Ansible) install the minimal set of plugins 
+- [x] (Ansible) install CLient Master
+- [ ] (Ansible) connect the Client Master to the CJOC
+- [ ] (Ansible) implement Oauth authentication and SSO
+- [ ] (Ansible) spin fixed and specialized agents (ex Docker)
+- [ ] (Ansible) populate automatically some reference jobs 
 - [ ] with Ansible, try out the Jenkins configuration as code. 
 
 ## references
