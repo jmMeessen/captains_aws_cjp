@@ -6,3 +6,5 @@ set -e
 cd ../terraform
 terraform apply -auto-approve
 cd -
+
+./update_ssh_known-host.sh
