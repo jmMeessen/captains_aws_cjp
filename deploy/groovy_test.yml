@@ -1,0 +1,15 @@
+- hosts: jmm_cjoc
+
+  tasks:
+    - name: Obtaining a list of plugins
+      delegate_to: localhost
+      jenkins_script:
+        script: 'println(Jenkins.instance.pluginManager.plugins)'
+        url: http://ec2-107-21-2-152.compute-1.amazonaws.com
+        user: admin
+        password: 1182433836c9d0f5fe2bccc0ccd7c3d160
+      register: output
+      
+    - debug: 
+        var: output.output
+
