@@ -12,8 +12,8 @@
       jenkins_script:
         url: "http://{{ inventory_hostname }}:80"
         script: 'println(Jenkins.instance.pluginManager.plugins)'
-        user: jmm
-        password: 111d17011d9ce07b649e8548e5b5c61e75
+        user: admin
+        password: 11997764389a4dfd6a7dd79615f593b666
   
     # use the local command
     - name: execute ssh CLI command
