@@ -13,3 +13,4 @@ terraform/.terraform/
 jenkins-cli.jar
 
 default_admin_password.clearTxt
+.work-password
