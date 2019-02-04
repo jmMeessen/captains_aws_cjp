@@ -6,14 +6,22 @@
       args:
         creates: ~/.ssh/jenkins_cfg_rsa
 
-    # - name: Obtaining a list of plugins
-    #   jenkins_script:
-    #     script: 'println(Jenkins.instance.pluginManager.plugins)'
-    #     url: http://localhost:8888
-    #     user: admin
-    #     password: 11997764389a4dfd6a7dd79615f593b666
-    #   register: output
+    - name: generate random password
+      set_fact:
+        cjoc_password: "{{ lookup('password', '/dev/null') }}"
+
+    - debug:
+        msg: "Randomly generated password is : {{ cjoc_password }}"
+
+
+    - name: Obtaining a list of plugins
+      jenkins_script:
+        script: 'println(Jenkins.instance.pluginManager.plugins)'
+        url: http://localhost:8888
+        user: admin
+        password: '{{ jenkins_default_admin_password }}'
+      register: output
       
-    # - debug: 
-    #     var: output.output
+    - debug: 
+        var: output.output
 

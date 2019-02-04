@@ -61,9 +61,6 @@
     state: restarted
 
 
-
-
-
 - name: redirect the traffic from 80 to {{ used_port }} with IPtables
   become: yes
   iptables:
@@ -77,4 +74,22 @@
     to_ports: "{{ used_port }}"
     comment: "Redirect web traffic to port {{ used_port }}"
 
+
+- name: "wait for the port {{ used_port }} to be available"
+  wait_for: 
+    port: "{{ used_port }}" 
+    delay: 10
+
+- name: wait for jenkins to be up
+  uri: 
+    url: "http://localhost:{{ used_port }}/instance-identity" 
+    status_code: 200 
+    timeout: 300
+  asynch: 300
+  poll: 10
+
+
+
+- name: Load plugins
+  include_tasks: load-plugins.yml
 

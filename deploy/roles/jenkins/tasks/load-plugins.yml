@@ -1,0 +1,11 @@
+---
+  - name: Obtaining a list of plugins
+    jenkins_script:
+      script: 'println(Jenkins.instance.pluginManager.plugins)'
+      url: "http://localhost:{{ used_port }}"
+      user: "admin"
+      password: '{{ jenkins_default_admin_password }}'
+    register: output
+    
+  - debug: 
+      var: output.output
