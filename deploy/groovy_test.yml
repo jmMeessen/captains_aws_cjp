@@ -1,14 +1,19 @@
 - hosts: jmm_cjoc
 
   tasks:
-    - name: Obtaining a list of plugins
-      jenkins_script:
-        script: 'println(Jenkins.instance.pluginManager.plugins)'
-        url: http://localhost:8888
-        user: admin
-        password: 11997764389a4dfd6a7dd79615f593b666
-      register: output
+    - name: create local jenkins_cfg SSH keypair
+      shell: ssh-keygen -b 2048 -t rsa -f ~/.ssh/jenkins_cfg_rsa -q -N ""
+      args:
+        creates: ~/.ssh/jenkins_cfg_rsa
+
+    # - name: Obtaining a list of plugins
+    #   jenkins_script:
+    #     script: 'println(Jenkins.instance.pluginManager.plugins)'
+    #     url: http://localhost:8888
+    #     user: admin
+    #     password: 11997764389a4dfd6a7dd79615f593b666
+    #   register: output
       
-    - debug: 
-        var: output.output
+    # - debug: 
+    #     var: output.output
 
