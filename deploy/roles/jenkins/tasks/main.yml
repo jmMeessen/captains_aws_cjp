@@ -80,14 +80,15 @@
     port: "{{ used_port }}" 
     delay: 10
 
+# url /instance-identity doesn't work with client master
 - name: wait for jenkins to be up
   uri: 
-    url: "http://localhost:{{ used_port }}/instance-identity" 
+    url: "http://localhost:{{ used_port }}/login" 
     status_code: 200 
-    timeout: 300
-  asynch: 300
-  poll: 10
-
+  register: result
+  until: result.status == 200
+  retries: 60
+  delay: 1
 
 
 - name: Load plugins
