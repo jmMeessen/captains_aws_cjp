@@ -1,27 +1,18 @@
 - hosts: jmm_cjoc
 
   tasks:
-    - name: create local jenkins_cfg SSH keypair
-      shell: ssh-keygen -b 2048 -t rsa -f ~/.ssh/jenkins_cfg_rsa -q -N ""
-      args:
-        creates: ~/.ssh/jenkins_cfg_rsa
+    # - name: create local jenkins_cfg SSH keypair
+    #   shell: ssh-keygen -b 2048 -t rsa -f ~/.ssh/jenkins_cfg_rsa -q -N ""
+    #   args:
+    #     creates: ~/.ssh/jenkins_cfg_rsa
 
-    - name: generate random password
-      set_fact:
-        cjoc_password: "{{ lookup('password', '/dev/null') }}"
+    # - name: generate random password
+    #   set_fact:
+    #     cjoc_password: "{{ lookup('password', '/dev/null') }}"
 
-    - debug:
-        msg: "Randomly generated password is : {{ cjoc_password }}"
+    # - debug:
+    #     msg: "Randomly generated password is : {{ cjoc_password }}"
 
+    - name: load script as variable
 
-    - name: Obtaining a list of plugins
-      jenkins_script:
-        script: 'println(Jenkins.instance.pluginManager.plugins)'
-        url: http://localhost:8888
-        user: admin
-        password: '{{ jenkins_default_admin_password }}'
-      register: output
-      
-    - debug: 
-        var: output.output
 

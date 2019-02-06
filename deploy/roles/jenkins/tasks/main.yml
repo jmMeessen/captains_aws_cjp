@@ -94,3 +94,6 @@
 - name: Load plugins
   include_tasks: load-plugins.yml
 
+- name: create the Client Master
+  include_tasks: create-client-master.yml
+  when: jenkins_node_type is search("cjoc")

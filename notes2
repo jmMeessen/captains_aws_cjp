@@ -1,0 +1,40 @@
+--vault-password-file dev-password
+
+   Plugin:workflow-step-api, 
+   Plugin:mailer, 
+   Plugin:credentials, 
+   Plugin:jackson2-api, 
+   Plugin:cloudbees-folders-plus, 
+   Plugin:workflow-api, 
+   Plugin:operations-center-license, 
+   Plugin:cloudbees-monitoring, 
+   Plugin:cloudbees-license, 
+   Plugin:support-core, 
+   Plugin:structs, 
+   Plugin:token-macro, 
+   Plugin:node-iterator-api, 
+   Plugin:jdk-tool, 
+   Plugin:operations-center-server, 
+   Plugin:mapdb-api, 
+   Plugin:cloudbees-assurance, 
+   Plugin:operations-center-agent, 
+   Plugin:metrics, 
+   Plugin:bouncycastle-api, 
+   Plugin:display-url-api, 
+   Plugin:apache-httpcomponents-client-4-api, 
+   Plugin:variant, 
+   Plugin:script-security, 
+   Plugin:async-http-client, 
+   Plugin:nectar-license, 
+   Plugin:cloudbees-folder, 
+   Plugin:scm-api, 
+   Plugin:cloudbees-uc-data-api, 
+   Plugin:junit, Plugin:operations-center-context, 
+   Plugin:cloudbees-ha, 
+   Plugin:command-launcher, 
+   Plugin:cloudbees-support]\n"
+
+
+   Jenkins has received an average of 7.6 REST API calls per minute over the past 15 minutes which do not specify the tree parameter. This can severely impact the performance of Jenkins. See this Knowledgebase article which covers best practices for using the API and how to block unrestricted API calls.
+
+   https://support.cloudbees.com/hc/en-us/articles/217911388-Best-Practice-For-Using-Jenkins-REST-API

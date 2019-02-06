@@ -1,0 +1,1 @@
+script_text: "{{ lookup('file', 'configure-client-master.groovy') }}" 
