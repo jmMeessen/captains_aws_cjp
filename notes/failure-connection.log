@@ -1,0 +1,19 @@
+
+[Thu Feb 07 10:40:12 UTC 2019] Starting connector thread
+[Thu Feb 07 10:40:12 UTC 2019] Connector thread (Operations Center Connector #1) started
+[Thu Feb 07 10:40:12 UTC 2019] Starting discovery on http://ec2-54-158-134-212.compute-1.amazonaws.com/
+[Thu Feb 07 10:40:12 UTC 2019] Operations Center enabled
+  State: ENABLED (was UNCONFIGURED)
+  Operations Center cluster: http://ec2-54-158-134-212.compute-1.amazonaws.com/
+  Operations Center agent address: (pending discovery)
+  Operations Center agent port: (pending discovery)
+  Local connector thread: Operations Center Connector #1 (running)
+  Remoting channel: Not available
+[Thu Feb 07 10:40:12 UTC 2019] Discovery on http://ec2-54-158-134-212.compute-1.amazonaws.com/ completed
+  Agent address: ec2-54-158-134-212.compute-1.amazonaws.com/172.31.47.70
+  Agent port:  50000
+  Identity: 27:57:d1:0c:84:03:6b:9b:66:d7:88:67:42:ad:a7:07
+[Thu Feb 07 10:40:12 UTC 2019] Trying protocol: OperationsCenter2
+[Thu Feb 07 10:40:12 UTC 2019] Opening TCP socket connection to ec2-54-158-134-212.compute-1.amazonaws.com/172.31.47.70 on port 50000
+[Thu Feb 07 10:40:12 UTC 2019] Socket connection is closed
+[Thu Feb 07 10:40:12 UTC 2019] Connection refused: Connection closed before acknowledgement sent
