@@ -5,17 +5,17 @@
   include_vars: "{{ jenkins_node_type }}.yml"
 
 
-- name: Copy the initial configuration before first startup
-  #Proceeding this way is important so that the noWizard parameter works properly
-  become: true
-  copy:
-    src: "{{ package_name }}"
-    dest: "/etc/default/{{ package_name }}"
-    force: no
-    backup: yes
-    owner: "root"
-    group: "root"
-    mode: u=rw,g=r,o=r
+# - name: Copy the initial configuration before first startup
+#   #Proceeding this way is important so that the noWizard parameter works properly
+#   become: true
+#   copy:
+#     src: "{{ package_name }}"
+#     dest: "/etc/default/{{ package_name }}"
+#     force: no
+#     backup: yes
+#     owner: "root"
+#     group: "root"
+#     mode: u=rw,g=r,o=r
 
 
 - name: Add the {{ option_friendly_name }} APT Key
@@ -50,8 +50,8 @@
   include_tasks: load-license.yml the_jenkins_user=cloudbees-core-oc
   when: jenkins_node_type is search("cjoc")
 
-- name: Load initial user creation and security settings
-  include_tasks: initial_jenkins_config.yml
+# - name: Load initial user creation and security settings
+#   include_tasks: initial_jenkins_config.yml
 
 # This will load the properties and execute the initscripts 
 - name: restart the {{ package_name }} service 
@@ -91,9 +91,9 @@
   delay: 1
 
 
-- name: Load plugins
-  include_tasks: load-plugins.yml
+# - name: Load plugins
+#   include_tasks: load-plugins.yml
 
-- name: create the Client Master
-  include_tasks: create-client-master.yml
-  when: jenkins_node_type is search("cjoc")
+# - name: create the Client Master
+#   include_tasks: create-client-master.yml
+#   when: jenkins_node_type is search("cjoc")
