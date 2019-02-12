@@ -10,10 +10,10 @@
   - debug: 
       var: output.output
 
-  - name: Make sure the plugin is always up-to-date
-    jenkins_plugin:
-      name: cloudbees-ssh-slaves
-      state: latest
-      url_username: "admin"
-      url_password: '{{ jenkins_default_admin_password }}'
-      url: "http://localhost:{{ used_port }}"
+  # - name: Make sure the plugin is always up-to-date
+  #   jenkins_plugin:
+  #     name: cloudbees-ssh-slaves
+  #     state: latest
+  #     url_username: "admin"
+  #     url_password: '{{ jenkins_default_admin_password }}'
+  #     url: "http://localhost:{{ used_port }}"
