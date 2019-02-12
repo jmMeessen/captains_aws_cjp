@@ -33,6 +33,9 @@ https://stackoverflow.com/questions/44004727/how-to-run-local-command-via-ansibl
 ## enabling SSH
 * ssh -l jmm -i ~/.ssh/id_rsa -p 10200 ec2-54-164-201-94.compute-1.amazonaws.com help
 
+## Localhost CLI
+java -jar jenkins-cli.jar -s http://localhost:8888  -auth admin:someAdminPass help
+
 ## retrieving files
 - cp  -i ~/.ssh/captains_aws_cjp ubuntu@18.205.114.45:/var/lib/cloudbees-core-oc/license.xml ./
 

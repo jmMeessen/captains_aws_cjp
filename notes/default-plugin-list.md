@@ -2,26 +2,26 @@
 
 ## CJOC
 
-- [ ] Cloudbees SSH Build Agent Plugin
-- [ ] Cloudbees High Availability Management
-- [ ] Cloudbees Update center Plugin
-- [ ] Cloudbees Role-Based Access Control Plugin
-- [ ] SSH Credential Plugin
-- [ ] LDAP Plugin
-- [ ] Operation Center JNLP Agent Controler Plugin
-- [ ] Cloudbees Support Plugin
-- [ ] Operation Center Update Ceenter Plugin
-- [ ] Operation Center Server role Based Access
-- [ ] Credential Binding Plugin 
-- [ ] CloudBees Back-up Plugin
-- [ ] CloudBees Monitoring Plugin
-- [ ] Operations Center Single Sign-On Plugin
-- [ ] Script Security Plugin
-- [ ] CloudBees Folders Plus Plugin
-- [ ] Operations Center Server Cluster Operations
-- [ ] Mailer Plugin
-- [ ] OWASP Markup Formater Plugin
-- [ ] Stack Trace Suppression Plugin
+- [ ] Cloudbees SSH Build Agent Plugin - cloudbees-ssh-slaves
+- [ ] Cloudbees High Availability Management - cloudbees-ha
+- [ ] Cloudbees Update center Plugin - cloudbees-update-center-plugin
+- [ ] Cloudbees Role-Based Access Control Plugin - nectar-rbac
+- [ ] SSH Credential Plugin - ssh-credentials
+- [ ] LDAP Plugin - ldap
+- [ ] Operation Center JNLP Agent Controler Plugin - operations-center-jnlp-controller
+- [ ] Cloudbees Support Plugin - cloudbees-support
+- [ ] Operation Center Update Ceenter Plugin - operations-center-updatecenter
+- [ ] Operation Center Server role Based Access - operations-center-rbac
+- [ ] Credential Binding Plugin - credentials-binding
+- [ ] CloudBees Back-up Plugin - infradna-backup
+- [ ] CloudBees Monitoring Plugin - cloudbees-monitoring
+- [ ] Operations Center Single Sign-On Plugin - operations-center-sso
+- [ ] Script Security Plugin - script-security
+- [ ] CloudBees Folders Plus Plugin - cloudbees-folders-plus
+- [ ] Operations Center Server Cluster Operations - operations-center-clusterops
+- [ ] Mailer Plugin - mailer
+- [ ] OWASP Markup Formater Plugin - antisamy-markup-formatter
+- [ ] Stack Trace Suppression Plugin - suppress-stack-trace
 
 ## Managed Master
 
