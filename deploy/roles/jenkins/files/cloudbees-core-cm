@@ -7,6 +7,10 @@ NAME=cloudbees-core-cm
 
 # Allow graphs etc. to work even when an X server is present
 JAVA_ARGS="-Djava.awt.headless=true -Djenkins.install.runSetupWizard=false -Dcb.BeekeeperProp.autoInstallIncremental=true"
+ 
+#JAVA_ARGS="-Djava.awt.headless=true \
+# -Djenkins.install.runSetupWizard=false \
+# -Dcb.BeekeeperProp.autoInstallIncremental=true"
 
 #JAVA_ARGS="-Xmx256m"
 
