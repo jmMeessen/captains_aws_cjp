@@ -5,7 +5,7 @@
   include_vars: "{{ jenkins_node_type }}.yml"
 
 
-- name: Copy the initial configuration before first startup
+- name: Copy the initial configuration before first startup (CJOC)
   #Proceeding this way is important so that the noWizard parameter works properly
   become: true
   copy:
@@ -16,7 +16,34 @@
     owner: "root"
     group: "root"
     mode: u=rw,g=r,o=r
+  when: jenkins_node_type is search("cjoc")
 
+#====== move this out
+
+- name: "get DNS name for the CJOC endpoint "
+  command: "terraform output -state=../terraform/terraform.tfstate Jmm_cjoc_dns"
+  delegate_to: localhost
+  register: full_cjoc_dns_name
+
+- name: "get DNS name for the CM endpoint "
+  command: "terraform output -state=../terraform/terraform.tfstate Jmm_master_dns"
+  delegate_to: localhost
+  register: full_cm_dns_name
+
+- name: Copy and update the initial configuration before first startup (Master)
+  #Proceeding this way is important so that the noWizard parameter works properly
+  become: true
+  template:
+    src: "{{ package_name }}.j2"
+    dest: "/etc/default/{{ package_name }}"
+    force: no
+    backup: yes
+    owner: "root"
+    group: "root"
+    mode: u=rw,g=r,o=r
+  when: jenkins_node_type is search("master")
+
+  #======
 
 - name: Add the {{ option_friendly_name }} APT Key
   become: true
@@ -69,7 +96,7 @@
     in_interface: eth0
     protocol: tcp
     match: tcp
-    destination_port: 80
+    destination_port: "80"
     jump: REDIRECT
     to_ports: "{{ used_port }}"
     comment: "Redirect web traffic to port {{ used_port }}"
@@ -84,7 +111,7 @@
 - name: wait for jenkins to be up
   uri: 
     url: "http://localhost:{{ used_port }}/login" 
-    status_code: 200 
+    status_code: "200" 
   register: result
   until: result.status == 200
   retries: 60
