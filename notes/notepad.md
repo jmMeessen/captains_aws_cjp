@@ -39,15 +39,6 @@ java -jar jenkins-cli.jar -s http://localhost:8888  -auth admin:someAdminPass he
 ## retrieving files
 - cp  -i ~/.ssh/captains_aws_cjp ubuntu@18.205.114.45:/var/lib/cloudbees-core-oc/license.xml ./
 
-instance ID: 47c95c6b933f2b3e9f9cfaf56d3c9e0c
-
-# Allow graphs etc. to work even when an X server is present
-JAVA_ARGS='-Djava.awt.headless=true \
--Djenkins.install.runSetupWizard=false \
--Dcb.BeekeeperProp.autoInstallIncremental=true \
--DMASTER_ENDPOINT="http://ec2-34-238-157-171.compute-1.amazonaws.com" \
--DMASTER_OPERATIONSCENTER_ENDPOINT="http://ec2-100-26-186-80.compute-1.amazonaws.com" \
--DMASTER_INDEX="1" -DMASTER_NAME="CM-1" -DMASTER_GRANT_ID="1-CM-1"'
 
 
 
