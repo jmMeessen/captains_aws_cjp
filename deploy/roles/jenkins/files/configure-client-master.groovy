@@ -7,8 +7,6 @@ import jenkins.model.Jenkins
 
 // Input parameters
 def clientMasterName = "CM-1"
-// def clientMasterId = 5
-// def clientMasterGrantId = "fjs2ktwfgd"
 def clientMasterLicenseStrategy = new ConnectedMasterLicenseServerProperty.FloatingExecutorsStrategy() // or  ConnectedMasterLicenseServerProperty.NoLicensingStrategy();
 
 // Compute some values based on the input parameters
@@ -21,9 +19,6 @@ Jenkins jenkins = Jenkins.instance
 if (jenkins.getItem(clientMasterName)==null){
 	// Create Client Master Declaration
 	ClientMaster cm = OperationsCenter.instance.createClientMaster(clientMasterName)
-
-	// Another way to create a ClientMaster is as follow
-	//ClientMaster cm = Jenkins.instance.createProject(ClientMaster.class, clientMasterName)
 
 	//Set Client Master properties
 	cm.setId(clientMasterId)
