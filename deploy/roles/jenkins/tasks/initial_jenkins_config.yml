@@ -38,3 +38,11 @@
     owner: "{{ jenkins_user }}"
     group: "{{ jenkins_user }}"
     mode: u=rw,g=r,o=r   
+
+- name: "Generate Jenkins CfgMgt SSH key"
+  command : 'ssh-keygen -q -b 2048 -t rsa -f {{ jenkins_cfgmgt_ssh_key }} -C "" -N ""'
+  args:
+    creates: "{{ jenkins_cfgmgt_ssh_key }}"
+
+#ssh-keyscan -t rsa,dsa -p 50001 localhost >> ~/.ssh/known_hosts
+#ssh -i .ssh/jenkins_cfgMgr_key -l jenkins_cfg -p 50001 localhost help
