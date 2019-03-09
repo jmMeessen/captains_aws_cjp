@@ -39,10 +39,31 @@
     group: "{{ jenkins_user }}"
     mode: u=rw,g=r,o=r   
 
+- name: "Create init script to configure the SSHD port"
+  become: true
+  template: 
+    src: "configure_sshd.j2"
+    dest: "{{ jenkins_home_dir }}/init.groovy.d/004-configure_sshd.groovy"
+    force: yes
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
+    mode: u=rw,g=r,o=r  
+
+# Done under the user that performs the remote command (ea. ubuntu)
 - name: "Generate Jenkins CfgMgt SSH key"
   command : 'ssh-keygen -q -b 2048 -t rsa -f {{ jenkins_cfgmgt_ssh_key }} -C "" -N ""'
   args:
     creates: "{{ jenkins_cfgmgt_ssh_key }}"
 
-#ssh-keyscan -t rsa,dsa -p 50001 localhost >> ~/.ssh/known_hosts
+- name: Get the Jenkins CfgMgt SSH public key.
+  shell: "cat {{ jenkins_cfgmgt_ssh_key }}.pub"
+  register: CfgMgt_pub_key
+
+- name: Display the public key we just loaded
+  debug:
+    msg: "{{ CfgMgt_pub_key.stdout }}"
+
+# - name: register the Jenkins SSH server public key in the known_hosts file
+#   shell: "ssh-keyscan -t rsa,dsa -p 50001 localhost > ~/.ssh/known_hosts"
+
 #ssh -i .ssh/jenkins_cfgMgr_key -l jenkins_cfg -p 50001 localhost help

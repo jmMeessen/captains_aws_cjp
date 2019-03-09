@@ -1,0 +1,16 @@
+#!groovy
+
+import jenkins.*
+import jenkins.model.* 
+import hudson.* 
+import hudson.model.* 
+import java.util.logging.Logger
+
+Logger logger = Logger.getLogger("004-configure_sshd.groovy")
+
+logger.info("-----> Configuring SSHD to port {{ sshd_port }} <-----")
+def inst = Jenkins.getInstance()
+def sshDesc = inst.getDescriptor("org.jenkinsci.main.modules.sshd.SSHD")
+sshDesc.setPort({{ sshd_port }})
+sshDesc.getActualPort()
+sshDesc.save()

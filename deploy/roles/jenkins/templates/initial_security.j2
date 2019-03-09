@@ -9,6 +9,11 @@ import jenkins.model.JenkinsLocationConfiguration
 import org.kohsuke.stapler.StaplerProxy
 import jenkins.CLI
 import jenkins.security.s2m.AdminWhitelistRule
+import java.util.logging.Logger
+
+Logger logger = Logger.getLogger("000-initial_security.groovy")
+
+logger.info("-----> Configure initial user <-----")
 
 def instance = Jenkins.getInstance()
 def hudsonRealm = new HudsonPrivateSecurityRealm(false)
@@ -17,7 +22,7 @@ users_s = users.collect { it.toString() }
 
 // Create the admin user account if it doesn't already exist.
 if ("admin" in users_s) {
-    println "Admin user already exists - updating password"
+    logger.info("         Admin user already exists - updating password")
 
     def user = hudson.model.User.get('admin');
     def password = hudson.security.HudsonPrivateSecurityRealm.Details.fromPlainPassword('{{ jenkins_default_admin_password }}')
@@ -25,7 +30,7 @@ if ("admin" in users_s) {
     user.save()
 }
 else {
-    println "--> creating local admin user"
+    logger.info("         creating local admin user")
 
     hudsonRealm.createAccount('admin', '{{ jenkins_default_admin_password }}')
     instance.setSecurityRealm(hudsonRealm)
@@ -36,19 +41,19 @@ else {
     instance.save()
 }
 
-println("--- Configuring Remoting (JNLP4 only, no Remoting CLI)")
+logger.info("-----> Configuring Remoting (JNLP4 only, no Remoting CLI) <-----")
 CLI.get().enabled = false
 Jenkins.instance.agentProtocols = new HashSet<String>(["JNLP4-connect","OperationsCenter2"])
 Jenkins.instance.getExtensionList(StaplerProxy.class)
     .get(AdminWhitelistRule.class)
     .masterKillSwitch = false
 
-println("--- Checking the CSRF protection")
+logger.info("-----> Checking the CSRF protection <-----")
 if (Jenkins.instance.crumbIssuer == null) {
     println "CSRF protection is disabled, Enabling the default Crumb Issuer"
     Jenkins.instance.crumbIssuer = new DefaultCrumbIssuer(true)
 }
 
-println("--- Configuring Quiet Period")
+logger.info("-----> Configuring Quiet Period <-----")
 // We do not wait for anything
 Jenkins.instance.quietPeriod = 0
