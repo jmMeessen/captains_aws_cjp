@@ -63,6 +63,16 @@
   debug:
     msg: "{{ CfgMgt_pub_key.stdout }}"
 
+- name: "Create init script to create the special Jenkins CfgMgr user"
+  become: true
+  template: 
+    src: "create_cfgmgt_user.j2"
+    dest: "{{ jenkins_home_dir }}/init.groovy.d/005-create_cfgmgt_user.groovy"
+    force: yes
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
+    mode: u=rw,g=r,o=r  
+
 # - name: register the Jenkins SSH server public key in the known_hosts file
 #   shell: "ssh-keyscan -t rsa,dsa -p 50001 localhost > ~/.ssh/known_hosts"
 

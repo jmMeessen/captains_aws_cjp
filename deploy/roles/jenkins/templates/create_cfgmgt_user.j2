@@ -1,0 +1,36 @@
+import jenkins.model.*
+import hudson.security.*
+import jenkins.model.Jenkins
+import jenkins.model.JenkinsLocationConfiguration
+import java.util.logging.Logger
+
+Logger logger = Logger.getLogger("create_cfgmgt_user.groovy")
+logger.info("-----> Configure Jenkins CfgMgr user <-----")
+
+def public_keys = "{{ CfgMgt_pub_key.stdout }}"
+
+def instance = Jenkins.getInstance()
+def hudsonRealm = new HudsonPrivateSecurityRealm(false)
+def users = hudsonRealm.getAllUsers()
+users_s = users.collect { it.toString() }
+
+if ("{{ jenkins_cfgmgt_user }}" in users_s) {
+    logger.info("         Jenkins_cfg user already exists - updating password and public key")
+
+    def user = hudson.model.User.get('{{ jenkins_cfgmgt_user }}');
+    def password = hudson.security.HudsonPrivateSecurityRealm.Details.fromPlainPassword('{{ jenkins_default_admin_password }}')
+    user.addProperty(password)
+
+    def keys_param = new org.jenkinsci.main.modules.cli.auth.ssh.UserPropertyImpl(public_keys)
+    user.addProperty(keys_param)
+
+    user.save()
+}
+else {
+    logger.info("         creating Jenkins_cfg user")
+  
+    def newUser = hudsonRealm.createAccount('{{ jenkins_cfgmgt_user }}', '{{ jenkins_default_admin_password }}')
+    def keys_param = new org.jenkinsci.main.modules.cli.auth.ssh.UserPropertyImpl(public_keys)
+    newUser.addProperty(keys_param)
+    newUser.save()
+}
