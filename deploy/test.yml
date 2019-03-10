@@ -3,36 +3,17 @@
 
   vars:
     jenkins_node_type: "cjoc"
+    plugins:
+      - 'item1' 
+      - 'item2' 
+      - 'item3'
 
   tasks:
-    #- debug: var=ansible_default_ipv4.address
-    - debug: var=inventory_hostname
 
-    # # use the jenkins module
-    # - name: Obtaining a list of plugins
-    #   jenkins_script:
-    #     url: "http://{{ inventory_hostname }}:80"
-    #     script: 'println(Jenkins.instance.pluginManager.plugins)'
-    #     user: jmm
-    #     password: 111d17011d9ce07b649e8548e5b5c61e75
-  
-    # use the local command
-    - name: get DNS name
-      command: "terraform output -state=../terraform/terraform.tfstate Jmm_cjoc_dns"
-      register: cjoc_dns
-      delegate_to: localhost
-      delegate_facts: false
-
-    - name: Show results
-      debug:
-        var: cjoc_dns.stdout
-      delegate_to: localhost
-    
-    - set_fact:
-        full_dns: "{{ cjoc_dns.stdout }}"
-
-    - name: "value of {{ full_dns }}"
-      debug:
-        var: cjoc_dns.stdout
+    - name: Test that loop works with a manual list
+      ping:
+        data: '{{item}}'
+      loop: "{{ plugins }}"
 
 
+   

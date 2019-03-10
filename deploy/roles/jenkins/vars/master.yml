@@ -6,7 +6,41 @@ used_port: "8080"
 jenkins_user: "{{ package_name }}"
 jenkins_home_dir: "/var/lib/{{ package_name }}"
 terraform_dns_reference: "Jmm_master_dns"
-jenkins_cfgmgt_ssh_key_dir: "/home/ubuntu/.ssh"
-jenkins_cfgmgt_ssh_key: "/home/ubuntu/.ssh/jenkins_cfgMgr_key"
+jenkins_cfgmgt_dir: "/home/ubuntu"
+jenkins_cfgmgt_ssh_key: "{{ jenkins_cfgmgt_dir }}/.ssh/jenkins_cfgMgr_key"
+jenkins_cfgmgt_script_dir: "{{ jenkins_cfgmgt_dir }}/jenkins_scripts"
 jenkins_cfgmgt_user: "Jenkins_cfg"
 sshd_port: "50001"
+CLI_command: "ssh -i {{ jenkins_cfgmgt_ssh_key }} -l {{ jenkins_cfgmgt_user }} -p {{ sshd_port }} localhost"
+
+default_plugins:
+  - pipeline-model-definition
+  - operations-center-cloud
+  - cloudbees-support
+  - cloudbees-jsync-archiver
+  - cloudbees-workflow-template
+  - pipeline-stage-view
+  - ssh-credentials
+  - git-client
+  - cloudbees-nodes-plus
+  - infradna-backup
+  - cloudbees-monitoring
+  - cloudbees-template
+  - workflow-cps-checkpoint
+  - nectar-rbac
+  - credentials-binding
+  - github-branch-source
+  - cloudbees-ssh-slaves
+  - cloudbees-folders-plus
+  - cloudbees-groovy-view
+  - email-ext
+  - cloudbees-workflow-ui
+  - wikitext
+  - scm-api
+  - gradle
+  - cloudbees-ha
+  - cloudbees-view-creation-filter
+  - mailer
+  - workflow-aggregator
+  - ldap
+  - git

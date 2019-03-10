@@ -23,7 +23,7 @@
 - [ ] OWASP Markup Formater Plugin - antisamy-markup-formatter
 - [ ] Stack Trace Suppression Plugin - suppress-stack-trace
 
-## Managed Master
+## Client Master
 
 - [ ] Pipeline: Declarative
 - [ ] Operations Center Cloud

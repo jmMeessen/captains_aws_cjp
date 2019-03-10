@@ -1,0 +1,94 @@
+Before
+
+scm-api                            SCM API Plugin                                         2.2.8
+metrics                            Metrics Plugin                                         3.1.2.11
+mailer                             Mailer Plugin                                          1.23
+support-core                       Support Core Plugin                                    2.54
+cloudbees-license                  CloudBees License Manager                              9.33
+credentials                        Credentials Plugin                                     2.1.18
+jdk-tool                           JDK Tool Plugin                                        1.1
+operations-center-context          Operations Center Context                              2.150.2.6
+variant                            Variant Plugin                                         1.1
+node-iterator-api                  Node Iterator API Plugin                               1.5.0
+jackson2-api                       Jackson 2 API Plugin                                   2.9.8
+cloudbees-support                  CloudBees Support Plugin                               3.21
+command-launcher                   Command Agent Launcher Plugin                          1.2
+cloudbees-folders-plus             CloudBees Folders Plus Plugin                          3.6
+structs                            Structs Plugin                                         1.17
+operations-center-agent            Operations Center Agent                                2.150.2.4
+junit                              JUnit Plugin                                           1.26.1
+async-http-client                  Async Http Client                                      1.7.24.2
+display-url-api                    Display URL API                                        2.2.0
+apache-httpcomponents-client-4-api Apache HttpComponents Client 4.x API Plugin            4.5.5-3.0
+cloudbees-ha                       CloudBees High Availability Management plugin          4.19
+mapdb-api                          MapDB API Plugin                                       1.0.9.0
+bouncycastle-api                   bouncycastle API Plugin                                2.17
+cloudbees-assurance                Beekeeper Upgrade Assistant Plugin                     2.138.0.4
+workflow-step-api                  Pipeline: Step API                                     2.19
+nectar-license                     CloudBees Jenkins Enterprise License Entitlement Check 8.15
+operations-center-license          Operations Center Server License Entitlement Check     2.150.2.4
+cloudbees-uc-data-api              CloudBees Update Center Data API                       4.42
+cloudbees-folder                   Folders Plugin                                         6.7
+cloudbees-monitoring               CloudBees Monitoring Plugin                            2.8
+workflow-api                       Pipeline: API                                          2.33
+token-macro                        Token Macro Plugin                                     2.6
+script-security                    Script Security Plugin                                 1.54
+operations-center-server           Operations Center Server Plugin                        2.150.2.6
+ssh-credentials                    SSH Credentials Plugin                                 1.14
+cloudbees-ssh-slaves               CloudBees SSH Build Agents Plugin                      2.3
+
+
+After
+
+scm-api                            SCM API Plugin                                         2.2.8
+metrics                            Metrics Plugin                                         3.1.2.11
+mailer                             Mailer Plugin                                          1.23
+support-core                       Support Core Plugin                                    2.54
+cloudbees-license                  CloudBees License Manager                              9.33
+credentials                        Credentials Plugin                                     2.1.18
+jdk-tool                           JDK Tool Plugin                                        1.1
+operations-center-context          Operations Center Context                              2.150.2.6
+variant                            Variant Plugin                                         1.1
+node-iterator-api                  Node Iterator API Plugin                               1.5.0
+jackson2-api                       Jackson 2 API Plugin                                   2.9.8
+cloudbees-support                  CloudBees Support Plugin                               3.21
+command-launcher                   Command Agent Launcher Plugin                          1.2
+cloudbees-folders-plus             CloudBees Folders Plus Plugin                          3.6
+structs                            Structs Plugin                                         1.17
+operations-center-agent            Operations Center Agent                                2.150.2.4
+ssh-credentials                    SSH Credentials Plugin                                 1.14
+junit                              JUnit Plugin                                           1.26.1
+async-http-client                  Async Http Client                                      1.7.24.2
+display-url-api                    Display URL API                                        2.2.0
+apache-httpcomponents-client-4-api Apache HttpComponents Client 4.x API Plugin            4.5.5-3.0
+cloudbees-ha                       CloudBees High Availability Management plugin          4.19
+mapdb-api                          MapDB API Plugin                                       1.0.9.0
+bouncycastle-api                   bouncycastle API Plugin                                2.17
+cloudbees-assurance                Beekeeper Upgrade Assistant Plugin                     2.138.0.4
+workflow-step-api                  Pipeline: Step API                                     2.19
+nectar-license                     CloudBees Jenkins Enterprise License Entitlement Check 8.15
+operations-center-license          Operations Center Server License Entitlement Check     2.150.2.4
+cloudbees-uc-data-api              CloudBees Update Center Data API                       4.42
+cloudbees-folder                   Folders Plugin                                         6.7
+cloudbees-ssh-slaves               CloudBees SSH Build Agents Plugin                      2.3
+cloudbees-monitoring               CloudBees Monitoring Plugin                            2.8
+workflow-api                       Pipeline: API                                          2.33
+token-macro                        Token Macro Plugin                                     2.6
+script-security                    Script Security Plugin                                 1.54
+operations-center-server           Operations Center Server Plugin                        2.150.2.6
+cloudbees-update-center-plugin     CloudBees Update Center Plugin                         4.44
+nectar-rbac                        CloudBees Role-Based Access Control Plugin             5.25
+ldap                               LDAP Plugin                                            1.20
+operations-center-jnlp-controller  Operations Center JNLP Agent Controller Plugin         2.150.2.4
+operations-center-updatecenter     Operations Center Update Center Plugin                 2.150.2.4
+operations-center-rbac             Operations Center Server Role Based Access Control     2.150.2.4
+plain-credentials                  Plain Credentials Plugin                               1.4
+credentials-binding                Credentials Binding Plugin                             1.17
+aws-java-sdk                       Amazon Web Services SDK                                1.11.403
+aws-credentials                    CloudBees AWS Credentials Plugin                       1.24
+infradna-backup                    CloudBees Back-up Plugin                               3.38.8
+operations-center-sso              Operations Center Single Sign-On Plugin                2.150.2.4
+operations-center-clusterops       Operations Center Server Cluster Operations            2.150.2.4
+antisamy-markup-formatter          OWASP Markup Formatter Plugin                          1.5
+matrix-project                     Matrix Project Plugin                                  1.14
+suppress-stack-trace               Stack Trace Suppression Plugin                         1.5

@@ -1,3 +1,5 @@
+#!groovy
+
 // Imports
 import com.cloudbees.opscenter.server.model.ClientMaster
 import com.cloudbees.opscenter.server.model.ConnectedMaster

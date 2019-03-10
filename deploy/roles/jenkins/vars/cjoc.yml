@@ -6,7 +6,31 @@ used_port: "8888"
 jenkins_user: "{{ package_name }}"
 jenkins_home_dir: "/var/lib/{{ package_name }}"
 terraform_dns_reference: "Jmm_cjoc_dns"
-jenkins_cfgmgt_ssh_key_dir: "/home/ubuntu/.ssh"
-jenkins_cfgmgt_ssh_key: "/home/ubuntu/.ssh/jenkins_cfgMgr_key"
+jenkins_cfgmgt_dir: "/home/ubuntu"
+jenkins_cfgmgt_ssh_key: "{{ jenkins_cfgmgt_dir }}/.ssh/jenkins_cfgMgr_key"
+jenkins_cfgmgt_script_dir: "{{ jenkins_cfgmgt_dir }}/jenkins_scripts"
 jenkins_cfgmgt_user: "Jenkins_cfg"
 sshd_port: "50001"
+CLI_command: "ssh -i {{ jenkins_cfgmgt_ssh_key }} -l {{ jenkins_cfgmgt_user }} -p {{ sshd_port }} localhost"
+
+default_plugins:
+  - cloudbees-ssh-slaves
+  - cloudbees-ha
+  - cloudbees-update-center-plugin
+  - nectar-rbac
+  - ssh-credentials
+  - ldap
+  - operations-center-jnlp-controller
+  - cloudbees-support
+  - operations-center-updatecenter
+  - operations-center-rbac
+  - credentials-binding
+  - infradna-backup
+  - cloudbees-monitoring
+  - operations-center-sso
+  - script-security
+  - cloudbees-folders-plus
+  - operations-center-clusterops
+  - mailer
+  - antisamy-markup-formatter
+  - suppress-stack-trace

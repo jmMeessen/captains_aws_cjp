@@ -117,6 +117,21 @@
   retries: 60
   delay: 1
 
+- name: register the Jenkins SSH server public key in the known_hosts file
+  shell: "ssh-keyscan -t rsa,dsa -p {{ sshd_port }} localhost > ~/.ssh/known_hosts"
+
+- name: Create a CLI command varialble on remote (for debug purposes)
+  template:
+    src: "remote_CLI_config.j2"
+    dest: "{{jenkins_cfgmgt_dir}}/load_CLI_command.sh"
+    force: yes
+    mode: u=rwx,g=rx,o=rx
+
+- name: "create \"{{ jenkins_cfgmgt_script_dir }}\" to store the script executed by these scripts"
+  file:
+    path: "{{ jenkins_cfgmgt_script_dir }}"
+    state: directory
+    mode: u=rwx,g=rx,o=rx
 
 - name: Load plugins
   include_tasks: load-plugins.yml

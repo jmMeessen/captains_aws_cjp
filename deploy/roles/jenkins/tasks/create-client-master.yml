@@ -1,31 +1,10 @@
 ---
-  # - name: copy creation groovy script to the target server
-  #   become: true
-  #   copy:
-  #     src: "configure-client-master.groovy"
-  #     dest: "/etc/default/{{ package_name }}"
-  #     force: no
-  #     backup: yes
-  #     owner: "root"
-  #     group: "root"
-  #     mode: u=rw,g=r,o=r
+- name: copy creation groovy script to the target server
+  copy:
+    src: "configure-client-master.groovy"
+    dest: "{{jenkins_cfgmgt_script_dir}}/configure-client-master.groovy"
+    force: yes
+    backup: yes
+    mode: u=rw,g=r,o=r
 
-- debug: msg="the value of foo.txt is {{lookup('file', 'configure-client-master.groovy') }}"
-
-- name: "Load the groovy script as a variable " 
-  include_vars: "load-script.yml"
-
-
-# - debug: msg="the value of scripty is {{ script_text }}"
-
-
-- name: Create the Client Master on the CJOC
-  jenkins_script:
-    script: "{{ script_text }}"
-    url: "http://localhost:{{ used_port }}"
-    user: "admin"
-    password: '{{ jenkins_default_admin_password }}'
-  register: output 
-
-- debug: 
-    var: output.output
+# java -jar jenkins-cli.jar -s http://localhost:8888  -i .ssh/jenkins_cfgMgr_key  -remoting groovy ./jenkins_scripts/configure-client-master.groovy

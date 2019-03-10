@@ -59,10 +59,6 @@
   shell: "cat {{ jenkins_cfgmgt_ssh_key }}.pub"
   register: CfgMgt_pub_key
 
-- name: Display the public key we just loaded
-  debug:
-    msg: "{{ CfgMgt_pub_key.stdout }}"
-
 - name: "Create init script to create the special Jenkins CfgMgr user"
   become: true
   template: 
@@ -73,7 +69,6 @@
     group: "{{ jenkins_user }}"
     mode: u=rw,g=r,o=r  
 
-# - name: register the Jenkins SSH server public key in the known_hosts file
-#   shell: "ssh-keyscan -t rsa,dsa -p 50001 localhost > ~/.ssh/known_hosts"
 
-#ssh -i .ssh/jenkins_cfgMgr_key -l jenkins_cfg -p 50001 localhost help
+
+
