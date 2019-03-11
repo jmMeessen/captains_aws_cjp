@@ -1,7 +1,0 @@
----
-
-  - name: Install plugins
-    shell: "{{ CLI_command }} install-plugin {{item}} -deploy"
-    loop: "{{ default_plugins }}"
-
-  

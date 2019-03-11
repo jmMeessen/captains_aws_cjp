@@ -144,8 +144,9 @@
     state: directory
     mode: u=rwx,g=rx,o=rx
 
-- name: Load plugins
-  include_tasks: load-plugins.yml
+- name: Install default plugins
+  shell: "{{ CLI_command }} install-plugin {{item}} -deploy"
+  loop: "{{ default_plugins }}"
 
 - name: create the Client Master
   include_tasks: create-client-master.yml
