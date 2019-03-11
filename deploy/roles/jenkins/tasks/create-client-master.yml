@@ -1,15 +1,11 @@
 ---
 
-  # - name: copy creation groovy script to the target server
-  #   become: true
-  #   copy:
-  #     src: "configure-client-master.groovy"
-  #     dest: "/etc/default/{{ package_name }}"
-  #     force: no
-  #     backup: yes
-  #     owner: "root"
-  #     group: "root"
-  #     mode: u=rw,g=r,o=r
+- name: copy creation groovy script to the target server
+  copy:
+    src: "configure-client-master.groovy"
+    dest: "{{jenkins_cfgmgt_script_dir}}/configure-client-master.groovy"
+    force: yes
+    mode: u=rw,g=r,o=r
 
 # - debug: msg="the value of foo.txt is {{lookup('file', 'configure-client-master.groovy') }}"
 
@@ -31,3 +27,11 @@
 - name: Output of Script execution
   debug: 
     var: output.output
+
+- name: use other method to execute groovy script 
+  shell: "cat {{jenkins_cfgmgt_script_dir}}/configure-client-master.groovy | {{ CLI_command }} groovy ="
+  register: output2
+
+- name: Output of Script execution
+  debug: 
+    var: output2

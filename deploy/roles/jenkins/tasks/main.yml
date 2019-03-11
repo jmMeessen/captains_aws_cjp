@@ -120,12 +120,23 @@
 - name: register the Jenkins SSH server public key in the known_hosts file
   shell: "ssh-keyscan -t rsa,dsa -p {{ sshd_port }} localhost > ~/.ssh/known_hosts"
 
+## ---> used for debuging
+
 - name: Create a CLI command varialble on remote (for debug purposes)
   template:
     src: "remote_CLI_config.j2"
     dest: "{{jenkins_cfgmgt_dir}}/load_CLI_command.sh"
     force: yes
     mode: u=rwx,g=rx,o=rx
+
+- name: copy jenkins-cli .jar to cfgMgt directory
+  get_url:
+    url: "http://localhost:{{used_port}}/jnlpJars/jenkins-cli.jar"
+    dest: "{{jenkins_cfgmgt_dir}}/jenkins-cli.jar"
+
+# - name: create command line
+
+## <--- used for debuging
 
 - name: "create \"{{ jenkins_cfgmgt_script_dir }}\" to store the script executed by these scripts"
   file:
