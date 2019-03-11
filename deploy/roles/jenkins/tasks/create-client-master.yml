@@ -7,31 +7,10 @@
     force: yes
     mode: u=rw,g=r,o=r
 
-# - debug: msg="the value of foo.txt is {{lookup('file', 'configure-client-master.groovy') }}"
-
-- name: "Load the groovy script as a variable " 
-  include_vars: "load-script.yml"
-
-
-# - debug: msg="the value of scripty is {{ script_text }}"
-
-
-- name: Execute Client Master creation on the CJOC Groovy script
-  jenkins_script:
-    script: "{{ script_text }}"
-    url: "http://localhost:{{ used_port }}"
-    user: "admin"
-    password: '{{ jenkins_default_admin_password }}'
-  register: output 
-
-- name: Output of Script execution
-  debug: 
-    var: output.output
-
-- name: use other method to execute groovy script 
+- name: Execute Client Master creation script
   shell: "cat {{jenkins_cfgmgt_script_dir}}/configure-client-master.groovy | {{ CLI_command }} groovy ="
-  register: output2
+  register: output
 
 - name: Output of Script execution
   debug: 
-    var: output2
+    var: output.stdout
