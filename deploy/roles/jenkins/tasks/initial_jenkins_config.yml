@@ -7,7 +7,7 @@
 - name: Update the initialize groovy and copy it to the target directory
   become: true
   template: 
-    src: "initial_security.j2"
+    src: "initial_security.groovy.j2"
     dest: "{{ jenkins_home_dir }}/init.groovy.d/000-initial_security.groovy"
     force: yes
     owner: "{{ jenkins_user }}"
@@ -22,7 +22,7 @@
 - name: "Update the set URL groovy ({{ full_dns_name.stdout }}) and copy it to the target directory"
   become: true
   template: 
-    src: "set_url.j2"
+    src: "set_url.groovy.j2"
     dest: "{{ jenkins_home_dir }}/init.groovy.d/002-set_url.groovy"
     force: yes
     owner: "{{ jenkins_user }}"
@@ -42,7 +42,7 @@
 - name: "Create init script to configure the SSHD port"
   become: true
   template: 
-    src: "configure_sshd.j2"
+    src: "configure_sshd.groovy.j2"
     dest: "{{ jenkins_home_dir }}/init.groovy.d/004-configure_sshd.groovy"
     force: yes
     owner: "{{ jenkins_user }}"
@@ -62,7 +62,7 @@
 - name: "Create init script to create the special Jenkins CfgMgr user"
   become: true
   template: 
-    src: "create_cfgmgt_user.j2"
+    src: "create_cfgmgt_user.groovy.j2"
     dest: "{{ jenkins_home_dir }}/init.groovy.d/005-create_cfgmgt_user.groovy"
     force: yes
     owner: "{{ jenkins_user }}"

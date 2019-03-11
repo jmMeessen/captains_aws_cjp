@@ -18,7 +18,7 @@
 - name: Update the licence loading groovy and copy it to the target directory
   become: true
   template: 
-    src: "license.j2"
+    src: "license.groovy.j2"
     dest: "{{ jenkins_home_dir }}/init.groovy.d/001-license.groovy"
     force: yes
     owner: "{{ jenkins_user }}"
