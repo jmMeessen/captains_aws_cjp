@@ -1,31 +1,31 @@
 # Overview
 
+This describes the flow of the various roles and gives an idea of the configuration process.
+
 ## General role
-* ensure python 2.7 is installed
-* Trying if the Ansible communication works now (using a Ping)
-* Gathering facts
-* (Install COWSAY)
-* (let the cow say hello)
-* Update the system
-* Install OpenJdk 8 (JRE)
-* set VIMs background to dark by default
-* Setup up the IP Tables
+* As the AWS Ubuntu images don't have Python 2 installed, ensure that python 2.7 is installed
+* We check that the Ansible communication works now (using an Ansible Ping)
+* We now gather the Ansible facts (had to be disabled so that we could setup Ansible)
+* We perform a general sysem update via APT-GET update
+* We install OpenJdk 8 (JRE) via APT
+* We configure VIM's background to dark
+* We include `ìptables-tasks.yml` to setup the IP Tables
   * Install the `iptables` package
   * Flush existing firewall rules
-  * Firewall rule - allow all loopback traffic
-  * Firewall rule - allow port ping traffic
-  * Firewall rule - allow port 22/SSH traffic
-  * Firewall rule - allow port 80/HTTP traffic
-  * Firewall rule - allow port 443/HTTPS traffic
-  * Firewall rule - allow port 50000 traffic
-  * Firewall rule - allow port 10200 traffic
-  * (Firewall rule - drop any traffic without rule
+  * Allow all loopback traffic
+  * Allow port ping traffic
+  * Allow port 22/SSH traffic
+  * Allow port 80/HTTP traffic
+  * Allow port 443/HTTPS traffic
+  * Allow port 50000 traffic
+  * Allow port 10200 traffic
+  * Commented out: drop any traffic without rule
   * Install `netfilter-persistent` && `iptables-persistent` packages
 
 ## Jenkins role
-* "Include the '{{ jenkins_node_type }}' installation specific variables" 
-* Copy the initial configuration before first startup (CJOC)
-* "get DNS name for the CJOC endpoint "
+* Include the node specific (CJOC or Master) variables. The node type is defined in the calling playbook
+* We copy the initial configuration before first startup when handling the CJOC configuration. It is important so that the noWizard parameter works properly.
+* We get the DNS name of the CJOC endpoint from the Terraform configuration
 * "get DNS name for the CM endpoint "
 * Copy and update the initial configuration before first startup (Master)
 * Add the {{ option_friendly_name }} APT Key
