@@ -15,4 +15,5 @@ My current plan is
 
 - [How to use this environment](notes/notes.md)
 - [Ansible scripts overview](notes/doc.md)
+- [Toolbox inventory](notes/toolbox_inventory.md)
 - [bibliography](notes/bibliography.md)
