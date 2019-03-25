@@ -1,4 +1,4 @@
-# Upgrading Jenkins notes.
+# Upgrading Jenkins demo notes.
 
 **Context:** customer is looking for a way to update his systems with ansible. I checked the bahavior with different forms of upgrades.
 

@@ -7,7 +7,7 @@
 - The IPtable maninpulation Ansible role is needed to do the port forwarding. Install it with `ansible-galaxy install geerlingguy.firewall`
 
 ## Pre-flight
-- to configure the CB AWS environment with OPSCORE: `opscore iam refresh --account cloudbees-support --role infra-admin`
+- to configure the CB AWS environment with OPSCORE: `opscore iam refresh --account cloudbees-ps --role infra-admin`
 
 - to open the console on AWS:
   - `https://console.aws.amazon.com/iam/home?region=us-east-1#/users/jmeessen`
@@ -17,12 +17,12 @@
 - generate an SSH key with `ssh-keygen -t rsa -b 2048 -v -f ~/.ssh/captains_aws_cjp`.
 - copy the public key in the terraform directory so that it can be found in the scripts
 
-**Note** : Automation tools mentioned hereafter are located in the `toolbox` directory
+**Note** : Automation tools mentioned hereafter are located in the `toolbox` directory.
 
 ## Create environment (first time)
 - initialise Terraform working directory (if used the first time): `terraform init` while in the terraform directory
 - Sanity check: verify with `terraform plan`
-- Start the environment: `terraform apply` or with `toolbox\start_infra.sh`
+- Start the environment: `terraform apply` or with `toolbox/start_infra.sh`
   - the final step shows the IP and DNS names the machines that were created.
   - To show these values (or to load them in environment variables), use `terraform output`
 - Deploy the application: `toolbox/run_ansible.sh`. 
