@@ -17,6 +17,7 @@ resource "aws_instance" "jmm_cjoc" {
   tags {
     Name = "jmm_cjoc"
     Role = "test"
+    Owner = "Jmm"
   }
 }
 
@@ -34,5 +35,6 @@ resource "aws_instance" "jmm_client_master" {
   tags {
     Name = "jmm_client_master"
     Role = "test"
+    Owner = "Jmm"
   }
 }
