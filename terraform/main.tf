@@ -38,3 +38,39 @@ resource "aws_instance" "jmm_client_master" {
     Owner = "Jmm"
   }
 }
+
+resource "aws_instance" "jmm_agent1" {
+  ami                         = "${data.aws_ami.ubuntu.id}"
+  instance_type               = "t2.medium"
+  key_name                    = "${aws_key_pair.my-aws-key.key_name}"
+  associate_public_ip_address = true
+
+  security_groups = [
+    "${aws_security_group.jmm_general_sg.name}",
+    "${aws_security_group.jmm_master_sg.name}",
+  ]
+
+  tags {
+    Name = "jmm_agent1"
+    Role = "test"
+    Owner = "Jmm"
+  }
+}
+
+resource "aws_instance" "jmm_agent_docker" {
+  ami                         = "${data.aws_ami.ubuntu.id}"
+  instance_type               = "t2.medium"
+  key_name                    = "${aws_key_pair.my-aws-key.key_name}"
+  associate_public_ip_address = true
+
+  security_groups = [
+    "${aws_security_group.jmm_general_sg.name}",
+    "${aws_security_group.jmm_master_sg.name}",
+  ]
+
+  tags {
+    Name = "jmm_agent_docker"
+    Role = "test"
+    Owner = "Jmm"
+  }
+}
