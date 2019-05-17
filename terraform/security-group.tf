@@ -15,6 +15,21 @@ resource "aws_security_group" "jmm_general_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  #LDAP port
+  egress {
+    from_port   = 389
+    to_port     = 389
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 389
+    to_port     = 389
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   ingress {
     from_port   = 22
     to_port     = 22
