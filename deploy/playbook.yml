@@ -1,3 +1,15 @@
+- hosts: jmm_agent_docker
+
+  # this is required as only python3 is installed on Ubuntu AMI (Ansible fails otherwise)
+  gather_facts: False
+
+  vars:
+    jenkins_node_type: "agent_docker"
+
+  roles:
+    - agent_docker
+
+
 - hosts: jmm_cjoc
 
   # this is required as only python3 is installed on Ubuntu AMI (Ansible fails otherwise)

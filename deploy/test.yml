@@ -1,19 +1,12 @@
-- hosts: jmm_cjoc
+- hosts: jmm_agent_docker
 
+  gather_facts: False
 
   vars:
-    jenkins_node_type: "cjoc"
-    plugins:
-      - 'item1' 
-      - 'item2' 
-      - 'item3'
+    jenkins_node_type: "agent_docker"
 
-  tasks:
-
-    - name: Test that loop works with a manual list
-      ping:
-        data: '{{item}}'
-      loop: "{{ plugins }}"
+  roles:
+    - agent_docker
 
 
    

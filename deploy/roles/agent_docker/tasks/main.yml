@@ -1,0 +1,55 @@
+---
+
+- name: ensure python 2.7 is installed
+  raw: sudo apt-get install -y python2.7 python-simplejson
+   
+# try pinging the system now
+- name: Trying if the Ansible communication works now (using a Ping)
+  ping:
+
+- name: Gathering facts
+  setup:
+
+# Difference between upgrade types: https://askubuntu.com/questions/194651/why-use-apt-get-upgrade-instead-of-apt-get-dist-upgrade
+- name: Update the system
+  become: true
+  apt:
+    update-cache: yes
+    upgrade: "yes"
+
+- name: set VIMs background to dark by default
+  lineinfile:
+    path: "/home/ubuntu/.vimrc"
+    create: yes
+    owner: "ubuntu"
+    group: "ubuntu"
+    mode: u=rw,g=r,o=r
+    insertafter: EOF
+    line: ':set background=dark'
+
+#- name: install docker
+- name: Add Docker GPG key
+  become: true
+  apt_key: url=https://download.docker.com/linux/ubuntu/gpg
+
+- name: Add Docker APT repository
+  become: true
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
+
+- name: Install list of packages
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+    - docker-ce
+    - docker-compose
+  
+# - name: create jenkins user
+# - name: add jenkins user to docker group
