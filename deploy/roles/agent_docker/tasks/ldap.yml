@@ -25,9 +25,27 @@
     group: "root"
     mode: u=rw,g=r,o=r
 
-# - name: LDAP start script
+- name: Copy the LDAP start script
+  become: yes
+  copy:
+    src: "start_ldap.sh"
+    dest: "/home/ldap/start_ldap.sh"
+    force: yes
+    backup: yes
+    owner: "root"
+    group: "root"
+    mode: u=rxw,g=r,o=r
 
-# - name: LDAP stop script
+- name: Copy the LDAP stop script
+  become: yes
+  copy:
+    src: "stop_ldap.sh"
+    dest: "/home/ldap/stop_ldap.sh"
+    force: yes
+    backup: yes
+    owner: "root"
+    group: "root"
+    mode: u=rxw,g=r,o=r
 
 - name: Copy GLauth LDAP config
   become: yes
@@ -40,4 +58,8 @@
     group: "root"
     mode: u=rw,g=r,o=r
 
-# start ldap
+- name: start LDAP
+  command: "./start_ldap.sh"
+  become: yes
+  args:
+    chdir: /home/ldap
