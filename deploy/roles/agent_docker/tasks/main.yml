@@ -27,29 +27,11 @@
     insertafter: EOF
     line: ':set background=dark'
 
-#- name: install docker
-- name: Add Docker GPG key
-  become: true
-  apt_key: url=https://download.docker.com/linux/ubuntu/gpg
+- name: Install Docker and Docker-compose binaries
+  include_tasks: docker.yml
 
-- name: Add Docker APT repository
-  become: true
-  apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
+- name: Install, configure and start the LDAP
+  include_tasks: ldap.yml
 
-- name: Install list of packages
-  become: true
-  apt:
-    name: "{{ item }}"
-    state: present
-    update_cache: yes
-  with_items:
-    - apt-transport-https
-    - ca-certificates
-    - curl
-    - software-properties-common
-    - docker-ce
-    - docker-compose
-  
 # - name: create jenkins user
 # - name: add jenkins user to docker group

@@ -1,0 +1,17 @@
+version: '3'
+
+# GLauth - a lightweight ldap server
+
+services:
+
+  glauth:
+    # Use me for released version
+    image: glauth/glauth:latest
+    # Use me for dev branch / unstable version
+    # image: glauth/glauth:develop
+    #restart: always
+    ports:
+      - 389:389
+      - 636:636
+    volumes:
+      - ./data/:/app/config/
