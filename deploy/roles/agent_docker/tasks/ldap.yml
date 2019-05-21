@@ -63,3 +63,24 @@
   become: yes
   args:
     chdir: /home/ldap
+
+- name: copy ldap test script
+  become: yes
+  copy:
+    src: "test_ldap.sh"
+    dest: "/home/ldap/data/test_ldap.sh"
+    force: yes
+    backup: yes
+    owner: "root"
+    group: "root"
+    mode: u=rwx,g=rx,o=rx
+
+
+- name: retrieve the ldap exec
+  become: true
+  get_url:
+    url: https://github.com/glauth/glauth/releases/download/v1.1.1/glauth64
+    dest: "/home/ldap/data/glauth64"
+    owner: "root"
+    group: "root"
+    mode: u=rwx,g=rx,o=rx

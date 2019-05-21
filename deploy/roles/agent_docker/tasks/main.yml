@@ -33,8 +33,8 @@
 - name: Install, configure and start the LDAP
   include_tasks: ldap.yml
 
-- name: Start setting up the IP Tables
-  include_tasks: roles/general/tasks/iptables-task.yml
+# - name: Start setting up the IP Tables
+#   include_tasks: roles/general/tasks/iptables-task.yml
 
 # - name: create jenkins user
 # - name: add jenkins user to docker group
