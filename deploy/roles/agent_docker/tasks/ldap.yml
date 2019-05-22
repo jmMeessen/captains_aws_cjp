@@ -68,19 +68,25 @@
   become: yes
   copy:
     src: "test_ldap.sh"
-    dest: "/home/ldap/data/test_ldap.sh"
+    dest: "/home/ldap/test_ldap.sh"
     force: yes
     backup: yes
     owner: "root"
     group: "root"
     mode: u=rwx,g=rx,o=rx
 
+- name: Install ldap-utils (test the LDAP)
+  become: true
+  apt:
+    name: "ldap-utils"
+    state: present
+    update_cache: yes
 
 - name: retrieve the ldap exec
   become: true
   get_url:
     url: https://github.com/glauth/glauth/releases/download/v1.1.1/glauth64
-    dest: "/home/ldap/data/glauth64"
+    dest: "/home/ldap/glauth64"
     owner: "root"
     group: "root"
     mode: u=rwx,g=rx,o=rx

@@ -71,10 +71,10 @@
     state: directory
     owner: "{{ jenkins_user }}"
     group: "{{ jenkins_user }}"
-    mode: u=rwx,g=rx,o=rx
+    mode: "u=rwx,g=rx,o=rx"
 
 - name: Prepare everything to load the license on CJOC
-  include_tasks: load-license.yml the_jenkins_user=cloudbees-core-oc
+  include_tasks: load-license.yml
   when: jenkins_node_type is search("cjoc")
 
 - name: Load initial user creation and security settings
