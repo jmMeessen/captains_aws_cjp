@@ -5,6 +5,7 @@
 
   vars:
     jenkins_node_type: "agent_docker"
+    ansible_python_interpreter: auto
 
   roles:
     - agent_docker
@@ -17,6 +18,7 @@
 
   vars:
     jenkins_node_type: "cjoc"
+    ansible_python_interpreter: auto
 
   roles:
     - general
@@ -31,6 +33,7 @@
 
   vars:
     jenkins_node_type: "master"
+    ansible_python_interpreter: auto
 
   roles:
     - general
