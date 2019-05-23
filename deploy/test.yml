@@ -4,6 +4,7 @@
 
   vars:
     jenkins_node_type: "agent_docker"
+    ansible_python_interpreter: auto
 
   roles:
     - agent_docker

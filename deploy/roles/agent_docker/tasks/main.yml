@@ -1,7 +1,7 @@
 ---
 
-- name: ensure python 2.7 is installed
-  raw: sudo apt-get install -y python2.7 python-simplejson
+# - name: ensure python 2.7 is installed
+#   raw: sudo apt-get install -y python2.7 python-simplejson
    
 # try pinging the system now
 - name: Trying if the Ansible communication works now (using a Ping)
