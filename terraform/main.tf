@@ -5,7 +5,7 @@ provider "aws" {
 
 resource "aws_instance" "jmm_cjoc" {
   ami                         = "${data.aws_ami.ubuntu.id}"
-  instance_type               = "t2.medium"
+  instance_type               = "t3.medium"
   key_name                    = "${aws_key_pair.my-aws-key.key_name}"
   associate_public_ip_address = true
 
@@ -23,7 +23,7 @@ resource "aws_instance" "jmm_cjoc" {
 
 resource "aws_instance" "jmm_client_master" {
   ami                         = "${data.aws_ami.ubuntu.id}"
-  instance_type               = "t2.medium"
+  instance_type               = "t3.medium"
   key_name                    = "${aws_key_pair.my-aws-key.key_name}"
   associate_public_ip_address = true
 
@@ -41,7 +41,7 @@ resource "aws_instance" "jmm_client_master" {
 
 resource "aws_instance" "jmm_agent1" {
   ami                         = "${data.aws_ami.ubuntu.id}"
-  instance_type               = "t2.medium"
+  instance_type               = "t3.medium"
   key_name                    = "${aws_key_pair.my-aws-key.key_name}"
   associate_public_ip_address = true
 
@@ -59,7 +59,7 @@ resource "aws_instance" "jmm_agent1" {
 
 resource "aws_instance" "jmm_agent_docker" {
   ami                         = "${data.aws_ami.ubuntu.id}"
-  instance_type               = "t2.medium"
+  instance_type               = "t3.medium"
   key_name                    = "${aws_key_pair.my-aws-key.key_name}"
   associate_public_ip_address = true
 
