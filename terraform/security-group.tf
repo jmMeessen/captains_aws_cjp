@@ -30,20 +30,6 @@ resource "aws_security_group" "jmm_general_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-    egress {
-    from_port   = 50001
-    to_port     = 50001
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    from_port   = 50001
-    to_port     = 50001
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
   ingress {
     from_port   = 22
     to_port     = 22
@@ -51,11 +37,17 @@ resource "aws_security_group" "jmm_general_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-    egress {
+  egress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = -1
+    to_port = -1
+    protocol = "icmp"
   }
 }
 
