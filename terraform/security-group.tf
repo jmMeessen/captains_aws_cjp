@@ -45,10 +45,12 @@ resource "aws_security_group" "jmm_general_sg" {
   }
 
   ingress {
-    from_port = -1
-    to_port = -1
+    from_port = 8
+    to_port = 0
     protocol = "icmp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
+
 }
 
 resource "aws_security_group" "jmm_cjoc_sg" {
