@@ -18,17 +18,13 @@
     mode: u=rw,g=r,o=r
   when: jenkins_node_type is search("cjoc")
 
-#====== move this out
 
-- name: "get DNS name for the CJOC endpoint "
-  command: "terraform output -state=../terraform/terraform.tfstate Jmm_cjoc_dns"
-  delegate_to: localhost
-  register: full_cjoc_dns_name
-
-- name: "get DNS name for the CM endpoint "
-  command: "terraform output -state=../terraform/terraform.tfstate Jmm_master_dns"
-  delegate_to: localhost
-  register: full_cm_dns_name
+- name: Load the full DNS names of the Infra into variables
+  set_fact:
+      full_cjoc_dns_name: "{{ lookup('env','cjoc_dns') }}"
+      full_cm_dns_name: "{{ lookup('env','cm_dns') }}"
+      full_agent1_dns_name: "{{ lookup('env','agent1_dns') }}"
+      full_agent_docker_dns_name: "{{ lookup('env','agent_docker_dns') }}"
 
 - name: Copy and update the initial configuration before first startup (Master)
   #Proceeding this way is important so that the noWizard parameter works properly
@@ -43,7 +39,6 @@
     mode: u=rw,g=r,o=r
   when: jenkins_node_type is search("master")
 
-  #======
 
 - name: Add the {{ option_friendly_name }} APT Key
   become: true

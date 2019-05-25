@@ -12,7 +12,7 @@ logger.info("-----> Set Jenkin's URL <-----")
 // parameters
 def jenkinsParameters = [
   email:  'Jmm\'s Jenkins Admin <jmeessen@cloudbees.com>',
-  url:    'http://{{ full_dns_name.stdout }}/'
+  url:    'http://{{ full_dns_name.content }}/'
 ]
 
 // get Jenkins location configuration

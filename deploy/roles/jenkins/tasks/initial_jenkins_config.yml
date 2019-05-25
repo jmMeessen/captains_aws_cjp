@@ -14,12 +14,36 @@
     group: "{{ jenkins_user }}"
     mode: u=rw,g=r,o=r   
 
-- name: "get DNS name for {{ terraform_dns_reference }} "
-  command: "terraform output -state=../terraform/terraform.tfstate {{ terraform_dns_reference }}"
-  delegate_to: localhost
-  register: full_dns_name
+# - name: initialize the DNS name
+#   set_fact:
+#     full_dns_name: "bad"
 
-- name: "Update the set URL groovy ({{ full_dns_name.stdout }}) and copy it to the target directory"
+# - name: load the DNS name if we are handling the CJOC
+#   set_fact:
+#     full_dns_name: "{{ full_cjoc_dns_name }}"
+#     when: dns_reference == "cjoc_dns"
+
+# - name: load the DNS name if we are handling the CM
+#   set_fact:
+#     full_dns_name: "{{ full_cm_dns_name }}"
+#     when: dns_reference == "cm_dns"
+
+- name: retrieve the full DNS name of the host we are on
+  uri: 
+    url: http://169.254.169.254/latest/meta-data/public-hostname
+    return_content: yes
+  register: full_dns_name
+  
+- name: display loaded DNS name
+  debug:
+    var: full_dns_name
+
+# - name: "get DNS name for {{ dns_reference }} "
+#   command: "terraform output -state=../terraform/terraform.tfstate {{ terraform_dns_reference }}"
+#   delegate_to: localhost
+#   register: full_dns_name
+
+- name: "Update the set URL groovy ({{ full_dns_name.content}}) and copy it to the target directory"
   become: true
   template: 
     src: "set_url.groovy.j2"

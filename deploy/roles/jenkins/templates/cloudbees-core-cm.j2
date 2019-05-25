@@ -11,8 +11,8 @@ NAME=cloudbees-core-cm
 JAVA_ARGS='-Djava.awt.headless=true \
 -Djenkins.install.runSetupWizard=false \
 -Dcb.BeekeeperProp.autoInstallIncremental=true \
--DMASTER_ENDPOINT="http://{{ full_cm_dns_name.stdout }}" \
--DMASTER_OPERATIONSCENTER_ENDPOINT="http://{{ full_cjoc_dns_name.stdout }}" \
+-DMASTER_ENDPOINT="http://{{ full_cm_dns_name }}" \
+-DMASTER_OPERATIONSCENTER_ENDPOINT="http://{{ full_cjoc_dns_name }}" \
 -DMASTER_INDEX="1" -DMASTER_NAME="CM-1" -DMASTER_GRANT_ID="1-CM-1"'
 
 #JAVA_ARGS="-Xmx256m"
