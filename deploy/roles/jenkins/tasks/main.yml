@@ -60,20 +60,30 @@
     name: "{{ package_name }}"
     state: restarted
 
-
+#We do not specify the controler (wildcard) as the name is not stable on EC2
 - name: redirect the traffic from 80 to {{ used_port }} with IPtables
   become: yes
   iptables:
     table: nat
     chain: PREROUTING
-    in_interface: eth0
     protocol: tcp
     match: tcp
-    destination_port: 80
+    destination_port: "80"
     jump: REDIRECT
     to_ports: "{{ used_port }}"
-    comment: "Redirect web traffic to port {{ used_port }}"
+    #comment: "Redirect web traffic to port {{ used_port }}"
 
+- name: Second part of the redirection from 80 to {{ used_port }}
+  become: yes
+  iptables:
+    table: nat
+    chain: OUTPUT
+    protocol: tcp
+    match: tcp
+    destination: "0.0.0.0/0"
+    destination_port: "80"
+    jump: REDIRECT
+    to_ports: "{{ used_port }}"
 
 - name: "wait for the port {{ used_port }} to be available"
   wait_for: 
@@ -84,7 +94,7 @@
 - name: wait for jenkins to be up
   uri: 
     url: "http://localhost:{{ used_port }}/login" 
-    status_code: 200 
+    status_code: "200" 
   register: result
   until: result.status == 200
   retries: 60

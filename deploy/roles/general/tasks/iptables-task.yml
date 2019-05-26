@@ -32,7 +32,7 @@
   become: yes
   iptables:
     chain: INPUT
-    destination_port: 22
+    destination_port: "22"
     jump: ACCEPT
     protocol: tcp
 
@@ -40,7 +40,7 @@
   become: yes
   iptables:
     chain: INPUT
-    destination_port: 80
+    destination_port: "80"
     jump: ACCEPT
     protocol: tcp
 
@@ -48,7 +48,7 @@
   become: yes
   iptables:
     chain: INPUT
-    destination_port: 443
+    destination_port: "443"
     jump: ACCEPT
     protocol: tcp
 
@@ -57,7 +57,7 @@
   become: yes
   iptables:
     chain: INPUT
-    destination_port: 50000
+    destination_port: "50000"
     jump: ACCEPT
     protocol: tcp
 
@@ -66,7 +66,7 @@
   become: yes
   iptables:
     chain: INPUT
-    destination_port: 10200
+    destination_port: "10200"
     jump: ACCEPT
     protocol: tcp
 
