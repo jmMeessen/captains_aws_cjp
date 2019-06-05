@@ -51,6 +51,21 @@ resource "aws_security_group" "jmm_general_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  #Nexus port
+  egress {
+    from_port   = 8081
+    to_port     = 8081
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 8081
+    to_port     = 8081
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
 }
 
 resource "aws_security_group" "jmm_cjoc_sg" {
