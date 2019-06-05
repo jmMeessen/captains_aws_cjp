@@ -33,7 +33,7 @@
   become: yes
   copy:
     src: "nexus_stop.sh"
-    dest: "/home/nexus/ldap_stop.sh"
+    dest: "/home/nexus/nexus_stop.sh"
     force: yes
     backup: yes
     owner: "root"
