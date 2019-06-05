@@ -136,6 +136,13 @@
     force: yes
     mode: u=rwx,g=rx,o=rx
 
+- name: Copy a README to explain how to use the CLI command
+  copy:
+    src: "remote-CLI-readme.txt"
+    dest: "{{jenkins_cfgmgt_dir}}/CLI_README.txt"
+    force: yes
+    mode: u=rwx,g=rx,o=rx    
+
 # NOTE: doesn't work on Client Master
 # - name: copy jenkins-cli .jar to cfgMgt directory
 #   get_url:
