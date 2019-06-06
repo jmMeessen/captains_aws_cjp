@@ -1,0 +1,20 @@
+cjoc_license_key: |
+  -----BEGIN RSA PRIVATE KEY-----
+  MIIEpAIBAAKCAQEAyQu5oxxRNwmRq6JGmzh3UuYfwnE3pNnGJEQPtmZHp9seVSiO
+  nn4C9FLgrZJB0jgA38lgrZfwNR2/GJkv6SQVbmRNlDLwmcpuPb7ptNtbOr0tEqBZ
+  (...)
+  ErzU1Vf4praOggflvmDycT++0lERaZ4yPJd0sVvn0yYpVazHyNLcBSE07wOOr6cx
+  eU2oORJ2X70WtRyvtXuRstu7TsvAkpy7J32R4ia0TyWDLCHdjfhLzg==
+  -----END RSA PRIVATE KEY-----
+
+cjoc_license_certificate: |
+  -----BEGIN CERTIFICATE-----
+  MIIF+jCCBOKgAwIBAgIEAN6BGDANBgkqhkiG9w0BAQUFADCBsTELMAkGA1UEBhMC
+  VVMxCzAJBgNVBAgTAkNBMREwDwYDVQQHEwhTYW4gSm9zZTEWMBQGA1UEChMNSW5m
+  (...)
+  nJJDid2HAzaRvZl2ZBlHhREuGE50PEx5c6MPaFMxhNjasplPJLwbESAgIeF/Pq97
+  51cEVGm8qqnoxcEvVf/ehV6eBsExnYVO1rUhltNUqX+vAknOMqVdHaxlXkxRVA==
+  -----END CERTIFICATE-----
+
+# Use "ansible-vault edit" to edit or "ansible-vault encrypt" to encrypt 
+
