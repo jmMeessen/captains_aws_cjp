@@ -26,6 +26,7 @@
       full_agent1_dns_name: "{{ lookup('env','agent1_dns') }}"
       full_agent_docker_dns_name: "{{ lookup('env','agent_docker_dns') }}"
 
+
 - name: Copy and update the initial configuration before first startup (Master)
   #Proceeding this way is important so that the noWizard parameter works properly
   become: true
