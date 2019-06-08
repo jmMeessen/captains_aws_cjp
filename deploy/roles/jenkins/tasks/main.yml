@@ -95,20 +95,7 @@
     destination_port: "80"
     jump: REDIRECT
     to_ports: "{{ used_port }}"
-    #comment: "Redirect web traffic to port {{ used_port }}"
-
-# - name: Second part of the redirection from 80 to {{ used_port }}
-#   become: yes
-#   iptables:
-#     table: nat
-#     chain: OUTPUT
-#     protocol: tcp
-#     match: tcp
-#     destination: "0.0.0.0/0"
-#     destination_port: "80"
-#     jump: REDIRECT
-#     to_ports: "{{ used_port }}"
-
+    comment: "Redirect web traffic to port {{ used_port }}"
 
 - name: "wait for the port {{ used_port }} to be available"
   wait_for: 
@@ -128,8 +115,6 @@
 - name: register the Jenkins SSH server public key in the known_hosts file
   shell: "ssh-keyscan -t rsa,dsa -p {{ sshd_port }} localhost > ~/.ssh/known_hosts"
 
-## ---> used for debuging
-
 - name: Create a CLI command varialble on remote (for debug purposes)
   template:
     src: "remote_CLI_config.j2"
@@ -144,21 +129,33 @@
     force: yes
     mode: u=rwx,g=rx,o=rx    
 
-# NOTE: doesn't work on Client Master
-# - name: copy jenkins-cli .jar to cfgMgt directory
-#   get_url:
-#     url: "http://localhost:{{used_port}}/jnlpJars/jenkins-cli.jar"
-#     dest: "{{jenkins_cfgmgt_dir}}/jenkins-cli.jar"
+# NOTE: doesn't work correctly on Client Master
+- name: copy jenkins-cli.jar to cfgMgt directory
+  get_url:
+    url: "http://localhost:{{ used_port }}/jnlpJars/jenkins-cli.jar"
+    dest: "{{jenkins_cfgmgt_dir}}/jenkins-cli.jar"
+  ignore_errors: yes  
 
-# - name: create command line
-
-## <--- used for debuging
+# NOTE: doesn't work correctly on Client Master
+- name: copy jenkins-cli.jar to cfgMgt directory
+  get_url:
+    url: "http://{{ full_cjoc_dns_name }}/jnlpJars/jenkins-cli.jar"
+    dest: "{{jenkins_cfgmgt_dir}}/jenkins-cli.jar"
+  ignore_errors: yes  
 
 - name: "create \"{{ jenkins_cfgmgt_script_dir }}\" to store the script executed by these scripts"
   file:
     path: "{{ jenkins_cfgmgt_script_dir }}"
     state: directory
     mode: u=rwx,g=rx,o=rx
+
+- name: "Check if port {{ sshd_port }} (Jenkins CLI SSH server) is accessible from current host"
+  wait_for:
+    port: "{{ sshd_port }}"
+    state: started         # Port should be open
+    delay: 0               # No wait before first check (sec)
+    timeout: 60            # Stop checking after timeout (sec)
+  ignore_errors: yes    
 
 - name: Install default plugins
   shell: "{{ CLI_command }} install-plugin {{item}} -deploy"
