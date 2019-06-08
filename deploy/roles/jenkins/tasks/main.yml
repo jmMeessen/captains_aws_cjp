@@ -97,17 +97,17 @@
     to_ports: "{{ used_port }}"
     #comment: "Redirect web traffic to port {{ used_port }}"
 
-- name: Second part of the redirection from 80 to {{ used_port }}
-  become: yes
-  iptables:
-    table: nat
-    chain: OUTPUT
-    protocol: tcp
-    match: tcp
-    destination: "0.0.0.0/0"
-    destination_port: "80"
-    jump: REDIRECT
-    to_ports: "{{ used_port }}"
+# - name: Second part of the redirection from 80 to {{ used_port }}
+#   become: yes
+#   iptables:
+#     table: nat
+#     chain: OUTPUT
+#     protocol: tcp
+#     match: tcp
+#     destination: "0.0.0.0/0"
+#     destination_port: "80"
+#     jump: REDIRECT
+#     to_ports: "{{ used_port }}"
 
 
 - name: "wait for the port {{ used_port }} to be available"
