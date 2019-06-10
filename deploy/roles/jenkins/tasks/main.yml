@@ -164,3 +164,11 @@
 - name: create the Client Master
   include_tasks: create-client-master.yml
   when: jenkins_node_type is search("cjoc")
+
+- name: Copy the plugin catalog
+  template:
+    src: "plugin_catalog.j2"
+    dest: "{{jenkins_cfgmgt_dir}}/plugin_catalog.json"
+    force: yes
+    mode: u=rwx,g=rx,o=rx
+  when: jenkins_node_type is search("cjoc")
