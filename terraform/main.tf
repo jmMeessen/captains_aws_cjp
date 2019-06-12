@@ -18,6 +18,7 @@ resource "aws_instance" "jmm_cjoc" {
     Name = "jmm_cjoc"
     Role = "test"
     Owner = "Jmm"
+    "CB:Owner" = "user:Jmm"
   }
 }
 
@@ -36,6 +37,7 @@ resource "aws_instance" "jmm_client_master" {
     Name = "jmm_client_master"
     Role = "test"
     Owner = "Jmm"
+    "CB:Owner" = "user:Jmm"
   }
 }
 
@@ -54,6 +56,7 @@ resource "aws_instance" "jmm_agent1" {
     Name = "jmm_agent1"
     Role = "test"
     Owner = "Jmm"
+    "CB:Owner" = "user:Jmm"
   }
 }
 
@@ -72,5 +75,6 @@ resource "aws_instance" "jmm_agent_docker" {
     Name = "jmm_agent_docker"
     Role = "test"
     Owner = "Jmm"
+    "CB:Owner" = "user:Jmm"
   }
 }
