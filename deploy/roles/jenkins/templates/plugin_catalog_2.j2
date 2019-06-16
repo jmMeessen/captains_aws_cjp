@@ -1,0 +1,33 @@
+{
+    "type" : "plugin-catalog",
+    "version" : "1",
+    "name" : "my-plugin-catalog",
+    "displayName" : "My Plugin Catalog",
+    "configurations" : [
+        {
+            "description" : "My Plugin Catalog for Masters versions 2.121 or greater",
+            "prerequisites": {
+                "productVersion": "[2.121,)"
+            },
+            "includePlugins" : {
+                "beer": {
+                    "groupId": "org.jenkins-ci.plugins",
+                    "version" : "1.1"
+                },
+                "build-time-blame": {
+                    "groupId": "org.jenkins-ci.plugins",
+                    "version" : "1.2.0"
+                },
+                "timestamper": {
+                    "groupId": "org.jenkins-ci.plugins",
+                    "version" : "1.9"
+                }
+            }        }
+    ],
+    "settings": {
+        "repository": {
+            "layout": "maven2",
+            "url": "http://{{ full_agent_docker_dns_name }}:8081/repository/Jenkins/"
+        }
+    }
+}
