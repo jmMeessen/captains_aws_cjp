@@ -26,9 +26,9 @@ As always, should you be caught or killed, the Secretary will disavow any knowle
 
 * observe the warning
 
+* configure a second plugin `build-time-blame (1.2.0)`(this one has dependency: `timestamper (1.9)`)
 
-build-time-blame (1.2.0)
-timestamper
+
 
 ----
 * Nexus
@@ -42,8 +42,33 @@ timestamper
 * https://go.cloudbees.com/docs/solutions/use-cases/managing-cloudbees-core-plugins-in-a-secured-environment/
 * https://go.cloudbees.com/docs/cloudbees-core/operations-center-admin-guide/managing-masters/#configuring-plugin-catalogs
 
+## Error when executing plugin catalog commands in SSH.
 ubuntu@ip-172-31-69-102:~$ $JENKINS_CLI plugin-catalog --put <plugin_catalog.json
 {"id":"my-plugin-catalog","message":"Catalog updated correctly","status":"SUCCESS"}org.apache.sshd.common.SshException: flush(ChannelOutputStream[ChannelSession[id=0, recipient=0]-ServerSessionImpl[Jenkins_cfg@/127.0.0.1:53446]] SSH_MSG_CHANNEL_DATA) length=0 - stream is already closed
 	at org.apache.sshd.common.channel.ChannelOutputStream.flush(ChannelOutputStream.java:169)
 	at org.jenkinsci.main.modules.sshd.AsynchronousCommand$1.run(AsynchronousCommand.java:114)
 	at java.lang.Thread.run(Thread.java:748)
+
+## Use cases
+* User has an existing master and want to enable Plugin Catalog
+* User has new system and wants to add a new plugin
+* User needs to upgrade a plugin (security update)
+
+## Question / FAQ
+* Plugin version range ?
+* How to retrieve the Maven coordinates of a tier three plugin ?
+* how to list the plugins distributed with the envelope?
+
+## Todo
+* check the Tier status of
+    * beer plugin
+    * chucknoris plugin
+    * build-time-blame
+
+## Demo to do
+* install everything
+* start nexus
+* Start an HTTP session on CJOC and CM
+* sever the Internet link for the Client master
+* prove that the master can't download plugins from the internet
+* install plugin catalog
