@@ -31,6 +31,7 @@ resource "aws_instance" "jmm_client_master" {
   security_groups = [
     "${aws_security_group.jmm_general_sg.name}",
     "${aws_security_group.jmm_master_sg.name}",
+    "${aws_security_group.jmm_master_outbound_sg.name}",
   ]
 
   tags {
@@ -69,6 +70,7 @@ resource "aws_instance" "jmm_agent_docker" {
   security_groups = [
     "${aws_security_group.jmm_general_sg.name}",
     "${aws_security_group.jmm_master_sg.name}",
+    "${aws_security_group.jmm_agent_docker_sg.name}"
   ]
 
   tags {
