@@ -67,8 +67,9 @@ ubuntu@ip-172-31-69-102:~$ $JENKINS_CLI plugin-catalog --put <plugin_catalog.jso
 
 ## Demo to do
 * install everything
-* start nexus
+* start nexus and start session on it
 * Start an HTTP session on CJOC and CM
 * sever the Internet link for the Client master
-* prove that the master can't download plugins from the internet
+* prove that the master can't download plugins from the internet. Install 
 * install plugin catalog
+* show that the version availalble for the Beer plugin is the 1.1
