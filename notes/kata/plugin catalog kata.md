@@ -58,6 +58,7 @@ ubuntu@ip-172-31-69-102:~$ $JENKINS_CLI plugin-catalog --put <plugin_catalog.jso
 * Plugin version range ?
 * How to retrieve the Maven coordinates of a tier three plugin ?
 * how to list the plugins distributed with the envelope?
+* how to add the Full name or comment for a plugin?
 
 ## Todo
 * check the Tier status of
