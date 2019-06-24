@@ -30,6 +30,12 @@
     update_cache: yes
     name: openjdk-8-jre
 
+- name: Install JQ (Jason Query tool)
+  become: true
+  apt:
+    update_cache: yes
+    name: jq
+
 - name: set VIMs background to dark by default
   lineinfile:
     path: "/home/ubuntu/.vimrc"
