@@ -37,6 +37,8 @@
 * change the plugin catalog definition to 1.2.0 and push new catalog
 * there should be a warning that the new version must be installed 
 
+note: to retrieve the coordinates of OSS plugins `curl --silent --location https://updates.jenkins-ci.org/current/update-center.actual.json | jq -r '.plugins[] | .gav'`
+
 ## Demo Cluster Operation
 * reference https://support.cloudbees.com/hc/en-us/articles/209430507-How-to-push-plugins-to-a-new-client-Master-added-to-a-JOC-
 * on CJOC, create a Cluster Operation (ex: `pushPluginToMaster`) from the `New Item` menue.
