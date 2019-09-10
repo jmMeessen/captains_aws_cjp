@@ -7,7 +7,6 @@ import hudson.security.csrf.DefaultCrumbIssuer
 import jenkins.model.Jenkins
 import jenkins.model.JenkinsLocationConfiguration
 import org.kohsuke.stapler.StaplerProxy
-import jenkins.CLI
 import jenkins.security.s2m.AdminWhitelistRule
 import java.util.logging.Logger
 
@@ -42,7 +41,6 @@ else {
 }
 
 logger.info("-----> Configuring Remoting (JNLP4 only, no Remoting CLI) <-----")
-CLI.get().enabled = false
 Jenkins.instance.agentProtocols = new HashSet<String>(["JNLP4-connect","OperationsCenter2"])
 Jenkins.instance.getExtensionList(StaplerProxy.class)
     .get(AdminWhitelistRule.class)
