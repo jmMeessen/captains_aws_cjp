@@ -26,8 +26,8 @@
 * prove that the master can't download plugins from the internet. 
     * Install the Build Time Blame plugin
 * Configure the Nexus
-    * NOTE: the latest version of NEXUS runs the wizard and doesn't have a default password. To retrieve it, use `docker-compose exec nexus cat /nexus-data/admin.password`
-    * create proxy MAVEN2 repository named `Jenkins` and pointing to `https://repo.cloudbees.com/content/repositories/dev-connect/`
+    * NOTE: the latest version of NEXUS runs the wizard and doesn't have a default password. To retrieve it, use `docker-compose exec nexus cat /nexus-data/admin.password`. For pinned version, User is `admin` and password is `admin123`.
+    * create *proxy MAVEN2 repository* named `Jenkins` and pointing to `https://repo.cloudbees.com/content/repositories/dev-connect/`
 * install plugin catalog (show the plugin catalog definition)
     * Load the symbols: `. ./load_CLI_command.sh`
     * Load on CJOC with `$JENKINS_CLI plugin-catalog --put <plugin_catalog.json | jq '.'`
