@@ -19,14 +19,14 @@
 
 ## Helper commands
 
+* Starting SSH or HTTP sessions
+  * `open_ssh.sh` opens a SSH session to CJOC, Client Master, Agent1 and Agent_docker node.
+  * `open_http.sh` opens an HTTP session to CJOC, Client Master and Nexus.
+
 * CJOC
-  * `cjoc_http.sh`: opens the CJOC in the browser
-  * `cjoc_ssh.sh`: opens an SSH session on the CJOC machine
   * `cjoc_scp.sh`: executes a file copy
   * `cjoc_display_admin_token.sh`: displays the CJOC Admin Token (useful only when using the wizard)
 * Client Master
-  * `cm_http.sh`: opens the Client Master in the browser
-  * `cm_ssh.sh`: opens an SSH session on the Client Master machine
   * `cm_scp.sh`: executes a file copy
   * `cm_display_admin_token.sh`: displays the Client Master Admin Token (useful only when using the wizard)
 
