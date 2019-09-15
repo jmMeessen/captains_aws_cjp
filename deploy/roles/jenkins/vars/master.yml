@@ -44,3 +44,4 @@ default_plugins:
   - workflow-aggregator
   - ldap
   - git
+  - configuration-as-code

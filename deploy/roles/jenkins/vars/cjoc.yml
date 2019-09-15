@@ -34,3 +34,4 @@ default_plugins:
   - mailer
   - antisamy-markup-formatter
   - suppress-stack-trace
+  - configuration-as-code
