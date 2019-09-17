@@ -1,0 +1,42 @@
+---
+
+# try pinging the system now
+- name: Trying if the Ansible communication works now (using a Ping)
+  ping:
+
+- name: Gathering facts
+  setup:
+
+# Difference between upgrade types: https://askubuntu.com/questions/194651/why-use-apt-get-upgrade-instead-of-apt-get-dist-upgrade
+- name: Update the system
+  become: true
+  apt:
+    update-cache: yes
+    upgrade: "yes"
+
+- name: Install OpenJdk 8 (JRE)
+  become: true
+  apt:
+    update_cache: yes
+    name: openjdk-8-jre
+
+- name: set VIMs background to dark by default
+  lineinfile:
+    path: "/home/ubuntu/.vimrc"
+    create: yes
+    owner: "ubuntu"
+    group: "ubuntu"
+    mode: u=rw,g=r,o=r
+    insertafter: EOF
+    line: ':set background=dark'
+
+#create the jenkins user and directory 
+# https://wiki.jenkins.io/display/JENKINS/Distributed+builds
+# http://minimum-viable-automation.com/ansible/use-ansible-create-user-accounts-setup-ssh-keys/
+# https://gist.github.com/fulv/3928d098e8c35af1cc5363a4d2d4fcd0
+# https://docs.ansible.com/ansible/latest/modules/user_module.html
+# `java -jar agent.jar -jnlpUrl http://ec2-100-24-209-228.compute-1.amazonaws.com/computer/Agent-1/slave-agent.jnlp -secret a3247f21578694502a55f92ec9024cd209103dd0ba291e858f5b85c96b4f8966 -workDir "/jenkins-agent-1/"`
+# https://jenkins-le-guide-complet.github.io/html/sect-master-slave-strategies.html
+# http://objis.com/installation-agent-jenkins/
+# https://support.cloudbees.com/hc/en-us/articles/115003929412?q=agent%20jnlp
+# https://support.cloudbees.com/hc/en-us/articles/207849467?q=agent%20jnlp

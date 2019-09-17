@@ -1,20 +1,20 @@
   
-- hosts: jmm_agent_docker
+- hosts: jmm_agent1
 
   gather_facts: False
 
   vars:
-    jenkins_node_type: "agent_docker"
+    jenkins_node_type: "agent_jnlp"
     ansible_python_interpreter: auto
 
-  pre_tasks:
-    - name: "get DNS name for the CJOC endpoint "
-      command: "terraform output -state=../terraform/terraform.tfstate Jmm_cjoc_dns"
-      delegate_to: localhost
-      register: full_cjoc_dns_name
+  # pre_tasks:
+  #   - name: "get DNS name for the CJOC endpoint "
+  #     command: "terraform output -state=../terraform/terraform.tfstate Jmm_cjoc_dns"
+  #     delegate_to: localhost
+  #     register: full_cjoc_dns_name
 
   roles:
-    - agent_docker
+    - agent_jnlp
 
 
    
