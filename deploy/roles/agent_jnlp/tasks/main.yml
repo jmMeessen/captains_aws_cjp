@@ -30,7 +30,30 @@
     insertafter: EOF
     line: ':set background=dark'
 
-#create the jenkins user and directory 
+- name: create the jenkins user
+  become: true
+  user:
+    name: jenkins
+    shell: /bin/bash
+
+- name: Load the full DNS names of the Infra into variables
+  set_fact:
+      full_cjoc_dns_name: "{{ lookup('env','cjoc_dns') }}"
+      full_cm_dns_name: "{{ lookup('env','cm_dns') }}"
+      full_agent1_dns_name: "{{ lookup('env','agent1_dns') }}"
+      full_agent_docker_dns_name: "{{ lookup('env','agent_docker_dns') }}"
+
+- name: download the agent.jar from the client master
+  become: true
+  get_url:
+    url: "http://{{ full_cm_dns_name }}/jnlpJars/agent.jar"
+    dest: "/home/jenkins/agent.jar"
+    mode: '0440'
+    owner: "jenkins"
+    group: "jenkins"
+
+# CLI Command: reload-jcasc-configuration
+
 # https://wiki.jenkins.io/display/JENKINS/Distributed+builds
 # http://minimum-viable-automation.com/ansible/use-ansible-create-user-accounts-setup-ssh-keys/
 # https://gist.github.com/fulv/3928d098e8c35af1cc5363a4d2d4fcd0

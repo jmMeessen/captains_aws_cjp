@@ -1,0 +1,9 @@
+jenkins:
+  nodes:
+    - permanent:
+        labelString: "test"
+        mode: NORMAL
+        name: "test-agent"
+        remoteFS: "/home/jenkins"
+        launcher:
+          jnlp:
