@@ -39,6 +39,22 @@ java -jar jenkins-cli.jar -s http://localhost:8888  -auth admin:someAdminPass he
 ## retrieving files
 - cp  -i ~/.ssh/captains_aws_cjp ubuntu@18.205.114.45:/var/lib/cloudbees-core-oc/license.xml ./
 
+## Nexus auto configuration
+
+* objective: add a M2 repository proxy in Nexus
+* https://help.sonatype.com/repomanager3/rest-and-integration-api
+* https://github.com/sonatype-nexus-community/nexus-scripting-examples
+* https://stackoverflow.com/questions/41450338/trying-to-use-rest-api-to-create-repositories-in-sonatype-nexus
+
+example:
+
+```
+curl -X POST -u admin:admin123 --header 'Content-Type: application/json' \
+    http://127.0.0.1:8081/service/rest/v1/script \
+    -d '{"name":"npm","type":"groovy","content":"repository.createNpmHosted('\''npm-internal'\'');repository.createNpmProxy('\''npmjs-org'\'','\''https://registry.npmjs.org'\'');repository.createNpmGroup('\''npm-all'\'',['\''npmjs-org'\'','\''npm-internal'\''])"}'
+curl -X POST -u admin:admin123 --header "Content-Type: text/plain" 'http://127.0.0.1:80
+```
+
 
 
 
