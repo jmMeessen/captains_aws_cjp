@@ -1,0 +1,32 @@
+---
+
+- name: Add the path to the configuration file (.profile)
+  become: true
+  lineinfile:
+    path: "/var/lib/{{ jenkins_user }}/.profile"
+    create: yes
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
+    mode: u=rw,g=r,o=r
+    regexp: '^export CASC_JENKINS_CONFIG='
+    insertafter: EOF
+    line: 'export CASC_JENKINS_CONFIG=/var/lib/{{ jenkins_user }}/cfgAsCode/configuration.yaml'
+
+- name: create directory to store the confifuration
+  become: true
+  file:
+    path: "/var/lib/{{ jenkins_user }}/cfgAsCode"
+    state: directory
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
+    mode: u=rwx,g=rx,o=rx
+    
+- name: copy the configuration file
+  become: true
+  copy:
+    src: "JCasC-agents.yml"
+    dest: "/var/lib/{{ jenkins_user }}/cfgAsCode/JCasC-agents.yml"
+    force: yes
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
+    mode: u=rw,g=r,o=r

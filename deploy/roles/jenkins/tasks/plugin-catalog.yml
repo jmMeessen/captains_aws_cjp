@@ -1,0 +1,22 @@
+---
+
+- name: Copy the plugin catalog
+  template:
+    src: "plugin_catalog.j2"
+    dest: "{{jenkins_cfgmgt_dir}}/plugin_catalog.json"
+    force: yes
+    mode: u=rwx,g=rx,o=rx
+
+- name: Copy the second plugin catalog
+  template:
+    src: "plugin_catalog_2.j2"
+    dest: "{{jenkins_cfgmgt_dir}}/plugin_catalog_2.json"
+    force: yes
+    mode: u=rwx,g=rx,o=rx
+
+- name: Copy the third plugin catalog
+  template:
+    src: "plugin_catalog_test.j2"
+    dest: "{{jenkins_cfgmgt_dir}}/plugin_catalog_test.json"
+    force: yes
+    mode: u=rwx,g=rx,o=rx
