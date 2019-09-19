@@ -7,6 +7,9 @@ jenkins:
       remoteFS: "/home/jenkins"
       launcher:
         jnlp:
+          workDirSettings:
+            disabled: true
+
 
   # nodes:
   # - permanent:
