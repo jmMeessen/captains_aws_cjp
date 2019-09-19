@@ -76,6 +76,10 @@
 - name: Load initial user creation and security settings
   include_tasks: initial_jenkins_config.yml
 
+- name: configure Jenkins Configuration as Code
+  include_tasks: JCasC.yml
+  when: jenkins_node_type is search("master") 
+
 # This will load the properties and execute the initscripts 
 - name: restart the {{ package_name }} service 
   become: true
@@ -173,3 +177,27 @@
   include_tasks: JCasC.yml
   when: jenkins_node_type is search("master")
  
+- name: copy the JCasC configuration file
+  become: true
+  copy:
+    src: "JCasC-agents.yml"
+    dest: "/var/lib/{{ jenkins_user }}/cfgAsCode/JCasC-agents.yml"
+    force: yes
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
+    mode: u=rw,g=r,o=r
+  when: jenkins_node_type is search("master")
+
+- name: load the configuration
+  shell: "{{ CLI_command }} reload-jcasc-configuration"
+  when: jenkins_node_type is search("master")
+
+#jenkins.model.Jenkins.getInstance().getComputer("test-agent").getJnlpMac()
+
+# - hosts: serverB
+#   tasks:    
+#    - name: Copy Remote-To-Remote (from serverA to serverB)
+#      synchronize: src=/copy/from_serverA dest=/copy/to_serverB
+#      delegate_to: serverA
+# https://stackoverflow.com/questions/25505146/how-to-copy-files-between-two-nodes-using-ansible
+# https://stackoverflow.com/questions/23761479/how-can-i-check-via-a-script-or-a-plugin-in-jenkins-whether-a-slave-is-online-be
