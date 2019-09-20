@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+java -jar agent.jar -jnlpUrl http://{{ full_cm_dns_name }}/computer/test-agent/slave-agent.jnlp -secret {{ jnlp_secret.stdout }}

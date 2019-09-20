@@ -1,0 +1,20 @@
+---
+
+- name: copy the groovy script to retrieve the JNLP secret to the target server
+  copy:
+    src: "get_jnlp_agent_secret.groovy"
+    dest: "{{jenkins_cfgmgt_script_dir}}/get_jnlp_agent_secret.groovy"
+    force: yes
+    mode: u=rw,g=r,o=r
+
+- name: Execute the script to retrieve the secret
+  shell: "cat {{jenkins_cfgmgt_script_dir}}/get_jnlp_agent_secret.groovy | {{ CLI_command }} groovy ="
+  register: jnlp_secret
+
+- name: Copy the filled in the startup script
+  template:
+    src: "start_jnlp_agent.j2"
+    dest: "{{jenkins_cfgmgt_script_dir}}/start_jnlp_agent.sh"
+    force: no
+    backup: yes
+    mode: u=rw,g=r,o=r 
