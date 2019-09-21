@@ -48,11 +48,47 @@
   get_url:
     url: "http://{{ full_cm_dns_name }}/jnlpJars/agent.jar"
     dest: "/home/jenkins/agent.jar"
-    mode: '0440'
+    mode: "u=xrw,g=xr,o=xr"
     owner: "jenkins"
     group: "jenkins"
 
-# CLI Command: reload-jcasc-configuration
+- name: Capture the startup file we prapared on the Client Master
+  shell: "cat /home/ubuntu/jenkins_scripts/start_jnlp_agent.sh"
+  delegate_to: "{{ full_cm_dns_name }}"
+  register: jnlp_start_script_text
+
+- name: create file locally with what we captured
+  shell: "echo '{{ jnlp_start_script_text.stdout }}' >/home/ubuntu/start_jnlp_agent.sh"
+  args: 
+    creates: /home/ubuntu/start_jnlp_agent.sh
+
+- name: copy temporary startup file to definitive location
+  become: true
+  copy:
+    src: "/home/ubuntu/start_jnlp_agent.sh"
+    dest: "/home/jenkins/start_jnlp_agent.sh"
+    remote_src: yes
+    owner: "jenkins"
+    group: "jenkins"
+    mode: "u=xrw,g=xr,o=xr"
+
+- name: "create the directory to store the JNLP Agent log file"
+  become: true
+  file:
+    path: "/home/jenkins/logs"
+    state: directory
+    owner: "jenkins"
+    group: "jenkins"
+    mode: "u=xrw,g=xr,o=xr"
+
+# We should only execute if it is not running yet. But I didn't find a way to execute a "ps aux | grep ..." or pgrep. But there is no harm: the second start just fails.
+- name: "Start the JNLP agent"
+  become: yes
+  become_user: jenkins
+  shell: "cd /home/jenkins; nohup /home/jenkins/start_jnlp_agent.sh >>/home/jenkins/logs/jnlpAgent_stdout.log 2>>/home/jenkins/logs/jnlpAgent_stderr.log &"
+
+# https://stackoverflow.com/questions/25505146/how-to-copy-files-between-two-nodes-using-ansible
+# https://stackoverflow.com/questions/23761479/how-can-i-check-via-a-script-or-a-plugin-in-jenkins-whether-a-slave-is-online-be
 
 # https://wiki.jenkins.io/display/JENKINS/Distributed+builds
 # http://minimum-viable-automation.com/ansible/use-ansible-create-user-accounts-setup-ssh-keys/
