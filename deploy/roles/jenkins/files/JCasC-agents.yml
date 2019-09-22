@@ -3,7 +3,7 @@ jenkins:
   - permanent:
       labelString: "test"
       mode: NORMAL
-      name: "test-agent"
+      name: "jnlp-agent"
       remoteFS: "/home/jenkins"
       launcher:
         jnlp:
@@ -21,7 +21,7 @@ jenkins:
   #           failIfWorkDirIsMissing: false
   #           internalDir: "remoting"
   #           workDirPath: "C:\\J\\AW"
-  #     name: "test-agent"
+  #     name: "jnlp-agent"
   #     nodeDescription: "Agent that initiates its own connection to Jenkins"
   #     numExecutors: 3
   #     remoteFS: "/home/jenkins"
