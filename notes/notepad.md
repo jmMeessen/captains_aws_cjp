@@ -52,9 +52,25 @@ example:
 curl -X POST -u admin:admin123 --header 'Content-Type: application/json' \
     http://127.0.0.1:8081/service/rest/v1/script \
     -d '{"name":"npm","type":"groovy","content":"repository.createNpmHosted('\''npm-internal'\'');repository.createNpmProxy('\''npmjs-org'\'','\''https://registry.npmjs.org'\'');repository.createNpmGroup('\''npm-all'\'',['\''npmjs-org'\'','\''npm-internal'\''])"}'
-curl -X POST -u admin:admin123 --header "Content-Type: text/plain" 'http://127.0.0.1:80
+curl -X POST -u admin:admin123 --header "Content-Type: text/plain" 'http://127.0.0.1:8081/service/rest/v1/script/npm/run'
 ```
 
+  if (repository.repositoryManager.exists("jenkins")) {
+   repository.repositoryManager.delete(internalName)
+  }
 
+```
+curl -X POST -u admin:admin123 --header 'Content-Type: application/json' \
+    http://127.0.0.1:8081/service/rest/v1/script \
+    -d '{"name":"jenkins_a","type":"groovy","content":"repository.createMavenProxy('\''jenkins'\'','\''https://repo.cloudbees.com/content/repositories/dev-connect/'\'')"}'
+curl -X POST -u admin:admin123 --header "Content-Type: text/plain" 'http://127.0.0.1:8081/service/rest/v1/script/jenkins/run'
+```
+
+```
+curl -X PUT -u admin:admin123 --header 'Content-Type: application/json' \
+    http://127.0.0.1:8081/service/rest/v1/script \
+    -d '{"name":"jenkins_b","type":"groovy","content":"repository.createMavenProxy('\''jenkins'\'','\''https://repo.cloudbees.com/content/repositories/dev-connect/'\'')"}'
+curl -X POST -u admin:admin123 --header "Content-Type: text/plain" 'http://127.0.0.1:8081/service/rest/v1/script/jenkins_b/run'
+```
 
 
