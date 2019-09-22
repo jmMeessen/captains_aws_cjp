@@ -1,7 +1,7 @@
 jenkins:
   nodes:
   - permanent:
-      labelString: "test"
+      labelString: "jnlp"
       mode: NORMAL
       name: "jnlp-agent"
       remoteFS: "/home/jenkins"
@@ -9,20 +9,6 @@ jenkins:
         jnlp:
           workDirSettings:
             disabled: true
-
-
-  # nodes:
-  # - permanent:
-  #     labelString: "jnlp"
-  #     launcher:
-  #       jnlp:
-  #         workDirSettings:
-  #           disabled: false
-  #           failIfWorkDirIsMissing: false
-  #           internalDir: "remoting"
-  #           workDirPath: "C:\\J\\AW"
-  #     name: "jnlp-agent"
-  #     nodeDescription: "Agent that initiates its own connection to Jenkins"
-  #     numExecutors: 3
-  #     remoteFS: "/home/jenkins"
-  #     retentionStrategy: "always"
+      nodeDescription: "Agent that initiates its own connection to Jenkins"
+      retentionStrategy: "always"
+  numExecutors: 0
