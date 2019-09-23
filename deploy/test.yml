@@ -1,10 +1,10 @@
   
-- hosts: jmm_agent1
+- hosts: jmm_agent_docker
 
   gather_facts: False
 
   vars:
-    jenkins_node_type: "agent_jnlp"
+    jenkins_node_type: agent_docker"
     ansible_python_interpreter: auto
 
   # pre_tasks:
@@ -14,7 +14,8 @@
   #     register: full_cjoc_dns_name
 
   roles:
-    - agent_jnlp
+    - agent_docker
+    - docker_nexus
 
 
    

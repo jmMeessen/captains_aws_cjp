@@ -22,8 +22,8 @@
 - name: Copy the nexus start script
   become: yes
   copy:
-    src: "nexus_start.sh"
-    dest: "/home/nexus/nexus_start.sh"
+    src: "start_nexus.sh"
+    dest: "/home/nexus/start_nexus.sh"
     force: yes
     backup: yes
     owner: "root"
@@ -33,10 +33,16 @@
 - name: Copy the nexus stop script
   become: yes
   copy:
-    src: "nexus_stop.sh"
-    dest: "/home/nexus/nexus_stop.sh"
+    src: "stop_nexus.sh"
+    dest: "/home/nexus/stop_nexus.sh"
     force: yes
     backup: yes
     owner: "root"
     group: "root"
     mode: u=rxw,g=r,o=r
+
+- name: start the Nexus container
+  command: "./nexus_start.sh"
+  become: yes
+  args:
+    chdir: /home/nexus
