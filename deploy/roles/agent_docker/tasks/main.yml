@@ -27,11 +27,6 @@
 - name: Install Docker and Docker-compose binaries
   include_tasks: docker.yml
 
-- name: Install, configure and start the LDAP
-  include_tasks: ldap.yml
-
-- name: Install and configure the Nexus
-  include_tasks: nexus.yml
 
 # - name: Start setting up the IP Tables
 #   include_tasks: roles/general/tasks/iptables-task.yml

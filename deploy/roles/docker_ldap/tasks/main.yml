@@ -1,4 +1,5 @@
 ---
+# This playbook is supposed to run on a system with Docker enabled
 
 - name: Create directory for LDAP stuff
   become: yes

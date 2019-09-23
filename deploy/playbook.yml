@@ -9,6 +9,8 @@
 
   roles:
     - agent_docker
+    - docker_ldap
+    - docker_nexus
 
 
 - hosts: jmm_cjoc
@@ -23,7 +25,7 @@
   roles:
     - general
     - jenkins
-    #- JCasC
+   
 
 
 - hosts: jmm_client_master
@@ -38,7 +40,7 @@
   roles:
     - general
     - jenkins  
-    #- JCasC  
+
 
 - hosts: jmm_agent1
 
