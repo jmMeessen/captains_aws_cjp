@@ -11,7 +11,7 @@
 
 - to open the console on AWS:
   - `https://console.aws.amazon.com/iam/home?region=us-east-1#/users/jmeessen`
-  - switch to `infa-admin @ cloudbees-support`
+  - switch to `infra-admin @ cloudbees-ps`
 
 ## Initialize SSH (for Ansible and SSH direct connection)
 - generate an SSH key with `ssh-keygen -t rsa -b 2048 -v -f ~/.ssh/captains_aws_cjp`.
