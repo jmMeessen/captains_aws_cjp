@@ -1,10 +1,13 @@
 ---
 # This playbook is supposed to run on a system with Docker enabled
 
+- name: "Include definitions and constants" 
+  include_vars: "definitions.yml"
+
 - name: Create directory for Nexus stuff
   become: yes
   file:
-    path: "/home/nexus"
+    path: "{{ nexus_dir }}"
     state: directory
     mode: u=rwx,g=rx,o=rx
 
@@ -12,7 +15,7 @@
   become: yes
   copy:
     src: "nexus_docker-compose.yml"
-    dest: "/home/nexus/docker-compose.yml"
+    dest: "{{ nexus_dir }}/docker-compose.yml"
     force: no
     backup: yes
     owner: "root"
@@ -23,7 +26,7 @@
   become: yes
   copy:
     src: "start_nexus.sh"
-    dest: "/home/nexus/start_nexus.sh"
+    dest: "{{ nexus_dir }}/start_nexus.sh"
     force: yes
     backup: yes
     owner: "root"
@@ -34,7 +37,7 @@
   become: yes
   copy:
     src: "stop_nexus.sh"
-    dest: "/home/nexus/stop_nexus.sh"
+    dest: "{{ nexus_dir }}/stop_nexus.sh"
     force: yes
     backup: yes
     owner: "root"
@@ -45,13 +48,13 @@
   command: "./start_nexus.sh"
   become: yes
   args:
-    chdir: /home/nexus
+    chdir: {{ nexus_dir }}
 
 - name: Copy the nexus script loader
   become: yes
   copy:
     src: "load_nexus_script.sh"
-    dest: "/home/nexus/load_nexus_script.sh"
+    dest: "{{ nexus_dir }}/load_nexus_script.sh"
     force: yes
     backup: yes
     owner: "root"
@@ -62,7 +65,7 @@
   become: yes
   copy:
     src: "execute_nexus_script.sh"
-    dest: "/home/nexus/execute_nexus_script.sh"
+    dest: "{{ nexus_dir }}/execute_nexus_script.sh"
     force: yes
     backup: yes
     owner: "root"
@@ -82,11 +85,11 @@
   command: "./load_nexus_script.sh"
   become: yes
   args:
-    chdir: /home/nexus
+    chdir: {{ nexus_dir }}
 
 - name: execute the nexus script to configure the jenkins proxy repository
   command: "./execute_nexus_script.sh"
   become: yes
   args:
-    chdir: /home/nexus
+    chdir: {{ nexus_dir }}
   
