@@ -1,15 +1,15 @@
 # captains_aws_cjp
-My experiments with configuring a CJP on AWS
+My experiments with configuring a CloudBees Core for Traditional Platforms (ex CJP) on AWS with Ansible.
 
 ## TODO
-My current plan is 
+My current plan is:
 
-- [ ] (terraform) Spin two agent machines (regular and docker host)
-- [ ] (Ansible) harden the machines
-- [ ] (Ansible) implement Oauth authentication and SSO
-- [ ] (Ansible) spin fixed and specialized agents (ex Docker)
+- [ ] (terraform) Use a remote state (S3) file so that environment works from two laptops
+- [ ] (Ansible) start docker SSH agent
+- [ ] (Ansible) enable SSO with LDAP
 - [ ] (Ansible) populate automatically some reference jobs 
-- [ ] with Ansible, try out the JCasC on selected plugins. 
+- [ ] (Ansible) experiment with the latest CloudBees JCasC preview (2.176.4.3) 
+- [ ] (Ansible - improvement) Move as many constants to variable file
 
 ## references
 
