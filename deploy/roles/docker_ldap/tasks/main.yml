@@ -86,11 +86,3 @@
     state: present
     update_cache: yes
 
-# - name: retrieve the ldap exec
-#   become: true
-#   get_url:
-#     url: https://github.com/glauth/glauth/releases/download/v1.1.1/glauth64
-#     dest: "{{ ldap_dir }}/glauth64"
-#     owner: "root"
-#     group: "root"
-#     mode: u=rwx,g=rx,o=rx
