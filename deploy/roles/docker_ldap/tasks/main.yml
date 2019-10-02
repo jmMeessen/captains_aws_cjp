@@ -1,17 +1,20 @@
 ---
 # This playbook is supposed to run on a system with Docker enabled
 
+- name: "Include definitions and constants" 
+  include_vars: "constants.yml"
+
 - name: Create directory for LDAP stuff
   become: yes
   file:
-    path: "/home/ldap"
+    path: "{{ ldap_dir }}"
     state: directory
     mode: u=rwx,g=rx,o=rx
 
 - name: Create directory to store the LDAP configuration
   become: yes
   file:
-    path: "/home/ldap/data"
+    path: "{{ ldap_dir }}/data"
     state: directory
     mode: u=rwx,g=rx,o=rx
 
@@ -19,7 +22,7 @@
   become: yes
   copy:
     src: "ldap_docker-compose.yml"
-    dest: "/home/ldap/docker-compose.yml"
+    dest: "{{ ldap_dir }}/docker-compose.yml"
     force: no
     backup: yes
     owner: "root"
@@ -30,7 +33,7 @@
   become: yes
   copy:
     src: "start_ldap.sh"
-    dest: "/home/ldap/start_ldap.sh"
+    dest: "{{ ldap_dir }}/start_ldap.sh"
     force: yes
     backup: yes
     owner: "root"
@@ -41,7 +44,7 @@
   become: yes
   copy:
     src: "stop_ldap.sh"
-    dest: "/home/ldap/stop_ldap.sh"
+    dest: "{{ ldap_dir }}/stop_ldap.sh"
     force: yes
     backup: yes
     owner: "root"
@@ -52,7 +55,7 @@
   become: yes
   copy:
     src: "ldap_config.cfg"
-    dest: "/home/ldap/data/config.cfg"
+    dest: "{{ ldap_dir }}/data/config.cfg"
     force: yes
     backup: yes
     owner: "root"
@@ -63,13 +66,13 @@
   command: "./start_ldap.sh"
   become: yes
   args:
-    chdir: /home/ldap
+    chdir: {{ ldap_dir }}
 
 - name: copy ldap test script
   become: yes
   copy:
     src: "test_ldap.sh"
-    dest: "/home/ldap/test_ldap.sh"
+    dest: "{{ ldap_dir }}/test_ldap.sh"
     force: yes
     backup: yes
     owner: "root"
@@ -83,11 +86,11 @@
     state: present
     update_cache: yes
 
-- name: retrieve the ldap exec
-  become: true
-  get_url:
-    url: https://github.com/glauth/glauth/releases/download/v1.1.1/glauth64
-    dest: "/home/ldap/glauth64"
-    owner: "root"
-    group: "root"
-    mode: u=rwx,g=rx,o=rx
+# - name: retrieve the ldap exec
+#   become: true
+#   get_url:
+#     url: https://github.com/glauth/glauth/releases/download/v1.1.1/glauth64
+#     dest: "{{ ldap_dir }}/glauth64"
+#     owner: "root"
+#     group: "root"
+#     mode: u=rwx,g=rx,o=rx

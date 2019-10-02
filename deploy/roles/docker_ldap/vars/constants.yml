@@ -1,0 +1,2 @@
+# definition of where we store LDAP related stuff 
+ldap_dir: "/home/ldap"
