@@ -66,7 +66,7 @@
   command: "./start_ldap.sh"
   become: yes
   args:
-    chdir: {{ ldap_dir }}
+    chdir: "{{ ldap_dir }}"
 
 - name: copy ldap test script
   become: yes

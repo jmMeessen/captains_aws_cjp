@@ -48,7 +48,7 @@
   command: "./start_nexus.sh"
   become: yes
   args:
-    chdir: {{ nexus_dir }}
+    chdir: "{{ nexus_dir }}"
 
 - name: Copy the nexus script loader
   become: yes
@@ -85,11 +85,11 @@
   command: "./load_nexus_script.sh"
   become: yes
   args:
-    chdir: {{ nexus_dir }}
+    chdir: "{{ nexus_dir }}"
 
 - name: execute the nexus script to configure the jenkins proxy repository
   command: "./execute_nexus_script.sh"
   become: yes
   args:
-    chdir: {{ nexus_dir }}
+    chdir: "{{ nexus_dir }}"
   
