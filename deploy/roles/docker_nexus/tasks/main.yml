@@ -2,7 +2,7 @@
 # This playbook is supposed to run on a system with Docker enabled
 
 - name: "Include definitions and constants" 
-  include_vars: "definitions.yml"
+  include_vars: "constants.yml"
 
 - name: Create directory for Nexus stuff
   become: yes
