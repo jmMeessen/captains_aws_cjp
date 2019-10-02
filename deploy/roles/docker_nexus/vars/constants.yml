@@ -1,1 +1,2 @@
+# definition of where we store NEXUS related stuff 
 nexus_dir: "/home/nexus"
