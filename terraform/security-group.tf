@@ -83,8 +83,12 @@ resource "aws_security_group" "jmm_cjoc_sg" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+}
 
-    #LDAP port
+resource "aws_security_group" "jmm_ldap_sg" {
+  name = "JMM_LDAP_sg"
+
+  #LDAP port
   egress {
     from_port   = 389
     to_port     = 389

@@ -12,6 +12,7 @@ resource "aws_instance" "jmm_cjoc" {
   security_groups = [
     "${aws_security_group.jmm_general_sg.name}",
     "${aws_security_group.jmm_cjoc_sg.name}",
+    "${aws_security_group.jmm_ldap_sg}",
   ]
 
   tags {
@@ -32,6 +33,7 @@ resource "aws_instance" "jmm_client_master" {
     "${aws_security_group.jmm_general_sg.name}",
     "${aws_security_group.jmm_master_sg.name}",
     "${aws_security_group.jmm_master_outbound_sg.name}",
+    "${aws_security_group.jmm_ldap_sg}"
   ]
 
   tags {
