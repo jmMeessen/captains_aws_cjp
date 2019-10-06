@@ -11,10 +11,10 @@
     state: directory
     mode: u=rwx,g=rx,o=rx
 
-- name: Create directory to store the LDAP configuration
+- name: Create directory to store the docker image build context
   become: yes
   file:
-    path: "{{ ldap_dir }}/data"
+    path: "{{ ldap_dir }}/image"
     state: directory
     mode: u=rwx,g=rx,o=rx
 
@@ -51,22 +51,45 @@
     group: "root"
     mode: u=rxw,g=r,o=r
 
-- name: Copy GLauth LDAP config
+- name: Copy the Docker file
   become: yes
   copy:
-    src: "ldap_config.cfg"
-    dest: "{{ ldap_dir }}/data/config.cfg"
+    src: "Dockerfile"
+    dest: "{{ ldap_dir }}/image/Dockerfile"
     force: yes
     backup: yes
     owner: "root"
     group: "root"
     mode: u=rw,g=r,o=r
 
-- name: start LDAP
-  command: "./start_ldap.sh"
+- name: Copy the user definition file (ldif)
   become: yes
-  args:
-    chdir: "{{ ldap_dir }}"
+  copy:
+    src: "Example.ldif"
+    dest: "{{ ldap_dir }}/image/Example.ldif"
+    force: yes
+    backup: yes
+    owner: "root"
+    group: "root"
+    mode: u=rw,g=r,o=r
+
+- name: Copy second/simplified user definition file (ldif)
+  become: yes
+  copy:
+    src: "other.ldif"
+    dest: "{{ ldap_dir }}/image/other.ldif"
+    force: yes
+    backup: yes
+    owner: "root"
+    group: "root"
+    mode: u=rw,g=r,o=r
+
+
+# - name: start LDAP
+#   command: "./start_ldap.sh"
+#   become: yes
+#   args:
+#     chdir: "{{ ldap_dir }}"
 
 - name: copy ldap test script
   become: yes
