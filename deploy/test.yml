@@ -15,7 +15,7 @@
 
   roles:
     - agent_docker
-    - docker_nexus
+    - docker_ldap
 
 
    
