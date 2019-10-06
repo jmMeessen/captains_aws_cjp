@@ -1,1 +1,1 @@
-ldapsearch -LLL -H ldap://localhost:389 -D cn=serviceuser,ou=svcaccts,dc=glauth,dc=com -w mysecret -x -bdc=glauth,dc=com cn=hackers
+ldapsearch -LLL -H ldap://localhost:389 -D uid=idm,ou=Administrators,dc=example,dc=com -w secret -x -bdc=example,dc=com uid=cptjack
