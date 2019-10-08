@@ -4,6 +4,9 @@
 - name: "Include definitions and constants" 
   include_vars: "constants.yml"
 
+- name: Load encrypted ldif passwords
+  include_vars: "ldif_data.yml"
+
 - name: Create directory for LDAP stuff
   become: yes
   file:
@@ -64,8 +67,8 @@
 
 - name: Copy the user definition file (ldif)
   become: yes
-  copy:
-    src: "Example.ldif"
+  template:
+    src: "Example.ldif.j2"
     dest: "{{ ldap_dir }}/image/Example.ldif"
     force: yes
     backup: yes
@@ -73,28 +76,16 @@
     group: "root"
     mode: u=rw,g=r,o=r
 
-- name: Copy second/simplified user definition file (ldif)
+- name: start LDAP
+  command: "./start_ldap.sh"
   become: yes
-  copy:
-    src: "other.ldif"
-    dest: "{{ ldap_dir }}/image/other.ldif"
-    force: yes
-    backup: yes
-    owner: "root"
-    group: "root"
-    mode: u=rw,g=r,o=r
-
-
-# - name: start LDAP
-#   command: "./start_ldap.sh"
-#   become: yes
-#   args:
-#     chdir: "{{ ldap_dir }}"
+  args:
+    chdir: "{{ ldap_dir }}"
 
 - name: copy ldap test script
   become: yes
-  copy:
-    src: "test_ldap.sh"
+  template: 
+    src: "test_ldap.sh.j2"
     dest: "{{ ldap_dir }}/test_ldap.sh"
     force: yes
     backup: yes

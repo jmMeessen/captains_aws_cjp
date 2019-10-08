@@ -52,7 +52,7 @@ mail: jack@example.com
 telephonenumber: +421 910 123456
 facsimiletelephonenumber: +1 408 555 1111
 roomnumber: 666
-userpassword: Ls1zQCjb53E2YtoD
+userpassword: {{ ldap_jenkins_user_passw }}
 
 dn: uid=will, ou=People, dc=example,dc=com
 cn: Will Turner
@@ -223,6 +223,6 @@ sn: IDM Administrator
 description: Special LDAP acccount used by the IDM
   to access the LDAP data.
 ou: Administrators
-userPassword: secret
+userPassword: {{ ldap_admin_passw }}
 ds-privilege-name: unindexed-search
 ds-privilege-name: password-reset
