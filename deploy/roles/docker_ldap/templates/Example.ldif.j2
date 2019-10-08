@@ -34,10 +34,11 @@ aci: (targetattr="*||+")(version 3.0; acl "IDM Access"; allow (all)
 # - tester2
 
 ## - admin
-
 dn: uid=admin, ou=People, dc=example,dc=com
-cn: Admin
+cn: admin
 displayname: Jenkins Admin
+sn: Admin
+givenname: User
 objectclass: top
 objectclass: person
 objectclass: organizationalPerson
@@ -45,17 +46,69 @@ objectclass: inetOrgPerson
 ou: Operations
 ou: People
 l: New York
-uid: jwick
-mail: jwick@example.com
+uid: admin
+mail: admin@example.com
 telephonenumber: +1 408 555 1236
 facsimiletelephonenumber: +1 408 555 4323
-roomnumber: 233
 userpassword: {{ ldap_jenkins_admin_passw }}
 
 # - cfgUser
+dn: uid=cfgUser, ou=People, dc=example,dc=com
+cn: cfgUser
+displayname: Jenkins configuration user
+sn: Configuration
+givenname: User
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+ou: Operations
+ou: People
+l: New York
+uid: cfgUser
+mail: cfguser@example.com
+telephonenumber: +1 408 555 1236
+facsimiletelephonenumber: +1 408 555 4323
+userpassword: {{ ldap_jenkins_admin_passw }}
+
 # - local_admin
+
 # - dev1
+dn: uid=dev1, ou=People, dc=example,dc=com
+cn: dev1
+displayname: Developer 1
+sn: Met De Pet
+givenname: Jan
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+ou: Operations
+ou: People
+l: New York
+uid: dev1
+mail: dev1@example.com
+telephonenumber: +1 408 555 1236
+userpassword: {{ ldap_jenkins_user_passw }}
+
 # - dev2
+dn: uid=dev2, ou=People, dc=example,dc=com
+cn: dev2
+displayname: Developer 2
+sn: Ingals
+givenname: Charles
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+ou: Operations
+ou: People
+l: New York
+uid: dev2
+mail: dev2@example.com
+telephonenumber: +1 408 555 1236
+userpassword: {{ ldap_jenkins_user_passw }}
+
 # - reader1
 # - reader2
 # - tester1
@@ -193,18 +246,15 @@ uniquemember: uid=djones, ou=People, dc=example,dc=com
 description: Purrrr!
 
 # [jenkins_admin]
-
 dn: cn=jenkins_admin,ou=Groups,dc=example,dc=com
 objectclass: top
 objectclass: groupOfUniqueNames
 cn: jenkins_admin
 ou: Groups
-uniquemember: uid=barbossa, ou=People, dc=example,dc=com
-uniquemember: uid=djones, ou=People, dc=example,dc=com
-description: Local admins (deputy admins)
+uniquemember: uid=admin, ou=People, dc=example,dc=com
+description: Jenkins admins
 
 # [local_jenkins_admin]
-
 dn: cn=local_jenkins_admin,ou=Groups,dc=example,dc=com
 objectclass: top
 objectclass: groupOfUniqueNames
@@ -215,14 +265,13 @@ uniquemember: uid=djones, ou=People, dc=example,dc=com
 description: Local admins (deputy admins)
 
 # [Dev]
-
 dn: cn=Dev,ou=Groups,dc=example,dc=com
 objectclass: top
 objectclass: groupOfUniqueNames
 cn: Dev
 ou: Groups
-uniquemember: uid=barbossa, ou=People, dc=example,dc=com
-uniquemember: uid=djones, ou=People, dc=example,dc=com
+uniquemember: uid=dev1, ou=People, dc=example,dc=com
+uniquemember: uid=dev2, ou=People, dc=example,dc=com
 description: Developers
 
 # [Readers]
