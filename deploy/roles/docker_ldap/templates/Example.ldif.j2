@@ -18,6 +18,50 @@ aci: (targetattr="*||+")(version 3.0; acl "IDM Access"; allow (all)
 
 ## List of people
 
+## [admin]
+## - admin
+## - cfgUser
+# [local_admin]
+# - local_admin
+# [dev]
+# - dev1
+# - dev2
+# [reader]
+# - reader1
+# - reader2
+# [tester]
+# - tester1
+# - tester2
+
+## - admin
+
+dn: uid=admin, ou=People, dc=example,dc=com
+cn: Admin
+displayname: Jenkins Admin
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+ou: Operations
+ou: People
+l: New York
+uid: jwick
+mail: jwick@example.com
+telephonenumber: +1 408 555 1236
+facsimiletelephonenumber: +1 408 555 4323
+roomnumber: 233
+userpassword: {{ ldap_jenkins_admin_passw }}
+
+# - cfgUser
+# - local_admin
+# - dev1
+# - dev2
+# - reader1
+# - reader2
+# - tester1
+# - tester2
+
+
 dn: uid=jwick, ou=People, dc=example,dc=com
 cn: John Wick
 sn: Wick
