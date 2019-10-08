@@ -5,6 +5,7 @@
 - Terraform is installed (use Brew also)
 - Install the Terraform inventory tool for Ansible with `brew install terraform-inventory` (see https://github.com/adammck/terraform-inventory)
 - The IPtable maninpulation Ansible role is needed to do the port forwarding. Install it with `ansible-galaxy install geerlingguy.firewall`
+- Several files are encrypted with Ansible Vault (so that they can be pushed safely to a source repository). The toolbox scripts used to start the installation rely on a file `toolbox\.work-password` (ignored by Git) that contains the Ansible Vault password. To reuse this installation, you need to re-encrypt these files with an other password. Use `ansible-vault edit` to edit or `ansible-vault encrypt` to encrypt.
 
 ## Pre-flight
 - to configure the CB AWS environment with OPSCORE: `opscore iam refresh --account cloudbees-ps --role infra-admin`
