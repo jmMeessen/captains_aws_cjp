@@ -1,5 +1,22 @@
 # OpenDJ Docker
 
+## Group Structure
+```
+    [admin]
+    - admin
+    - cfgUser
+    [local_admin]
+    - local_admin
+    [dev]
+    - dev1
+    - dev2
+    [reader]
+    - reader1
+    - reader2
+    [tester]
+    - tester1
+    - tester2
+```
 ## Resources
 
 * https://marginnotes2.wordpress.com/2011/07/21/opendj-using-pre-encoded-passwords/
