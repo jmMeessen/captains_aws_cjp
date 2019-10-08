@@ -1,0 +1,13 @@
+jenkins:
+  securityRealm:
+    ldap:
+      configurations:
+      - inhibitInferRootDN: false
+        managerDN: "uid=idm,ou=Administrators,dc=example,dc=com"
+        managerPasswordSecret: "{AQAAABAAAAAQi3x98G2f/HWlspGibqrutCoLQ8Q4F7O17KO4SYa06ek=}"
+        rootDN: "dc=example,dc=com"
+        server: "ldap://{{ full_agent_docker_dns_name }}:389"
+      disableMailAddressResolver: false
+      disableRolePrefixing: true
+      groupIdStrategy: "caseInsensitive"
+      userIdStrategy: "caseInsensitive"
