@@ -1,0 +1,16 @@
+---
+
+#load encrypted file with passwords
+- name: Load encrypted ldif passwords
+  include_vars: "../docker_ldap/vars/ldif_data.yml"
+
+- name: Copy the LDAP JCasC file
+  become: yes
+  template:
+    src: "JCasC_LDAP.yml.j2"
+    dest: "/var/lib/{{ jenkins_user }}/cfgAsCode/JCasC_LDAP.yml"
+    force: yes
+    backup: yes
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
+    mode: u=rw,g=r,o=r

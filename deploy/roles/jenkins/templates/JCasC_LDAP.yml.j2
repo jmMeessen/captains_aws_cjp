@@ -4,7 +4,7 @@ jenkins:
       configurations:
       - inhibitInferRootDN: false
         managerDN: "uid=idm,ou=Administrators,dc=example,dc=com"
-        managerPasswordSecret: "{AQAAABAAAAAQi3x98G2f/HWlspGibqrutCoLQ8Q4F7O17KO4SYa06ek=}"
+        managerPasswordSecret: "{{ ldap_admin_passw }}"
         rootDN: "dc=example,dc=com"
         server: "ldap://{{ full_agent_docker_dns_name }}:389"
       disableMailAddressResolver: false

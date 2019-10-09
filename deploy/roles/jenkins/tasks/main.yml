@@ -196,4 +196,8 @@
   include_tasks: jnlp_startup.yml
   when: jenkins_node_type is search("master")
 
+- name: Copy the LDAP JCasC configuration
+  include_tasks: JCasC_LDAP.yml
+  when: jenkins_node_type is search("master")
+
 
