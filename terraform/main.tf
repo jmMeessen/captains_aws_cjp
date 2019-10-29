@@ -15,7 +15,7 @@ resource "aws_instance" "jmm_cjoc" {
     "${aws_security_group.jmm_ldap_sg.name}"
   ]
 
-  tags {
+  tags = {
     Name = "jmm_cjoc"
     Role = "test"
     Owner = "Jmm"
@@ -36,7 +36,7 @@ resource "aws_instance" "jmm_client_master" {
     "${aws_security_group.jmm_ldap_sg.name}"
   ]
 
-  tags {
+  tags = {
     Name = "jmm_client_master"
     Role = "test"
     Owner = "Jmm"
@@ -56,7 +56,7 @@ resource "aws_instance" "jmm_agent1" {
     "${aws_security_group.jmm_agent_docker_sg.name}"
   ]
 
-  tags {
+  tags = {
     Name = "jmm_agent1"
     Role = "test"
     Owner = "Jmm"
@@ -76,7 +76,7 @@ resource "aws_instance" "jmm_agent_docker" {
     "${aws_security_group.jmm_agent_docker_sg.name}"
   ]
 
-  tags {
+  tags = {
     Name = "jmm_agent_docker"
     Role = "test"
     Owner = "Jmm"
