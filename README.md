@@ -6,9 +6,9 @@ My current plan is:
 
 - [ ] (terraform) Use a remote state (S3) file so that environment works from two laptops
 - [ ] (Ansible) start docker SSH agent
-- [ ] (Ansible) enable SSO with LDAP
+- [x] (Ansible) extend SSO (with LDAP)
 - [ ] (Ansible) populate automatically some reference jobs 
-- [ ] (Ansible) experiment with the latest CloudBees JCasC preview (2.176.4.3) 
+- [ ] (Ansible) experiment with the latest CloudBees JCasC preview 
 - [ ] (Ansible - improvement) Move as many constants to variable file
 
 ## references
