@@ -53,7 +53,8 @@ This results in the following pipeline:
 
 ![alt text](./images/pipeline-view.png "Pipeline view")
 
-
+## Alternatives
+I had a look to the docker plugin. It allows to spawn and start docker containers. But it requires the docker socket to be accessible remotely (aouch!) or to start the VM on the same machine as the master.
 
 ## Open questions
 * What is the difference between `remote root directory` and the `workdir`?
