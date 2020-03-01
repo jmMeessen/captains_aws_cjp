@@ -63,6 +63,7 @@ If somebody wants to reuse these scritps, one should look for keyword starting w
 - instance names (main.tf)
 - key names (key-pair.tf)
 - security groups (security-groups.tf)
+- the remote state storage bucket (remote_state.tf)
 - Ansible target machine names (deploy/playbook.yml)
 - in the output.tf and connection automation scripts (*.sh)
 

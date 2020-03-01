@@ -3,6 +3,7 @@
 *.tfstate.backup
 *.retry
 
+
 #Public keys
 terraform/*.pub
 
@@ -11,6 +12,9 @@ terraform/.terraform/
 
 # downloaded on the fly
 jenkins-cli.jar
+
+#IP/DNS cache file
+load_IPs.sh
 
 *.clearTxt
 .work-password

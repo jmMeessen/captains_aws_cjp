@@ -5,6 +5,7 @@ set -e
 
 cd ../terraform
 terraform apply -auto-approve
+terraform state pull > terraform.tfstate
 cd -
 
 sleep 4
