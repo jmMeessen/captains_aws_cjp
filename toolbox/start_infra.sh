@@ -4,6 +4,7 @@ set -e
 ./update_aws_token.sh
 
 cd ../terraform
+terraform init
 terraform apply -auto-approve
 terraform state pull > terraform.tfstate
 cd -
