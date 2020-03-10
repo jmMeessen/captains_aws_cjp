@@ -45,3 +45,5 @@ default_plugins:
   - ldap
   - git
   - configuration-as-code
+  - kubernetes
+  - blueocean
