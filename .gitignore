@@ -7,8 +7,10 @@
 #Public keys
 terraform/*.pub
 
-# Module directory
-terraform/.terraform/
+# Terraform Module directory
+.terraform
+#terraform/.terraform/
+#gcp-terraform/.terraform/
 
 # downloaded on the fly
 jenkins-cli.jar
