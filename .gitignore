@@ -2,6 +2,7 @@
 *.tfstate*
 *.tfstate.backup
 *.retry
+*.terraform.lock.hcl
 
 
 #Public keys
