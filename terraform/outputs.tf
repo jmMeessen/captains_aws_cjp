@@ -29,3 +29,11 @@ output "Jmm_agent_docker_ip" {
 output "Jmm_agent_docker_dns" {
   value = aws_instance.jmm_agent_docker.public_dns
 }
+
+output "Jmm_SDA_ip" {
+  value = aws_instance.jmm_agent_docker.public_ip
+}
+
+output "Jmm_SDA_dns" {
+  value = aws_instance.jmm_agent_docker.public_dns
+}
