@@ -240,7 +240,7 @@ resource "aws_security_group" "jmm_sda_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-    egress {
+  egress {
     from_port   = 8443
     to_port     = 8443
     protocol    = "tcp"

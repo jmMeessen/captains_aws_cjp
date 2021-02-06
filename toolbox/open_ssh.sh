@@ -27,6 +27,10 @@ cm)
 sda)  
     terraform_name="Jmm_SDA_ip"
     ;;
+ 
+sda2)  
+    terraform_name="Jmm_SDA2_ip"
+    ;;
 
 *) echo "nodeName $1 is not supported"
    echo "supported node names are: cjoc, cm, agent_docker, agent1"
@@ -35,8 +39,8 @@ sda)
 esac
 
 echo "Starting SSH on $1"
-#echo "$terraform_name"
+echo "$terraform_name"
 
 node_ip=$(terraform output -raw -state=../terraform/terraform.tfstate $terraform_name 2>&1)
-#echo "$node_ip"
+echo "$node_ip"
 ssh ${node_ip} -l ubuntu -i ~/.ssh/captains_aws_cjp

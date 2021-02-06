@@ -17,3 +17,6 @@ ssh-keyscan -t rsa,dsa ${agent_docker_ip} >> ~/.ssh/known_hosts
 
 ssh-keyscan -t rsa,dsa ${sda_dns} >> ~/.ssh/known_hosts
 ssh-keyscan -t rsa,dsa ${sda_ip} >> ~/.ssh/known_hosts
+
+ssh-keyscan -t rsa,dsa ${sda2_dns} >> ~/.ssh/known_hosts
+ssh-keyscan -t rsa,dsa ${sda2_ip} >> ~/.ssh/known_hosts

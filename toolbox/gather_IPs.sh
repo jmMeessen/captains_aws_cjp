@@ -18,4 +18,7 @@ export agent_docker_ip=$(terraform output -raw -state=../terraform/terraform.tfs
 
 export sda_dns=$(terraform output -raw -state=../terraform/terraform.tfstate Jmm_SDA_dns 2>&1)
 export sda_ip=$(terraform output -raw -state=../terraform/terraform.tfstate Jmm_SDA_ip 2>&1)
+
+export sda2_dns=$(terraform output -raw -state=../terraform/terraform.tfstate Jmm_SDA2_dns 2>&1)
+export sda2_ip=$(terraform output -raw -state=../terraform/terraform.tfstate Jmm_SDA2_ip 2>&1)
 cd -
