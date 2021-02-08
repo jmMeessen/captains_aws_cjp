@@ -27,10 +27,7 @@ cm)
 sda)  
     terraform_name="Jmm_SDA_ip"
     ;;
- 
-sda2)  
-    terraform_name="Jmm_SDA2_ip"
-    ;;
+
 
 *) echo "nodeName $1 is not supported"
    echo "supported node names are: cjoc, cm, agent_docker, agent1"

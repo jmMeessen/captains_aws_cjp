@@ -1,8 +1,8 @@
-output Jmm_cjoc_ip {
+output "Jmm_cjoc_ip" {
   value = aws_instance.jmm_cjoc.public_ip
 }
 
-output Jmm_cjoc_dns {
+output "Jmm_cjoc_dns" {
   value = aws_instance.jmm_cjoc.public_dns
 }
 
@@ -38,10 +38,3 @@ output "Jmm_SDA_dns" {
   value = aws_instance.jmm_SDA.public_dns
 }
 
-output "Jmm_SDA2_ip" {
-  value = aws_instance.jmm_SDA2.public_ip
-}
-
-output "Jmm_SDA2_dns" {
-  value = aws_instance.jmm_SDA2.public_dns
-}
