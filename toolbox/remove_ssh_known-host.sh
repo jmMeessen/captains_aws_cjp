@@ -16,4 +16,4 @@ ssh-keygen -R ${agent_docker_dns}
 ssh-keygen -R ${agent_docker_ip}
 
 ssh-keygen -R ${sda_dns}
-ssh-keygen -R ${agent_docker_ip}
+ssh-keygen -R ${sda_ip}

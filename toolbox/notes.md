@@ -1,55 +1,41 @@
+# SDA demo/evaluation setup
+
+## Infrastructure setup
+* run the automated infra setup (terraform) with `./start_infra.sh`
+
+
+## CBCI preparation
 * location of OC war file: /usr/share/cloudbees-core-oc/cloudbees-core-oc.war
 
-`````
-ubuntu@ip-172-31-39-99:~$ sudo ./CloudBeesFlow-x64-10.1.0.145386
-Logging to "/tmp/ijtmp_AF1AB110-7AED-2AE3-A2FF-EC9C4CEDEB4B/installer.log"
-
-Copyright (c) 2006-2021, CloudBees, Inc. All rights reserved.
-
-This will install CloudBees Software Delivery Automation on your computer.  Continue? [n/Y] y
-
-
-Specify the type of setup you would like to perform: expressServer, expressAgent, SDA or advanced. [expressServer] SDA
-
-Warning: In the future, you may need to allocate up to 2801.0 MB of additional space in "/opt/electriccloud/electriccommander".
-
-Install a built-in database? [n/Y] Y
-
-CloudBees Software Delivery Automation server has the ability to send information about its use, which helps to make CloudBees Software Delivery Automation better and more intuitive. Telemetry collects
-anonymized aggregated information and does not collect any identifying information like user names.
-
-For privacy reasons, you can turn off the ability to send telemetry data to CloudBees.
-
-Send usage data [n/Y] y
-
-
-Specify the install directory (for program files and binaries). [/opt/cloudbees/sda]
+## Install SDA server
+* connect to the SDA EC2 instance with `./open_ssh.sh sda`
+* Check that you have enough memory with `free --giga`. You should have at least 15 Gb of free memory.
+* Download the SDA (latest) bits: `wget https://downloads.cloudbees.com/cloudbees-cd/Release_10.1_internal/Linux/CloudBeesFlow-x64-10.1.0.145386`
+* Make the package executable with `chmod +x CloudBeesFlow-x64-10.1.0.145386`
+* execute start the command line installation: `sudo CloudBeesFlow-x64-10.1.0.145386`
+* Answer the following prompts:
+   * "This will install CloudBees Software Delivery Automation on your computer.  Continue? [n/Y]": answer `y` or enter
+   * "Specify the type of setup you would like to perform: expressServer, expressAgent, SDA or advanced. [expressServer]": answer `SDA`
+   * "Install a built-in database? [n/Y]": answer `Y` or enter
+   * "Send usage data [n/Y]": answer `y`
+   * "Specify the install directory (for program files and binaries). [/opt/cloudbees/sda]": take default with enter
+   * "Specify the data directory (for configuration files and logs). [/opt/cloudbees/sda]": take the default with enter
+   * "Specify the user the server, web, and/or repository will run as. [ubuntu]": pressing enter will take the current user.
+   * "Specify the group the server, web, and/or repository will run as. [ubuntu]": pressing enter will take the current user.
+   * "Use the same service account for the agent (not recommended for production systems)? [y/N]": make sure to use `y`
+   * The installation log can be viewed at "/opt/cloudbees/sda/logs/installer.log"
+* connect to the SDA server with `./open_https.sh sda`. FIXME: should open the site in Firefox as it is a selfsigned  certificate.
+* Authentify using the default password.
+* The first screen shows that there is no license loaded. Click on the `there is no license` link and load the test license. You can find a [this test license](https://github.com/electric-cloud/nimbus-licenses/blob/b572e28d79a6def8b4cdcdbb5d4d283ecc49fe4a/CloudBees_Inc-SDA-20201214-standard.xml)
 
 
-Specify the data directory (for configuration files and logs). [/opt/cloudbees/sda]
+# Install DevOpsInsight server
 
-Warning: In the future, you may need to allocate up to 2719.0 MB of additional space in "/opt/cloudbees/sda".
-
-Specify the user the server, web, and/or repository will run as. [ubuntu]
-
-
-Specify the group the server, web, and/or repository will run as. [ubuntu]
-
-
-Use the same service account for the agent (not recommended for production systems)? [y/N] y
-
-Installing CloudBees Software Delivery Automation...
-Installing agent...
-Installing server...
-Installing tools...
-Installing web...
-Installing database...
-Installing jre-64...
-Copied log file(s) to "/opt/cloudbees/sda/logs"
-CloudBees Software Delivery Automation 10.1.0.145386 was successfully installed!
-Installer log file: /opt/cloudbees/sda/logs/installer.log.
-`````
-
+* connect to the SDA EC2 instance with `./open_ssh.sh sda`
+* Check that you have enough memory with `free --giga`. You should have at least 15 Gb of free memory.
+* Download the SDA (latest) bits: `wget https://downloads.cloudbees.com/cloudbees-cd/Release_10.1_internal/Linux/CloudBeesFlowDevOpsInsightServer-x64-10.1.0.145386`
+* Make the package executable with `chmod +x CloudBeesFlowDevOpsInsightServer-x64-10.1.0.145386`
+* execute start the command line installation: `sudo CloudBeesFlowDevOpsInsightServer-x64-10.1.0.145386`
 
 ````
 ubuntu@ip-172-31-39-99:~$ sudo ./CloudBeesFlowDevOpsInsightServer-x64-10.1.0.145386

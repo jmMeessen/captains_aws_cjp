@@ -8,23 +8,13 @@ fi
 
 case "$1" in
 
-nexus)  
-    terraform_name="Jmm_agent_docker_dns"
-    used_port=":8081"
-    ;;
-
-cjoc)  
-    terraform_name="Jmm_cjoc_dns"
-    used_port=""
-    ;;
- 
-cm)  
-    terraform_name="Jmm_master_dns"
+sda)  
+    terraform_name="Jmm_SDA_dns"
     used_port=""
     ;;
  
 *) echo "nodeName $1 is not supported"
-   echo "supported node names are: cjoc, cm, nexus"
+   echo "supported node names are: sda"
    exit
    ;;
 esac
@@ -34,5 +24,5 @@ echo "Starting HTTP session on $1"
 
 node_dns=$(terraform output -raw -state=../terraform/terraform.tfstate $terraform_name 2>&1)
 echo "${node_dns}${used_port}"
-open http://${node_dns}${used_port} 
+open https://${node_dns}${used_port} 
 
