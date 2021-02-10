@@ -36,8 +36,8 @@ sda)
 esac
 
 echo "Starting SSH on $1"
-echo "$terraform_name"
+#echo "$terraform_name"
 
 node_ip=$(terraform output -raw -state=../terraform/terraform.tfstate $terraform_name 2>&1)
-echo "$node_ip"
+#echo "$node_ip"
 ssh ${node_ip} -l ubuntu -i ~/.ssh/captains_aws_cjp

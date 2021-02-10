@@ -23,6 +23,6 @@ echo "Starting HTTP session on $1"
 #echo "$terraform_name"
 
 node_dns=$(terraform output -raw -state=../terraform/terraform.tfstate $terraform_name 2>&1)
-echo "${node_dns}${used_port}"
+#echo "${node_dns}${used_port}"
 open https://${node_dns}${used_port} 
 
