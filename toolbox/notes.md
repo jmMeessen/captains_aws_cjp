@@ -23,6 +23,7 @@
    * "Specify the group the server, web, and/or repository will run as. [ubuntu]": pressing enter will take the current user.
    * "Use the same service account for the agent (not recommended for production systems)? [y/N]": make sure to use `y`
    * The installation log can be viewed at "/opt/cloudbees/sda/logs/installer.log"
+* FIXME: create automated install with silent mode: https://docs.cloudbees.com/docs/cloudbees-cd/latest/install-trad/sumethod
 * connect to the SDA server with `./open_sda_https.sh sda`. It opens the site with Firefox, which works with selfsigned certificates.
 * Authentify using the default password.
 * The first screen shows that there is no license loaded. Click on the `there is no license` link and load the test license. You can find a [this test license](https://github.com/electric-cloud/nimbus-licenses/blob/b572e28d79a6def8b4cdcdbb5d4d283ecc49fe4a/CloudBees_Inc-SDA-20201214-standard.xml)
@@ -38,8 +39,8 @@
 * execute start the command line installation: `sudo ./CloudBeesFlowDevOpsInsightServer-x64-10.1.0.145386`
 
 ````
-ubuntu@ip-172-31-80-90:~$ sudo ./CloudBeesFlowDevOpsInsightServer-x64-10.1.0.145386
-Logging to "/tmp/ijtmp_E4C6BFA2-BE1B-802F-D5C3-E4F770898F10/installer-EFlowReportServ.log"
+ubuntu@ip-172-31-90-169:~$ sudo ./CloudBeesFlowDevOpsInsightServer-x64-10.1.0.145386
+Logging to "/tmp/ijtmp_A6ED2529-6690-BA02-4864-16FC30878C93/installer-EFlowReportServ.log"
 
 Installing temporary...
 Copyright (c) 2006-2021, CloudBees, Inc. All rights reserved.
@@ -71,7 +72,7 @@ Choose the port which will be used by Logstash [9500]
 Choose the port which will be used by the Logstash service for the Logstash monitoring APIs [9600]
 
 
-Do you want to specify additional Elasticsearch cluster mode settings? [y/N]
+Do you want to specify additional Elasticsearch cluster mode settings? [y/N] n
 
 
 Installer will automatically create a user with user name "reportuser" to connect to Elasticsearch.
@@ -90,14 +91,20 @@ Do you want to specify the remote CloudBees Software Delivery Automation server
 which will be configured to interact with the services being installed? [n/Y] y
 
 
-Specify the host[:port] of the remote CloudBees Software Delivery Automation server [] localhost
+Specify the host[:port] of the remote CloudBees Software Delivery Automation server [] ec2-35-173-234-3.compute-1.amazonaws.com:8443
 
 
-Specify the user name with which to login to "localhost" [admin]
+Specify the user name with which to login to "ec2-35-173-234-3.compute-1.amazonaws.com:8443" [admin]
 
 
-Specify the password for "admin" on "localhost" []
-Can't login with specified user name and password to the CloudBees Software Delivery Automation server.
+Specify the password for "admin" on "ec2-35-173-234-3.compute-1.amazonaws.com:8443" []
 
-Specify the user name with which to login to "localhost" [admin] ^C
+The CloudBees Software Delivery Automation Analytics server will be configured on CloudBees Software Delivery Automation server version 10.1.0.145386 on ec2-35-173-234-3.compute-1.amazonaws.com:8443
+
+Installing CloudBees Software Delivery Automation Analytics...
+Installing elasticsearch...
+Installing logstash...
+Installing jre-64...
+Copied log file to "/opt/electriccloud/electriccommander/logs/reporting"
+Installation complete.
 ````
