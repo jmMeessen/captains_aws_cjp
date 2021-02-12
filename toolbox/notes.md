@@ -1,11 +1,36 @@
 # SDA demo/evaluation setup
 
+## Documentation
+* https://github.com/cloudbees/sda-chart/blob/main/internal.md
+* 
+
 ## Infrastructure setup
 * run the automated infra setup (terraform) with `./start_infra.sh`
 
 
 ## CBCI preparation
+* Install traditional environment with `./run_ansible.sh`
+* ssh to the OC
+   * copy the new war with `wget http://media.meessen-web.org/data/cloudbees-core-oc-sda.war`
+   * copy it to the target directory:`sudo cp cloudbees-core-oc-sda.war /usr/share/cloudbees-core-oc/`
+   * stop the oc service with `sudo service cloudbees-core-oc stop`
+   * check the status with `sudo service cloudbees-core-oc status` 
+   * create a backup copy of the original war: `sudo cp /usr/share/cloudbees-core-oc/cloudbees-core-oc.war /usr/share/cloudbees-core-oc/cloudbees-core-oc-ori.war`
+   * Copy the SDA version `sudo cp /usr/share/cloudbees-core-oc/cloudbees-core-oc-sda.war /usr/share/cloudbees-core-oc/cloudbees-core-oc.war`
+   * restart the CJOC service with `sudo service cloudbees-core-oc start`
 * location of OC war file: /usr/share/cloudbees-core-oc/cloudbees-core-oc.war
+* 
+* media.meessen-web.org/data/cloudbees-core-cm-sda.war
+* sudo cp cloudbees-core-cm-sda.war /usr/share/cloudbees-core-cm/
+* sudo cp /usr/share/cloudbees-core-cm/cloudbees-core-cm.war /usr/share/cloudbees-core-cm/cloudbees-core-cm-ori.war
+* sudo cp /usr/share/cloudbees-core-cm/cloudbees-core-cm-sda.war /usr/share/cloudbees-core-cm/cloudbees-core-cm.war
+* sudo service cloudbees-core-cm start
+* CloudBees Platform Common Plugin
+* CloudBees Unified UI Plugin
+
+* CloudBees Unified Data Plugin
+
+
 
 ## Install SDA server
 * connect to the SDA EC2 instance with `./open_ssh.sh sda`
