@@ -15,7 +15,7 @@ export agent2_dns=$(terraform output -raw -state=../terraform/terraform.tfstate 
 export agent2_ip=$(terraform output -raw -state=../terraform/terraform.tfstate Jmm_agent2_ip 2>&1)
 
 export agent3_dns=$(terraform output -raw -state=../terraform/terraform.tfstate Jmm_agent3_dns 2>&1)
-export agent3_ip=$(terraform output  -raw-state=../terraform/terraform.tfstate Jmm_agent3_ip 2>&1)
+export agent3_ip=$(terraform output -raw -state=../terraform/terraform.tfstate Jmm_agent3_ip 2>&1)
 
 export agent4_dns=$(terraform output -raw -state=../terraform/terraform.tfstate Jmm_agent4_dns 2>&1)
 export agent4_ip=$(terraform output  -raw -state=../terraform/terraform.tfstate Jmm_agent4_ip 2>&1)
