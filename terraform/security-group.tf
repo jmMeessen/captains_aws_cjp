@@ -16,9 +16,9 @@ resource "aws_security_group" "jmm_general_sg" {
   }
 
   ingress {
-    from_port = 8
-    to_port = 0
-    protocol = "icmp"
+    from_port   = 8
+    to_port     = 0
+    protocol    = "icmp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -145,7 +145,7 @@ resource "aws_security_group" "jmm_master_outbound_sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -180,7 +180,7 @@ resource "aws_security_group" "jmm_agent_docker_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-    #LDAP port
+  #LDAP port
   egress {
     from_port   = 389
     to_port     = 389

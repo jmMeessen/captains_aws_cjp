@@ -15,17 +15,29 @@ agent_docker)
 agent1)  
     terraform_name="Jmm_agent1_ip"
     ;;
- 
+
+agent2)  
+    terraform_name="Jmm_agent2_ip"
+    ;;
+
+agent3)  
+    terraform_name="Jmm_agent3_ip"
+    ;;
+
+agent4)  
+    terraform_name="Jmm_agent1_ip"
+    ;;
+
 cjoc)  
     terraform_name="Jmm_cjoc_ip"
     ;;
- 
+
 cm)  
     terraform_name="Jmm_master_ip"
     ;;
  
 *) echo "nodeName $1 is not supported"
-   echo "supported node names are: cjoc, cm, agent_docker, agent1"
+   echo "supported node names are: cjoc, cm, agent_docker, agent1..4"
    exit
    ;;
 esac
@@ -33,6 +45,6 @@ esac
 echo "Starting SSH on $1"
 #echo "$terraform_name"
 
-node_ip=$(terraform output -state=../terraform/terraform.tfstate $terraform_name 2>&1)
+node_ip=$(terraform output -raw -state=../terraform/terraform.tfstate $terraform_name 2>&1)
 #echo "$node_ip"
 ssh ${node_ip} -l ubuntu -i ~/.ssh/captains_aws_cjp

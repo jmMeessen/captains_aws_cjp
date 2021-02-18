@@ -9,6 +9,7 @@ terraform/*.pub
 
 # Module directory
 terraform/.terraform/
+terraform/.terraform.lock.hcl
 
 # downloaded on the fly
 jenkins-cli.jar
