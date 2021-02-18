@@ -25,13 +25,14 @@
    * create a backup of the original war `sudo cp /usr/share/cloudbees-core-cm/cloudbees-core-cm.war /usr/share/cloudbees-core-cm/cloudbees-core-cm-ori.war`
    * install the SDA war `sudo cp /usr/share/cloudbees-core-cm/cloudbees-core-cm-sda.war /usr/share/cloudbees-core-cm/cloudbees-core-cm.war`
    * restart the service `sudo service cloudbees-core-cm start`
-
-
-* CloudBees Platform Common Plugin
-* CloudBees Unified UI Plugin
-
-* CloudBees Unified Data Plugin
-
+* connect to CJOC (`./open_http.sh cjoc`) and make sure that the SDA related plugins are installed (should be preloaded).
+   * if you need to install them, don't forget to refresh the plugin list
+   * plugins that need to be present (FIXME: check this)
+      * CloudBees Platform Common Plugin
+      * CloudBees Unified UI Plugin
+* connect to CM (`./open_http.sh cm`).
+   * update plugin list
+   * Install plugin `CloudBees Unified Data Plugin`. This will install `CloudBees Unified UI Plugin` as a dependency.
 
 
 ## Install SDA server
@@ -51,7 +52,7 @@
    * "Use the same service account for the agent (not recommended for production systems)? [y/N]": make sure to use `y`
    * The installation log can be viewed at "/opt/cloudbees/sda/logs/installer.log"
 * FIXME: create automated install with silent mode: https://docs.cloudbees.com/docs/cloudbees-cd/latest/install-trad/sumethod
-* connect to the SDA server with `./open_sda_https.sh sda`. It opens the site with Firefox, which works with selfsigned certificates.
+* connect to the SDA server with `./open_sda_https.sh`. It opens the site with Firefox, which works with selfsigned certificates.
 * Authentify using the default password.
 * The first screen shows that there is no license loaded. Click on the `there is no license` link and load the test license. You can find a [this test license](https://github.com/electric-cloud/nimbus-licenses/blob/b572e28d79a6def8b4cdcdbb5d4d283ecc49fe4a/CloudBees_Inc-SDA-20201214-standard.xml)
 * change the default password
@@ -84,3 +85,31 @@
    * "Specify the user name with which to login to "ec2-35-173-234-3.compute-1.amazonaws.com:8443" [admin]": choose default with enter
    * "Specify the password for "admin" on "ec2-35-173-234-3.compute-1.amazonaws.com:8443" []": enter the (changed) password
 
+
+## Configure SDA Server
+
+* open and log into SDA server with `./open_sda_https.sh`. It opens the site with Firefox, which works with selfsigned certificates.
+* navigate to the SDA configuration through the administration menu (via the "hamburger"). Choose the "CI Configuration"
+* create a new CI configuration by clicking on "New" and chosing "Create New CI Configuration".
+   * give it a name and description
+   * choose the "CBCI Operation center" radio button
+   * define the CJOC Server URL (and specify if it is the defaut CBCI OC)
+   * Enter Username and password. You can test the connection
+
+## Configure CJOC
+
+* Connect to CJOC with connect to CJOC (`./open_http.sh cjoc`)
+* enter "Manage Jenkins" menu and select "Configure System"
+* navigate to the "Connection to CLoudBees Software Delivery Automation" section
+   * copy the URL of the SDA server into the first field
+   * as we have an all-in-one SDA server with selfsigned certificates, paste the same URL in the "Send analytics event to this URL" and select the "Suppress SSL checks" tickbox.
+   * FIXME: why do I keep having an error message `Failing response from https://ec2-35-173-234-3.compute-1.amazonaws.com/rest/v1.0/ciEvents: 403` in that configuration screen
+
+## Should work now
+
+* with this setup, you should start seing at least the plugin usage results in the SDA server.
+* To force the plugin scanning, execute:
+   ```
+   analyzerWork = PeriodicWork.all().get(com.cloudbees.jenkins.plugins.pluginusage.v2.AnalyzerWork.class)
+   analyzerWork.doRun()
+   ```
