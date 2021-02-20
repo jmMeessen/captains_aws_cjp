@@ -72,6 +72,16 @@
     group: "{{ jenkins_user }}"
     mode: u=rw,g=r,o=r  
 
+- name: "Copy init groovy script to request token generation"
+  become: true
+  copy:
+    src: "generateToken.groovy"
+    dest: "{{ jenkins_home_dir }}/init.groovy.d/006-generateToken.groovy"
+    force: yes
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
+    mode: u=rw,g=r,o=r
+
 
 
 
