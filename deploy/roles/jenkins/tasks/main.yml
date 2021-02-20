@@ -21,10 +21,10 @@
 
 - name: Load the full DNS names of the Infra into variables
   set_fact:
-      full_cjoc_dns_name: "{{ lookup('env','cjoc_dns') }}"
-      full_cm_dns_name: "{{ lookup('env','cm_dns') }}"
-      full_agent1_dns_name: "{{ lookup('env','agent1_dns') }}"
-      full_agent_docker_dns_name: "{{ lookup('env','agent_docker_dns') }}"
+    full_cjoc_dns_name: "{{ lookup('env','cjoc_dns') }}"
+    full_cm_dns_name: "{{ lookup('env','cm_dns') }}"
+    full_agent1_dns_name: "{{ lookup('env','agent1_dns') }}"
+    full_agent_docker_dns_name: "{{ lookup('env','agent_docker_dns') }}"
 
 
 - name: Copy and update the initial configuration before first startup (Master)

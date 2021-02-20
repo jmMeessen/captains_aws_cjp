@@ -30,7 +30,7 @@
     update_cache: yes
     name: openjdk-8-jre
 
-- name: Install JQ (Jason Query tool)
+- name: Install JQ (Json Query tool)
   become: true
   apt:
     update_cache: yes
