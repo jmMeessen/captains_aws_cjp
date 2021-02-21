@@ -119,6 +119,7 @@
 - name: register the Jenkins SSH server public key in the known_hosts file
   shell: "ssh-keyscan -t rsa,dsa -p {{ sshd_port }} localhost > ~/.ssh/known_hosts"
 
+#FIXME: 
 - name: Create a CLI command varialble on remote (for debug purposes)
   template:
     src: "remote_CLI_config.j2"
@@ -126,12 +127,15 @@
     force: yes
     mode: u=rwx,g=rx,o=rx
 
+#FIXME:
 - name: Copy a README to explain how to use the CLI command
   copy:
     src: "remote-CLI-readme.txt"
     dest: "{{jenkins_cfgmgt_dir}}/CLI_README.txt"
     force: yes
     mode: u=rwx,g=rx,o=rx    
+
+  #  12  java -jar jenkins-cli.jar -s http://localhost:8888 -auth @./authfile
 
 # NOTE: doesn't work correctly on Client Master
 - name: copy jenkins-cli.jar to cfgMgt directory
@@ -153,6 +157,7 @@
     state: directory
     mode: u=rwx,g=rx,o=rx
 
+#FIXME: remove me
 - name: "Check if port {{ sshd_port }} (Jenkins CLI SSH server) is accessible from current host"
   wait_for:
     port: "{{ sshd_port }}"
@@ -160,6 +165,15 @@
     delay: 0               # No wait before first check (sec)
     timeout: 60            # Stop checking after timeout (sec)
   ignore_errors: yes    
+
+- name: "Copy cfg token"
+  become: true
+  copy:
+    src: "{{jenkins_home_dir}}/secrets/defaultCfgToken"
+    remote_src: yes
+    dest: "{{jenkins_cfgmgt_dir}}/cfgAuthfile"
+    force: yes
+    mode: u=rw,g=r,o=r   
 
 - name: Install default plugins
   shell: "{{ CLI_command }} install-plugin {{item}} -deploy"
@@ -176,7 +190,7 @@
 - name: configure Jenkins Configuration as Code
   include_tasks: JCasC.yml
   when: jenkins_node_type is search("master")
- 
+
 - name: copy the JCasC configuration file
   become: true
   copy:

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo "update token"
+./update_aws_token.sh
+
 start=`date +%s`
 
 # export TF_STATE=../terraform/terraform.tfstate

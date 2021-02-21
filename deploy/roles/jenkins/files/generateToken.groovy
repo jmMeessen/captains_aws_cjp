@@ -2,13 +2,14 @@ import hudson.model.User
 import jenkins.security.ApiTokenProperty
 import java.util.logging.Logger
 
-String scriptName = "create-k8s-secret-with-jenkins-token.groovy"
+String scriptName = "generateToken.groovy"
 Logger logger = Logger.getLogger(scriptName)
 logger.info("Starting ${scriptName}")
 
-def userName = 'admin'
-def jenkinsTokenName = 'defaultAdminToken'
-def tokenFileName = 'secrets/defaultAdminToken'
+def userName = 'Jenkins_cfg'
+def jenkinsTokenName = 'defaultCfgToken'
+
+def tokenFileName = 'secrets/' + jenkinsTokenName
 def env = System.getenv()
 def jenkins_home = env['JENKINS_HOME']
 
@@ -27,4 +28,4 @@ def result = apiTokenProperty.tokenStore.generateNewToken(jenkinsTokenName).plai
 user.save()
 
 File file = new File(jenkins_home + "/" + tokenFileName)
-file.write result + "\n"
+file.write userName + ":" + result + "\n"

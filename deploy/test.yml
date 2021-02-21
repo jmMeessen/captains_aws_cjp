@@ -1,21 +1,16 @@
   
-- hosts: jmm_agent_docker
+- hosts: jmm_cjoc
 
+  # this is required as only python3 is installed on Ubuntu AMI (Ansible fails otherwise)
   gather_facts: False
 
   vars:
-    jenkins_node_type: agent_docker"
+    jenkins_node_type: "cjoc"
     ansible_python_interpreter: auto
 
-  # pre_tasks:
-  #   - name: "get DNS name for the CJOC endpoint "
-  #     command: "terraform output -state=../terraform/terraform.tfstate Jmm_cjoc_dns"
-  #     delegate_to: localhost
-  #     register: full_cjoc_dns_name
-
   roles:
-    - agent_docker
-    - docker_ldap
+    - general
+    - jenkins
 
 
    

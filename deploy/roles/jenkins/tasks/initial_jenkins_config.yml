@@ -52,16 +52,19 @@
     group: "{{ jenkins_user }}"
     mode: u=rw,g=r,o=r  
 
+#FIXME: to be removed
 # Done under the user that performs the remote command (ea. ubuntu)
 - name: "Generate Jenkins CfgMgt SSH key"
   command : 'ssh-keygen -q -b 2048 -t rsa -f {{ jenkins_cfgmgt_ssh_key }} -C "" -N ""'
   args:
     creates: "{{ jenkins_cfgmgt_ssh_key }}"
 
+#FIXME: to be removed
 - name: Get the Jenkins CfgMgt SSH public key.
   shell: "cat {{ jenkins_cfgmgt_ssh_key }}.pub"
   register: CfgMgt_pub_key
 
+#FIXME: is this logical? Are we going to enable LDAP from the start
 - name: "Create init script to create the special Jenkins CfgMgr user"
   become: true
   template: 

@@ -11,7 +11,8 @@ jenkins_cfgmgt_ssh_key: "{{ jenkins_cfgmgt_dir }}/.ssh/jenkins_cfgMgr_key"
 jenkins_cfgmgt_script_dir: "{{ jenkins_cfgmgt_dir }}/jenkins_scripts"
 jenkins_cfgmgt_user: "Jenkins_cfg"
 sshd_port: "50001"
-CLI_command: "ssh -i {{ jenkins_cfgmgt_ssh_key }} -l {{ jenkins_cfgmgt_user }} -p {{ sshd_port }} localhost"
+#CLI_command: "ssh -i {{ jenkins_cfgmgt_ssh_key }} -l {{ jenkins_cfgmgt_user }} -p {{ sshd_port }} localhost"
+CLI_command: java -jar jenkins-cli.jar -s http://localhost:{{used_port}} -auth @./cfgAuthfile
 
 default_plugins:
   - pipeline-model-definition
