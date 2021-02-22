@@ -1,11 +1,11 @@
   
-- hosts: jmm_cjoc
+- hosts: jmm_client_master
 
   # this is required as only python3 is installed on Ubuntu AMI (Ansible fails otherwise)
   gather_facts: False
 
   vars:
-    jenkins_node_type: "cjoc"
+    jenkins_node_type: "master"
     ansible_python_interpreter: auto
 
   roles:
