@@ -10,7 +10,7 @@
   roles:
     - agent_docker
     - docker_ldap
-    - docker_nexus
+    # - docker_nexus  This install is a security issue (upgrade version and change default password)
 
 
 - hosts: jmm_cjoc
